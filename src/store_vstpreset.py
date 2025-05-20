@@ -13,20 +13,27 @@ if __name__ == "__main__":
     
     # Show the GUI
     serum.show_editor()
-    
-    
-    # Create a hidden root window for the dialog
-    root = tk.Tk()
-    root.withdraw()  # Hide the root window
 
-    # Prompt the user for the preset name
-    preset_name = simpledialog.askstring("Preset Name", "Enter a name for the preset:")
-
+    # Get preset name
+    preset_name = input("Enter a name for the preset:")
+    
+    # Mapping
+    preset_path = ""
+    if "LD" in preset_name:
+        preset_path = "lead"
+    elif "BA" in preset_name:
+        preset_path = "bass"
+    elif "PAD" in preset_name:
+        preset_path = "pad"
+    elif "PL" in preset_name:
+        preset_path = "pluck"
+    else:
+        preset_path = "keys"
     
     # Check if the user provided a name
     if preset_name:
         # Save the current plugin state to a .vstpreset file
-        with open(f'vstpreset/{preset_name}.vstpreset', 'wb') as f:
+        with open(f'../vstpreset/{preset_path}/{preset_name}.vstpreset', 'wb') as f:
             f.write(serum.raw_state)
         print(f"Preset saved as {preset_name}.vstpreset")
     else:
