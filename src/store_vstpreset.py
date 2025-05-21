@@ -1,9 +1,40 @@
-import tkinter as tk
-from tkinter import simpledialog
 from pedalboard import load_plugin
+import os
 
 SERUM_PLUGIN_PATH = "/Library/Audio/Plug-Ins/Components/Serum.component" # "/Library/Audio/Plug-Ins/VST3/Serum2.vst3"
 PLUGIN_NAME = "Serum" #"Serum 2" # "Serum 2 FX"
+SERUM_PRESET_DIR = "../serum_preset"
+STEM = "bass"
+
+def select_preset_cli(preset_dir='preset'):
+    # Ensure the preset directory exists
+    if not os.path.isdir(preset_dir):
+        print(f"Error: The directory '{preset_dir}' does not exist.")
+        return None
+
+    # List all preset files
+    files = [f for f in os.listdir(preset_dir) if os.path.isfile(os.path.join(preset_dir, f))]
+    if not files:
+        print(f"No preset files found in '{preset_dir}'.")
+        return None
+
+    # Display the list of presets
+    print("Available Presets:")
+    for idx, file in enumerate(files, start=1):
+        print(f"{idx}. {file}")
+
+    # Prompt user for selection
+    while True:
+        try:
+            choice = int(input("Enter the number of the preset you want to select: "))
+            if 1 <= choice <= len(files):
+                selected_file = files[choice - 1]
+                print(f"You have selected: {selected_file}")
+                return selected_file
+            else:
+                print("Invalid selection. Please enter a number corresponding to the presets listed.")
+        except ValueError:
+            print("Invalid input. Please enter a number.")
 
 
 if __name__ == "__main__":
@@ -14,26 +45,15 @@ if __name__ == "__main__":
     # Show the GUI
     serum.show_editor()
 
-    # Get preset name
-    preset_name = input("Enter a name for the preset:")
-    
-    # Mapping
-    preset_path = ""
-    if "LD" in preset_name:
-        preset_path = "lead"
-    elif "BA" in preset_name:
-        preset_path = "bass"
-    elif "PAD" in preset_name:
-        preset_path = "pad"
-    elif "PL" in preset_name:
-        preset_path = "pluck"
-    else:
-        preset_path = "keys"
+
+    # Get the preset name from the user
+    preset_name = select_preset_cli(os.path.join(SERUM_PRESET_DIR, STEM))
+    preset_name = preset_name.split(".fxp")[0]
     
     # Check if the user provided a name
     if preset_name:
         # Save the current plugin state to a .vstpreset file
-        with open(f'../vstpreset/{preset_path}/{preset_name}.vstpreset', 'wb') as f:
+        with open(f'../vstpreset/{STEM}/{preset_name}.vstpreset', 'wb') as f:
             f.write(serum.raw_state)
         print(f"Preset saved as {preset_name}.vstpreset")
     else:
