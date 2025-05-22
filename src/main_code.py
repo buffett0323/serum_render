@@ -169,11 +169,11 @@ def render_audio_from_midi(serum_instance, midi_events, total_samples,
     num_blocks = (total_samples + buffer_size -1) // buffer_size # Ceiling division
 
     # Reset plugin state before processing (optional, but good practice for consistency)
-    # try:
-    #     serum_instance.reset()
-    #     print("Serum plugin state reset.")
-    # except Exception as e:
-    #     print(f"Note: Could not call reset() on Serum plugin (might not be implemented by all wrappers/plugins): {e}")
+    try:
+        serum_instance.reset()
+        print("Serum plugin state reset.")
+    except Exception as e:
+        print(f"Note: Could not call reset() on Serum plugin (might not be implemented by all wrappers/plugins): {e}")
 
 
     for i in range(num_blocks):
@@ -222,11 +222,13 @@ def render_audio_from_midi(serum_instance, midi_events, total_samples,
         # Process the block
         # The `midi` argument to `process` takes a bytestring of raw MIDI messages.
         processed_block = serum_instance.process(
-            input_block_silence,
-            sample_rate,
-            midi=block_midi_bytes if block_midi_bytes else None
+            midi_messages=block_midi_bytes,
+            duration=actual_buffer_size_this_block / sample_rate,
+            sample_rate=sample_rate,
+            num_channels=num_channels,
+            buffer_size=actual_buffer_size_this_block,
+            reset=(i == 0)  # Only reset plugin state on the first block
         )
-
         # Ensure processed_block has the correct shape (num_channels, actual_buffer_size_this_block)
         if processed_block.shape[1] != actual_buffer_size_this_block:
              # If plugin outputs fixed buffer size, truncate or pad if necessary

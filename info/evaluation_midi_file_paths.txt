@@ -1,0 +1,10 @@
+../midi/midi_files/evaluation/midi/101886.mid
+../midi/midi_files/evaluation/midi/1140646.mid
+../midi/midi_files/evaluation/midi/569701.mid
+../midi/midi_files/evaluation/midi/1815011.mid
+../midi/midi_files/evaluation/midi/1776811.mid
+../midi/midi_files/evaluation/midi/179097.mid
+../midi/midi_files/evaluation/midi/422516.mid
+../midi/midi_files/evaluation/midi/878291.mid
+../midi/midi_files/evaluation/midi/96218.mid
+../midi/midi_files/evaluation/midi/1434456.mid
