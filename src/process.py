@@ -22,7 +22,7 @@ BUFFER_SIZE = 512      # Samples per processing block (power of 2 often good)
 OUTPUT_CHANNELS = 2
 TAIL_DURATION_SECONDS = 2.0  # Extra time to capture release tails after MIDI ends
 MIDI_DURATION_THRESHOLD = 10.0 # 3 minutes
-STEM = "lead"
+STEM = "keys"
 
 os.makedirs(RENDERED_AUDIO_DIR, exist_ok=True)
 
