@@ -14,14 +14,14 @@ from visualize_midi import plot_midi_piano_roll
 SERUM_PLUGIN_PATH = os.path.expanduser("/Users/bliu/Library/Audio/Plug-Ins/Components/Serum.component") #"/Library/Audio/Plug-Ins/Components/Serum.component" #os.path.expanduser("/Users/bliu/Library/Audio/Plug-Ins/Components/Serum.component")
 PLUGIN_NAME = "Serum" #"Serum 2" # "Serum 2 FX"
 VSTPRESET_DIR = "../vstpreset"
-SPLIT = "evaluation"
+SPLIT = "train" #"evaluation"
 MIDI_DIR = f"../midi/midi_files/{SPLIT}/midi/"
 RENDERED_AUDIO_DIR = f"../rendered_audio/{SPLIT}"
 SAMPLE_RATE = 44100.0  # Hz
 BUFFER_SIZE = 512      # Samples per processing block (power of 2 often good)
 OUTPUT_CHANNELS = 2
 TAIL_DURATION_SECONDS = 2.0  # Extra time to capture release tails after MIDI ends
-MIDI_DURATION_THRESHOLD = 10.0 - TAIL_DURATION_SECONDS # 3 minutes
+MIDI_DURATION_THRESHOLD = 10.0 # 3 minutes
 STEM = "lead"
 
 os.makedirs(RENDERED_AUDIO_DIR, exist_ok=True)
@@ -106,7 +106,7 @@ def get_midi_messages(midi_file_path):
 
 
 def render_audio(serum, midi_messages, first_note_time, audio_output_file_path):
-    duration = midi_messages[-1].time + TAIL_DURATION_SECONDS
+    duration = MIDI_DURATION_THRESHOLD # midi_messages[-1].time + TAIL_DURATION_SECONDS
     audio = serum.process(
         midi_messages=midi_messages,
         duration=duration,
@@ -127,11 +127,11 @@ def render_audio(serum, midi_messages, first_note_time, audio_output_file_path):
 
 if __name__ == "__main__":
     # Get VST Presets
-    vstpreset_paths = get_all_vstpresets(VSTPRESET_DIR, stem=STEM)[-2:]
+    vstpreset_paths = get_all_vstpresets(VSTPRESET_DIR, stem=STEM) #[-2:]
     serum_dict = get_all_serum_states(vstpreset_paths)
 
     # Get Midi Files
-    midi_file_paths = get_all_midi_files(MIDI_DIR)[:10]
+    midi_file_paths = get_all_midi_files(MIDI_DIR)[:100]
     print(f"Having {len(vstpreset_paths)} vstpresets in stem {STEM}, with {len(midi_file_paths)} midi files")
 
     with open(f"../info/{SPLIT}_midi_file_paths.txt", "w") as f:
@@ -141,8 +141,6 @@ if __name__ == "__main__":
     # Render Audio from Midi Files
     for midi_file_path in tqdm(midi_file_paths, desc="Rendering Audio from Midi Files"):
         midi_messages, first_note_time = get_midi_messages(midi_file_path)
-        print(f"First note time: {first_note_time}")
-
         parsed_midi_file_name = os.path.basename(midi_file_path).replace(".mid", "")
 
         for preset_path, serum in serum_dict.items():
@@ -151,6 +149,3 @@ if __name__ == "__main__":
             output_path = os.path.join(RENDERED_AUDIO_DIR, output_filename)
 
             render_audio(serum, midi_messages, first_note_time, output_path)
-            break
-        
-        break
