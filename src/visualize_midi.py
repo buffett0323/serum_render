@@ -21,7 +21,7 @@ def plot_midi_piano_roll(midi_path, max_duration=60):
     
     
 if __name__ == "__main__":
-    MIDI_DIR = "/Users/buffettliu/Desktop/Music_AI/Codes/render_dataset/midi/midi_files/evaluation/midi"
+    MIDI_DIR = "../midi/midi_files/evaluation"
     MIDI_FILE_PATH = os.path.join(MIDI_DIR, os.listdir(MIDI_DIR)[0])
     
     plot_midi_piano_roll(MIDI_FILE_PATH)
