@@ -2,6 +2,9 @@ import pretty_midi
 import matplotlib.pyplot as plt
 import numpy as np
 import os
+
+
+
 def plot_midi_piano_roll(midi_path, max_duration=60):
     midi_data = pretty_midi.PrettyMIDI(midi_path)
 

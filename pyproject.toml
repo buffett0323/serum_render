@@ -9,4 +9,5 @@ dependencies = [
     "tqdm",
     "mido",
     "pedalboard",
+    "pretty_midi"
 ]
