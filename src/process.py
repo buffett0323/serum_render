@@ -110,7 +110,7 @@ def render_audio(serum, midi_messages, audio_output_file_path):
     # 5. Save Output Audio
     with AudioFile(audio_output_file_path, "w", SAMPLE_RATE, 2) as f:
         f.write(audio)
-        print("Rendered audio saved to: ", audio_output_file_path)
+        print("-> Rendered audio saved to: ", audio_output_file_path)
     
 
 if __name__ == "__main__":
