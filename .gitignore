@@ -2,14 +2,6 @@ __pycache__
 rendered_audio/
 sample_audio/
 serum_preset/
-midi/maestro_v3/2004/
-midi/maestro_v3/2006/
-midi/maestro_v3/2008/
-midi/maestro_v3/2009/
-midi/maestro_v3/2011/
-midi/maestro_v3/2013/
-midi/maestro_v3/2014/
-midi/maestro_v3/2015/
-midi/maestro_v3/2017/
+midi/maestro_v3/
 midi/midi_files/validation/
 .DS_Store
