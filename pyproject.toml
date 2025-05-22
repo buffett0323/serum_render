@@ -1,0 +1,12 @@
+[project]
+name = "music-renderer"
+version = "0.1.0"
+description = "Render audio from MIDI with Pedalboard plugins"
+requires-python = ">=3.10"
+
+dependencies = [
+    "soundfile",
+    "tqdm",
+    "mido",
+    "pedalboard",
+]
