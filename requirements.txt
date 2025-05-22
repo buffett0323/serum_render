@@ -1,0 +1,9 @@
+numpy
+pandas
+tqdm
+pprint
+mido
+
+pretty_midi
+soundfile
+pedalboard
