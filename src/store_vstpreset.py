@@ -4,7 +4,7 @@ import os
 SERUM_PLUGIN_PATH = "/Library/Audio/Plug-Ins/Components/Serum.component" # "/Library/Audio/Plug-Ins/VST3/Serum2.vst3"
 PLUGIN_NAME = "Serum" #"Serum 2" # "Serum 2 FX"
 SERUM_PRESET_DIR = "../serum_preset"
-STEM = "bass"
+STEM = "lead"
 
 def select_preset_cli(preset_dir='preset'):
     # Ensure the preset directory exists
@@ -17,18 +17,24 @@ def select_preset_cli(preset_dir='preset'):
     if not files:
         print(f"No preset files found in '{preset_dir}'.")
         return None
+    
+    # Filter prefix
+    selected_files = []
+    while len(selected_files) == 0:
+        prefix = input("Enter the prefix of the preset you want to select: ")
+        selected_files = [f for f in files if prefix in f]
 
-    # Display the list of presets
-    print("Available Presets:")
-    for idx, file in enumerate(files, start=1):
-        print(f"{idx}. {file}")
+        # Display the list of presets
+        print("Available Presets:")
+        for idx, file in enumerate(selected_files, start=1):
+            print(f"{idx}. {file}")
 
     # Prompt user for selection
     while True:
         try:
             choice = int(input("Enter the number of the preset you want to select: "))
-            if 1 <= choice <= len(files):
-                selected_file = files[choice - 1]
+            if 1 <= choice <= len(selected_files):
+                selected_file = selected_files[choice - 1]
                 print(f"You have selected: {selected_file}")
                 return selected_file
             else:
