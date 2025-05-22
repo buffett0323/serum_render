@@ -1,6 +1,5 @@
 __pycache__
-# vstpreset/
+rendered_audio/
 sample_audio/
 serum_preset/
-# midi/
 .DS_Store
