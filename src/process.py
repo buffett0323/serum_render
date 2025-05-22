@@ -131,12 +131,14 @@ if __name__ == "__main__":
     serum_dict = get_all_serum_states(vstpreset_paths)
 
     # Get Midi Files
-    midi_file_paths = get_all_midi_files(MIDI_DIR)[:100]
-    print(f"Having {len(vstpreset_paths)} vstpresets in stem {STEM}, with {len(midi_file_paths)} midi files")
+    # midi_file_paths = get_all_midi_files(MIDI_DIR)[:100]
+    # print(f"Having {len(vstpreset_paths)} vstpresets in stem {STEM}, with {len(midi_file_paths)} midi files")
 
-    with open(f"../info/{SPLIT}_midi_file_paths.txt", "w") as f:
-        for midi_file_path in midi_file_paths:
-            f.write(midi_file_path + "\n")
+    # with open(f"../info/{SPLIT}_midi_file_paths.txt", "w") as f:
+    #     for midi_file_path in midi_file_paths:
+    #         f.write(midi_file_path + "\n")
+    with open(f"../info/{SPLIT}_midi_file_paths.txt", "r") as f:
+        midi_file_paths = [line.strip() for line in f.readlines()]
 
     # Render Audio from Midi Files
     for midi_file_path in tqdm(midi_file_paths, desc="Rendering Audio from Midi Files"):
