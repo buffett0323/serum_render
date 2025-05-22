@@ -8,7 +8,7 @@ from pedalboard.io import AudioFile
 SERUM_PLUGIN_PATH = "/Library/Audio/Plug-Ins/Components/Serum.component" # "/Library/Audio/Plug-Ins/VST3/Serum2.vst3"
 PLUGIN_NAME = "Serum" #"Serum 2" # "Serum 2 FX"
 # FXP_PRESET_PATH = "serum preset/lead/LD - Starboy Era.fxp" 
-MIDI_INPUT_FILE_PATH = "piano.mid"  # <-- CHANGE THIS
+MIDI_INPUT_FILE_PATH = "../midi/piano.mid"  # <-- CHANGE THIS
 AUDIO_OUTPUT_FILE_PATH = "output_serum_audio.wav" # <-- CHANGE THIS
 PRESET_DATA_FILE_PATH = "jsons/serum_parameters2.json"
 SAMPLE_RATE = 44100.0  # Hz
@@ -21,30 +21,8 @@ TAIL_DURATION_SECONDS = 3.0 # Extra time to capture release tails after MIDI end
 if __name__ == "__main__":
     # serum = load_plugin("/Library/Audio/Plug-Ins/VST3/Serum2.vst3", plugin_name="Serum 2")
     serum = load_plugin(SERUM_PLUGIN_PATH, plugin_name=PLUGIN_NAME)
-
-    # Show the GUI
-    serum.show_editor()
-
-    # TODO: manually load the preset in the GUI here, then close the GUI
-    # # 儲存當前插件狀態為 .vstpreset 格式
-    # with open("serum_preset.vstpreset", "wb") as f:
-    #     f.write(plugin.preset_data)
-    # print("已儲存為 serum_preset.vstpreset")
-
-
-    # Show the plugin parameters
-    # pprint(serum.parameters)
-
-
-    # # Store parameters in a dictionary
-    # params_dict = {}
-    # for key, parameter in plugin.parameters.items():
-    #     params_dict[key] = parameter.raw_value
-
-    with open('vstpreset/serum_preset.vstpreset', 'wb') as f:
-        f.write(serum.raw_state)
         
-    with open('vstpreset/serum_preset.vstpreset', 'rb') as f:
+    with open('../vstpreset/lead/LD - Arp Attack.vstpreset', 'rb') as f:
         serum.raw_state = f.read()
 
     # Load the MIDI file
@@ -72,3 +50,4 @@ if __name__ == "__main__":
     # 5. Save Output Audio
     with AudioFile("output.wav", "w", SAMPLE_RATE, 2) as f:
         f.write(audio)
+        print("Audio saved to output.wav")
