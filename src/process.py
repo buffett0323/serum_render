@@ -128,11 +128,10 @@ if __name__ == "__main__":
     
     
     # Render Audio
-    for midi_file_path in tqdm(midi_file_paths, desc="Rendering Audio"):
+    for midi_file_path in tqdm(midi_file_paths, desc="Rendering Audio from Midi Files"):
         
         start_time = time.time()
         midi_messages = get_midi_messages(midi_file_path)
-        print(f"Time taken to get MIDI messages: {time.time() - start_time:.2f} seconds")
         parsed_midi_file_name = midi_file_path.split('MIDI-Unprocessed_')[-1].split('.midi')[0]
         
         # Load from presets
@@ -140,11 +139,10 @@ if __name__ == "__main__":
             parsed_preset_name = preset_name.split('/')[-1].split('.vstpreset')[0].split('- ')[-1]
             audio_output_file_path = f"{stem_mapping[STEM]}.{parsed_preset_name}.{parsed_midi_file_name}.wav"
 
-            # render_audio(
-            #     serum, 
-            #     midi_messages, 
-            #     os.path.join(RENDERED_AUDIO_DIR, audio_output_file_path)
-            # )
+            render_audio(
+                serum, 
+                midi_messages, 
+                os.path.join(RENDERED_AUDIO_DIR, audio_output_file_path)
+            )
 
-        # break
     
