@@ -1,7 +1,6 @@
 numpy
 pandas
 tqdm
-pprint
 mido
 
 pretty_midi
