@@ -8,7 +8,8 @@ from pedalboard import load_plugin
 from mido import MidiFile, Message
 from pedalboard.io import AudioFile
 
-SERUM_PLUGIN_PATH = "/Library/Audio/Plug-Ins/Components/Serum.component" # "/Library/Audio/Plug-Ins/VST3/Serum2.vst3"
+# SERUM_PLUGIN_PATH = "/Library/Audio/Plug-Ins/Components/Serum.component" # "/Library/Audio/Plug-Ins/VST3/Serum2.vst3"
+SERUM_PLUGIN_PATH = os.path.expanduser("/Users/bliu/Library/Audio/Plug-Ins/Components/Serum.component")
 PLUGIN_NAME = "Serum" #"Serum 2" # "Serum 2 FX"
 VSTPRESET_DIR = "../vstpreset"
 MIDI_DIR = "../midi/maestro_v3"
@@ -115,14 +116,14 @@ def render_audio(serum, midi_messages, audio_output_file_path):
 
 if __name__ == "__main__":
     # Get VST Preset
-    vstpreset_paths = get_all_vstpresets(VSTPRESET_DIR, stem=STEM)[:2] 
+    vstpreset_paths = get_all_vstpresets(VSTPRESET_DIR, stem=STEM)
     
     # Pre-load all VST Presets
     serum_dict = get_all_serum_states(vstpreset_paths, length=len(vstpreset_paths))
     
     
     # Get MIDI Messages
-    midi_file_paths = get_all_midi_files(MIDI_DIR, year=YEAR)[:3]
+    midi_file_paths = get_all_midi_files(MIDI_DIR, year=YEAR)
     print(f"Having {len(vstpreset_paths)} vstpresets in stem {STEM}, with {len(midi_file_paths)} midi files in year {YEAR}")
     
     
