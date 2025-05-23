@@ -4,7 +4,10 @@ import os
 SERUM_PLUGIN_PATH = "/Library/Audio/Plug-Ins/Components/Serum.component" # "/Library/Audio/Plug-Ins/VST3/Serum2.vst3"
 PLUGIN_NAME = "Serum" #"Serum 2" # "Serum 2 FX"
 SERUM_PRESET_DIR = "../serum_preset"
-STEM = "lead"
+STEM = "pluck"
+
+from process import stem_mapping
+STEM_PREFIX = stem_mapping[STEM]
 
 def select_preset_cli(preset_dir='preset'):
     # Ensure the preset directory exists
@@ -54,12 +57,12 @@ if __name__ == "__main__":
 
     # Get the preset name from the user
     preset_name = select_preset_cli(os.path.join(SERUM_PRESET_DIR, STEM))
-    preset_name = preset_name.split(".fxp")[0]
+    preset_name = preset_name.split(".fxp")[0].split("- ")[-1]
     
     # Check if the user provided a name
     if preset_name:
         # Save the current plugin state to a .vstpreset file
-        with open(f'../vstpreset/{STEM}/{preset_name}.vstpreset', 'wb') as f:
+        with open(f'../vstpreset/{STEM}/{STEM_PREFIX} - {preset_name}.vstpreset', 'wb') as f:
             f.write(serum.raw_state)
         print(f"Preset saved as {preset_name}.vstpreset")
     else:
