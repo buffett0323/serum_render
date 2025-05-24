@@ -32,27 +32,30 @@ from tqdm import tqdm
 
 # Buffett Added
 import pretty_midi
+from itertools import product
 
-Item = namedtuple("Item", "preset_path")
+Item = namedtuple("Item", "preset_path midi_path")
 
 
 class Worker:
 
-    def __init__(self, queue: multiprocessing.Queue, plugin_path: str,
-        sample_rate=44100, block_size=512, bpm=120, note_duration=2,
-        render_duration=5, pitch_low=60, pitch_high=72, velocity=100,
+    def __init__(
+        self, 
+        queue: multiprocessing.Queue, 
+        plugin_path: str,
+        sample_rate=44100, 
+        block_size=512, 
+        bpm=120, 
+        render_duration=10, 
         output_dir='output'):
         self.queue = queue
         self.sample_rate = sample_rate
         self.block_size = block_size
         self.bpm = bpm
         self.plugin_path = plugin_path
-        self.note_duration = note_duration
         self.render_duration = render_duration
-        self.pitch_low, self.pitch_high = pitch_low, pitch_high
-        self.velocity = velocity
         self.output_dir = Path(output_dir)
-        self.midi_file_path = "199311.mid" #midi_file_path
+        # self.midi_file_path = "199311.mid" #midi_file_path
 
     def startup(self):
         engine = daw.RenderEngine(self.sample_rate, self.block_size)
@@ -68,22 +71,22 @@ class Worker:
 
     def process_item(self, item: Item):
         preset_path = item.preset_path
+        midi_path = item.midi_path
         self.synth.load_preset(preset_path)
         basename = os.path.basename(preset_path)
 
-        midi_data = pretty_midi.PrettyMIDI(self.midi_file_path)
+        midi_data = pretty_midi.PrettyMIDI(midi_path)
         for instrument in midi_data.instruments:
             for note in instrument.notes:
                 start_time = note.start
                 duration = note.end - note.start
                 pitch = note.pitch
                 velocity = note.velocity
-
                 self.synth.add_midi_note(pitch, velocity, start_time, duration)
 
         self.engine.render(self.render_duration)
         audio = self.engine.get_audio()
-        output_path = self.output_dir / f'{basename}.wav'
+        output_path = self.output_dir / f'{Path(preset_path).stem}_{Path(midi_path).stem}.wav'
         wavfile.write(str(output_path), self.sample_rate, audio.transpose())
 
         self.synth.clear_midi()
@@ -102,8 +105,8 @@ class Worker:
             return traceback.format_exc()
 
 
-def main(plugin_path, preset_dir, sample_rate=44100, bpm=120, note_duration=2,
-    render_duration=4, pitch_low=60, pitch_high=60, num_workers=None,
+def main(plugin_path, preset_dir, sample_rate=44100, bpm=120, 
+    render_duration=4, num_workers=None,
     output_dir='output', logging_level='INFO'):
 
     # Create logger
@@ -111,45 +114,48 @@ def main(plugin_path, preset_dir, sample_rate=44100, bpm=120, note_duration=2,
     logger = logging.getLogger('dawdreamer')
     logger.setLevel(logging_level.upper())
 
-    # Glob all the preset file paths, looking shallowly only
-    preset_paths = list(glob(str(Path(preset_dir) / '*.fxp')))
+    # Get all preset paths
+    preset_paths = list(glob(str(Path(preset_dir) / '*.fxp')))[:5]
 
-    # Get num items so that the progress bar works well
-    num_items = len(preset_paths)
+    # Load all MIDI file paths
+    with open("../info/train_midi_file_paths.txt", "r") as f:
+        midi_file_paths = [line.strip() for line in f.readlines()][:5]
 
-    # Create a Queue and add items
+    # Create all combinations of presets and MIDI files
+    all_combinations = list(product(preset_paths, midi_file_paths))
+    num_items = len(all_combinations)
+    logger.info(f"Total combinations (preset x midi): {num_items}")
+
+    # Create input queue and fill it
     input_queue = multiprocessing.Manager().Queue()
-    for preset_path in preset_paths:
-        input_queue.put(Item(preset_path))
+    for preset_path, midi_path in all_combinations:
+        input_queue.put(Item(preset_path=preset_path, midi_path=midi_path))
 
-    # Create a list to hold the worker processes
-    workers = []
-
-    # The number of workers to spawn
-    num_processes = num_workers or multiprocessing.cpu_count()
-
-    # Log info
-    logger.info(f'Note duration: {note_duration}')
-    logger.info(f'Render duration: {render_duration}')
-    logger.info(f'Using num workers: {num_processes}')
-    logger.info(f'Pitch low: {pitch_low}')
-    logger.info(f'Pitch high: {pitch_high}')
-    logger.info(f'Output directory: {output_dir}')
-
+    # Create output directory
     os.makedirs(output_dir, exist_ok=True)
 
-    # Create a multiprocessing Pool
+    # Determine number of workers
+    num_processes = num_workers or multiprocessing.cpu_count()
+    logger.info(f'Render duration: {render_duration}')
+    logger.info(f'Using num workers: {num_processes}')
+    logger.info(f'Output directory: {output_dir}')
+
+    # Start multiprocessing
+    workers = []
     with multiprocessing.Pool(processes=num_processes) as pool:
-        # Create and start a worker process for each CPU
         for i in range(num_processes):
-            worker = Worker(input_queue, plugin_path, sample_rate=sample_rate,
-                bpm=bpm, note_duration=note_duration,
-                render_duration=render_duration, pitch_low=pitch_low,
-                pitch_high=pitch_high, output_dir=output_dir)
+            worker = Worker(
+                input_queue,
+                plugin_path,
+                sample_rate=sample_rate,
+                bpm=bpm,
+                render_duration=render_duration,
+                output_dir=output_dir
+            )
             async_result = pool.apply_async(worker.run)
             workers.append(async_result)
 
-        # Use tqdm to track progress. Update the progress bar in each iteration.
+        # Progress bar
         pbar = tqdm(total=num_items)
         while True:
             incomplete_count = sum(1 for w in workers if not w.ready())
@@ -159,7 +165,7 @@ def main(plugin_path, preset_dir, sample_rate=44100, bpm=120, note_duration=2,
             time.sleep(0.1)
         pbar.close()
 
-    # Check for exceptions in the worker processes
+    # Log any worker errors
     for i, worker in enumerate(workers):
         exception = worker.get()
         if exception is not None:
@@ -177,15 +183,11 @@ if __name__ == "__main__":
     parser.add_argument('--preset-dir', required=True, help="Directory path of plugin presets.")
     parser.add_argument('--sample-rate', default=44100, type=int, help="Sample rate for the plugin.")
     parser.add_argument('--bpm', default=120, type=float, help="Beats per minute for the Render Engine.")
-    parser.add_argument('--note-duration', default=2, type=float, help="Note duration in seconds.")
-    parser.add_argument('--pitch-low', default=60, type=int, help="Lowest MIDI pitch to be used (inclusive).")
-    parser.add_argument('--pitch-high', default=60, type=int, help="Highest MIDI pitch to be used (inclusive).")
     parser.add_argument('--render-duration', default=4, type=float, help="Render duration in seconds.")
     parser.add_argument('--num-workers', default=None, type=int, help="Number of workers to use.")
     parser.add_argument('--output-dir', default=os.path.join(os.path.dirname(__file__),'output'), help="Output directory.")
     parser.add_argument('--log-level', default='INFO', choices=['DEBUG','INFO','WARNING','ERROR','CRITICAL', 'NOTSET'], help="Logger level.")
     args = parser.parse_args()
 
-    main(args.plugin, args.preset_dir, args.sample_rate, args.bpm, args.note_duration,
-        args.render_duration, args.pitch_low, args.pitch_high, args.num_workers, args.output_dir,
-        args.log_level)
+    main(args.plugin, args.preset_dir, args.sample_rate, args.bpm, 
+        args.render_duration, args.num_workers, args.output_dir, args.log_level)
