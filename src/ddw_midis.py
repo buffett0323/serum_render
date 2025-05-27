@@ -115,11 +115,11 @@ def main(plugin_path, preset_dir, sample_rate=44100, bpm=120,
     logger.setLevel(logging_level.upper())
 
     # Get all preset paths
-    preset_paths = list(glob(str(Path(preset_dir) / '*.fxp')))[:5]
+    preset_paths = list(glob(str(Path(preset_dir) / '*.fxp')))
 
     # Load all MIDI file paths
     with open("../info/train_midi_file_paths.txt", "r") as f:
-        midi_file_paths = [line.strip() for line in f.readlines()][:5]
+        midi_file_paths = [line.strip() for line in f.readlines()][:100]
 
     # Create all combinations of presets and MIDI files
     all_combinations = list(product(preset_paths, midi_file_paths))
