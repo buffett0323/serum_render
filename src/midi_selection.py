@@ -24,7 +24,16 @@ def plot_midi_piano_roll(midi_path, split, max_duration=10):
         # print(f"WARNING: {midi_name} has only {len(unique_notes)} unique MIDI notes")
         satisfied = False
         
-    # ----- Check 2: >1s gap with no note -----
+    # ----- Check 2: bpm == 120 ----- 
+    tempo_times, tempi = midi_data.get_tempo_changes()
+    if tempi.size > 0:
+        for t, bpm in zip(tempo_times, tempi):
+            if bpm != 120:
+                satisfied = False
+                break
+    
+        
+    # ----- Check 3: >1s gap with no note -----
     active_per_frame = (piano_roll[:, :end_frame] > 0).sum(axis=0)
     silent_frames = (active_per_frame == 0).astype(int)
 
@@ -58,29 +67,11 @@ def plot_midi_piano_roll(midi_path, split, max_duration=10):
         plt.close()
     
     return satisfied
-
-
-
-def print_midi_tempo(midi_path):
-    midi_data = pretty_midi.PrettyMIDI(midi_path)
-    
-    # Extract tempo changes
-    tempo_times, tempi = midi_data.get_tempo_changes()
-
-    # Print all tempo changes
-    for t, bpm in zip(tempo_times, tempi):
-        print(f"At time {t:.2f} sec, Tempo = {bpm:.2f} BPM")
-
-    # If you only care about the first tempo:
-    if tempi.size > 0:
-        print(f"First tempo in {os.path.basename(midi_path)}: {tempi[0]:.2f} BPM")
-    else:
-        print(f"No tempo found in {os.path.basename(midi_path)}")
-        
+  
         
     
 if __name__ == "__main__":
-    SPLIT = "train"
+    SPLIT = "evaluation"
     MIDI_DIR = f"../midi/midi_files/{SPLIT}/midi"
     counter = 0
     satisfied_midi_file_paths = []
@@ -93,7 +84,7 @@ if __name__ == "__main__":
     for mfp in tqdm(midi_file_paths):
         if plot_midi_piano_roll(mfp, SPLIT):
             satisfied_midi_file_paths.append(mfp)
-            print_midi_tempo(mfp)
+
             counter += 1
             if counter == 100:
                 break
