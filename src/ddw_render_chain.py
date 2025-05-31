@@ -72,27 +72,39 @@ class Worker:
 
     # TODO: Make a chain
     def process_item(self, item: Item):
+        """
+        Chain for lead:
+        Serum → EQ → Saturation → Compression → Stereo Imager → Delay → Reverb → OTT → Sidechain
+        """
         preset_path = item.preset_path
         midi_path = item.midi_path
+        
+        # ----- Load serum preset -----
         self.synth.load_preset(preset_path)
         basename = os.path.basename(preset_path)
 
+        # ----- Load MIDI notes -----
         midi_data = pretty_midi.PrettyMIDI(midi_path)
         for instrument in midi_data.instruments:
             for note in instrument.notes:
                 start_time = note.start
                 duration = note.end - note.start
                 pitch = note.pitch
-                velocity = note.velocity
-                print("Velocity", velocity)
-        #         self.synth.add_midi_note(pitch, velocity, start_time, duration)
+                velocity = note.velocity if note.velocity > 80 else 80
+                self.synth.add_midi_note(pitch, velocity, start_time, duration)
 
-        # self.engine.render(self.render_duration)
-        # audio = self.engine.get_audio()
-        # output_path = self.output_dir / f'{Path(preset_path).stem}_{Path(midi_path).stem}.wav'
-        # wavfile.write(str(output_path), self.sample_rate, audio.transpose())
+        # ----- Render -----
+        self.engine.render(self.render_duration)
+        audio = self.engine.get_audio()
+        
+        # ----- EQ -----
+        
+        
+        # ----- Save -----
+        output_path = self.output_dir / f'{Path(preset_path).stem}_{Path(midi_path).stem}.wav'
+        wavfile.write(str(output_path), self.sample_rate, audio.transpose())
 
-        # self.synth.clear_midi()
+        self.synth.clear_midi()
 
 
     def run(self):
@@ -130,7 +142,8 @@ def main(
 
     # Load all MIDI file paths
     with open(f"../info/{split}_midi_file_paths_satisfied.txt", "r") as f:
-        midi_file_paths = [line.strip() for line in f.readlines()][:100]
+        # TODO: Remove this
+        midi_file_paths = [line.strip() for line in f.readlines()]
 
     # Create all combinations of presets and MIDI files
     all_combinations = list(product(preset_paths, midi_file_paths))
