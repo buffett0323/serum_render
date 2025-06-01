@@ -143,7 +143,7 @@ def main(
     # Load all MIDI file paths
     with open(f"../info/{split}_midi_file_paths_satisfied.txt", "r") as f:
         # TODO: Remove this
-        midi_file_paths = [line.strip() for line in f.readlines()]
+        midi_file_paths = [line.strip() for line in f.readlines()][:5]
 
     # Create all combinations of presets and MIDI files
     all_combinations = list(product(preset_paths, midi_file_paths))
