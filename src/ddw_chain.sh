@@ -7,4 +7,4 @@ python ddw_render_chain.py \
     --num-workers 4 \
     --output-dir ../rendered_audio/lead \
     --log-level INFO \
-    --split train
+    --split evaluation
