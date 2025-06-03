@@ -23,6 +23,7 @@ from collections import namedtuple
 from glob import glob
 import os
 from pathlib import Path
+import random
 
 # extra libraries to install with pip
 import dawdreamer as daw
@@ -73,7 +74,6 @@ class Worker:
         preset_path = item.preset_path
         midi_path = item.midi_path
         self.synth.load_preset(preset_path)
-        basename = os.path.basename(preset_path)
 
         midi_data = pretty_midi.PrettyMIDI(midi_path)
         for instrument in midi_data.instruments:
@@ -81,7 +81,7 @@ class Worker:
                 start_time = note.start
                 duration = note.end - note.start
                 pitch = note.pitch
-                velocity = note.velocity
+                velocity = note.velocity if note.velocity > 80 else 80
                 self.synth.add_midi_note(pitch, velocity, start_time, duration)
 
         self.engine.render(self.render_duration)
@@ -118,8 +118,9 @@ def main(plugin_path, preset_dir, sample_rate=44100, bpm=120,
     preset_paths = list(glob(str(Path(preset_dir) / '*.fxp')))
 
     # Load all MIDI file paths
-    with open("../info/train_midi_file_paths.txt", "r") as f:
-        midi_file_paths = [line.strip() for line in f.readlines()][:100]
+    with open("../info/evaluation_midi_file_paths_satisfied.txt", "r") as f:
+        midi_file_paths = [line.strip() for line in f.readlines()]
+        midi_file_paths = random.sample(midi_file_paths, 20)
 
     # Create all combinations of presets and MIDI files
     all_combinations = list(product(preset_paths, midi_file_paths))
