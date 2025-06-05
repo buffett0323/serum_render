@@ -4,10 +4,10 @@ import numpy as np
 import os
 from tqdm import tqdm
 
-UNIQUE_NOTES_THRESHOLD = 5
+UNIQUE_NOTES_THRESHOLD = 3 # 5
+DURATION_SECOND = 5 # 10
 
-
-def plot_midi_piano_roll(midi_path, split, max_duration=10):
+def plot_midi_piano_roll(midi_path, split, max_duration=DURATION_SECOND):
     satisfied = True
     midi_data = pretty_midi.PrettyMIDI(midi_path)
 
@@ -57,12 +57,17 @@ def plot_midi_piano_roll(midi_path, split, max_duration=10):
     if satisfied:
         # Visualization part
         plt.figure(figsize=(14, 6))
-        plt.imshow(piano_roll[:, :end_frame], aspect='auto', origin='lower', cmap='gray_r')
+        plt.imshow(piano_roll[:, :end_frame], aspect='auto', origin='lower', cmap='viridis')
         plt.xlabel("Time (frames)")
         plt.ylabel("MIDI note number")
         plt.title(f"Piano Roll of: {midi_name}")
         plt.colorbar(label='Velocity')
-        plt.tight_layout()
+        plt.grid(True)
+        
+        x_ticks = np.arange(0, end_frame, fs)
+        x_labels = [f"{t/fs:.1f}" for t in x_ticks]
+        plt.xticks(x_ticks, x_labels)
+        
         plt.savefig(f"../vis_results/{split}/{midi_name}.png")
         plt.close()
     
@@ -71,7 +76,7 @@ def plot_midi_piano_roll(midi_path, split, max_duration=10):
         
     
 if __name__ == "__main__":
-    SPLIT = "evaluation"
+    SPLIT = "train"
     MIDI_DIR = f"../midi/midi_files/{SPLIT}/midi"
     counter = 0
     satisfied_midi_file_paths = []
@@ -86,7 +91,7 @@ if __name__ == "__main__":
             satisfied_midi_file_paths.append(mfp)
 
             counter += 1
-            if counter == 100:
+            if counter == 1000:
                 break
             
     with open(f"../info/{SPLIT}_midi_file_paths_satisfied.txt", "w") as f:
