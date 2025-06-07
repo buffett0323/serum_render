@@ -107,7 +107,7 @@ class Worker:
 
 def main(plugin_path, preset_dir, sample_rate=44100, bpm=120, 
     render_duration=4, num_workers=None,
-    output_dir='output', logging_level='INFO'):
+    output_dir='output', logging_level='INFO', split='train'):
 
     # Create logger
     logging.basicConfig()
@@ -115,12 +115,11 @@ def main(plugin_path, preset_dir, sample_rate=44100, bpm=120,
     logger.setLevel(logging_level.upper())
 
     # Get all preset paths
-    preset_paths = list(glob(str(Path(preset_dir) / '*.fxp')))
+    preset_paths = list(glob(str(Path(preset_dir) / '**' / '*.fxp'), recursive=True))
 
     # Load all MIDI file paths
-    with open("../info/evaluation_midi_file_paths_satisfied.txt", "r") as f:
-        midi_file_paths = [line.strip() for line in f.readlines()]
-        midi_file_paths = random.sample(midi_file_paths, 20)
+    with open(f"../info/{split}_midi_file_paths_satisfied.txt", "r") as f:
+        midi_file_paths = [line.strip() for line in f.readlines()][:500]
 
     # Create all combinations of presets and MIDI files
     all_combinations = list(product(preset_paths, midi_file_paths))
@@ -188,7 +187,8 @@ if __name__ == "__main__":
     parser.add_argument('--num-workers', default=None, type=int, help="Number of workers to use.")
     parser.add_argument('--output-dir', default=os.path.join(os.path.dirname(__file__),'output'), help="Output directory.")
     parser.add_argument('--log-level', default='INFO', choices=['DEBUG','INFO','WARNING','ERROR','CRITICAL', 'NOTSET'], help="Logger level.")
+    parser.add_argument('--split', default='train', choices=['train', 'test'], help="Split to render.")
     args = parser.parse_args()
 
     main(args.plugin, args.preset_dir, args.sample_rate, args.bpm, 
-        args.render_duration, args.num_workers, args.output_dir, args.log_level)
+        args.render_duration, args.num_workers, args.output_dir, args.log_level, args.split)
