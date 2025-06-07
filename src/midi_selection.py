@@ -76,8 +76,9 @@ def plot_midi_piano_roll(midi_path, split, max_duration=DURATION_SECOND):
         
     
 if __name__ == "__main__":
-    SPLIT = "train"
+    SPLIT = "evaluation"
     MIDI_DIR = f"../midi/midi_files/{SPLIT}/midi"
+    AMOUNT = 50
     counter = 0
     satisfied_midi_file_paths = []
     midi_file_paths = [os.path.join(MIDI_DIR, f) 
@@ -91,7 +92,7 @@ if __name__ == "__main__":
             satisfied_midi_file_paths.append(mfp)
 
             counter += 1
-            if counter == 1000:
+            if counter == AMOUNT:
                 break
             
     with open(f"../info/{SPLIT}_midi_file_paths_satisfied.txt", "w") as f:

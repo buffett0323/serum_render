@@ -187,7 +187,7 @@ if __name__ == "__main__":
     parser.add_argument('--num-workers', default=None, type=int, help="Number of workers to use.")
     parser.add_argument('--output-dir', default=os.path.join(os.path.dirname(__file__),'output'), help="Output directory.")
     parser.add_argument('--log-level', default='INFO', choices=['DEBUG','INFO','WARNING','ERROR','CRITICAL', 'NOTSET'], help="Logger level.")
-    parser.add_argument('--split', default='train', choices=['train', 'test'], help="Split to render.")
+    parser.add_argument('--split', default='train', choices=['train', 'evaluation'], help="Split to render.")
     args = parser.parse_args()
 
     main(args.plugin, args.preset_dir, args.sample_rate, args.bpm, 
