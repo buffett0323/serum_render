@@ -2,91 +2,91 @@
     {
         "file": "0.wav",
         "stem": "pluck",
-        "attack": 9,
-        "decay": 179,
-        "hold": 5,
-        "sustain": 0.15,
-        "release": 106
+        "attack": 0.404,
+        "decay": 633.811,
+        "hold": 0.004,
+        "sustain": 0.149,
+        "release": 158.282
     },
     {
         "file": "1.wav",
         "stem": "pluck",
-        "attack": 9,
-        "decay": 62,
-        "hold": 32,
-        "sustain": 0.23,
-        "release": 76
+        "attack": 0.438,
+        "decay": 633.803,
+        "hold": 0.007,
+        "sustain": 0.407,
+        "release": 156.493
     },
     {
         "file": "2.wav",
         "stem": "pluck",
-        "attack": 6,
-        "decay": 140,
-        "hold": 38,
-        "sustain": 0.08,
-        "release": 91
+        "attack": 0.447,
+        "decay": 633.794,
+        "hold": 0.011,
+        "sustain": 0.739,
+        "release": 159.26
     },
     {
         "file": "3.wav",
         "stem": "pluck",
-        "attack": 8,
-        "decay": 101,
-        "hold": 24,
-        "sustain": 0.15,
-        "release": 47
+        "attack": 0.427,
+        "decay": 633.818,
+        "hold": 0.016,
+        "sustain": 0.734,
+        "release": 160.015
     },
     {
         "file": "4.wav",
         "stem": "pluck",
-        "attack": 3,
-        "decay": 152,
-        "hold": 35,
-        "sustain": 0.0,
-        "release": 83
+        "attack": 0.407,
+        "decay": 633.842,
+        "hold": 0.019,
+        "sustain": 0.502,
+        "release": 156.449
     },
     {
         "file": "5.wav",
         "stem": "pluck",
-        "attack": 2,
-        "decay": 158,
-        "hold": 32,
-        "sustain": 0.25,
-        "release": 139
+        "attack": 0.461,
+        "decay": 633.82,
+        "hold": 0.007,
+        "sustain": 0.676,
+        "release": 157.686
     },
     {
         "file": "6.wav",
         "stem": "pluck",
-        "attack": 9,
-        "decay": 67,
-        "hold": 34,
-        "sustain": 0.2,
-        "release": 130
+        "attack": 0.409,
+        "decay": 633.845,
+        "hold": 0.007,
+        "sustain": 0.89,
+        "release": 156.953
     },
     {
         "file": "7.wav",
         "stem": "pluck",
-        "attack": 7,
-        "decay": 108,
-        "hold": 18,
-        "sustain": 0.04,
-        "release": 65
+        "attack": 0.445,
+        "decay": 633.856,
+        "hold": 0.005,
+        "sustain": 0.734,
+        "release": 161.546
     },
     {
         "file": "8.wav",
         "stem": "pluck",
-        "attack": 0,
-        "decay": 61,
-        "hold": 19,
-        "sustain": 0.14,
-        "release": 130
+        "attack": 0.438,
+        "decay": 633.824,
+        "hold": 0.02,
+        "sustain": 0.113,
+        "release": 158.567
     },
     {
         "file": "9.wav",
         "stem": "pluck",
-        "attack": 6,
-        "decay": 124,
-        "hold": 36,
-        "sustain": 0.04,
-        "release": 131
+        "attack": 0.45,
+        "decay": 633.817,
+        "hold": 0.015,
+        "sustain": 0.27,
+        "release": 159.355
     }
 ]
