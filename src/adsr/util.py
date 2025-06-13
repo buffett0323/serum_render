@@ -1,42 +1,47 @@
+import json
+
+
 SAMPLE_RATE = 44100
-ADSR_DICT = {
-    "lead": {
-        "a": (5, 40),
-        "d": (120, 400),
-        "h": (0, 60),
-        "s": (0.6, 0.9),
-        "r": (50, 220)
-    },
-    "keys": {
-        "a": (30, 120),
-        "d": (180, 600),
-        "h": (80, 250),
-        "s": (0.5, 0.8),
-        "r": (120, 450)
-    },
-    "pad": {
-        "a": (250, 1000),
-        "d": (500, 2000),
-        "h": (300, 800),
-        "s": (0.7, 1.0),
-        "r": (600, 2500)
-    },
-    "pluck": {
-        "a": (0, 10),
-        "d": (40, 180),
-        "h": (0, 40),
-        "s": (0.0, 0.25),
-        "r": (20, 150)
-    },
-    "synth": {
-        "a": (15, 80),
-        "d": (100, 500),
-        "h": (0, 120),
-        "s": (0.4, 0.7),
-        "r": (60, 300)
-    }
-}
+
+with open("stats/serum_adsr.json", "r") as f:
+    SERUM_ADSR = json.load(f)
+
+with open("stats/gpt_adsr.json", "r") as f:
+    GPT_ADSR = json.load(f)
 
 def ms_to_samples(ms): return int(ms * SAMPLE_RATE / 1000)
 
 def samples_to_ms(samples): return samples * 1000 / SAMPLE_RATE
+
+def serum_to_ms(normalized_value, param_name):
+    if "Sus" in param_name:  # Sustain is already in amplitude ratio
+        return normalized_value
+    
+    return 32000 * (normalized_value ** 5) 
+
+def convert_stats_to_ms(stats_path):
+    stats_dict = json.load(open(stats_path))
+    converted = {}
+    for category in stats_dict:
+        mean_in_ms = serum_to_ms(stats_dict[category]['mean'], category)
+        std_in_ms = serum_to_ms(stats_dict[category]['std'], category)
+        range_in_ms = (mean_in_ms - 2*std_in_ms, mean_in_ms + 2*std_in_ms)  # 95% confidence interval
+
+        converted[category] = range_in_ms
+
+    # Formatting
+    final_converted = {"lead": {}, "keys": {}, "pad": {}, "pluck": {}, "synth": {}, "vox": {}}
+    for name in converted:
+        stem, item = name.split(', Env1 ')
+        item = item[0].lower()
+        
+        if item == "s":
+            c1 = max(0, converted[name][0])
+            c2 = min(1, converted[name][1])
+        else:
+            c1 = max(0, converted[name][0])
+            c2 = converted[name][1]
+            
+        final_converted[stem][f"{item}1"] = c1
+        final_converted[stem][f"{item}2"] = c2
+    return final_converted

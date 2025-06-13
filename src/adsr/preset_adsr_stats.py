@@ -49,9 +49,11 @@ def main():
     
     assert len(folder_mapping) == len(all_folders), "Folder mapping is not complete"
     
-    env_items = {"Env1 Atk": [], "Env1 Dec": [], "Env1 Hold": [], "Env1 Sus": [], "Env1 Rel": []}
-    env_stats = {stem: env_items for stem in STEMS}
+    env_items = ["Env1 Atk", "Env1 Dec", "Env1 Hold", "Env1 Sus", "Env1 Rel"]
+    env_stats = {stem: {item: [] for item in env_items}
+                 for stem in STEMS}
     preset_paths = list(glob(str(Path(PRESET_PATH) / '**' / '*.fxp'), recursive=True))
+    random.shuffle(preset_paths)
 
     # Processing
     for preset_path in tqdm(preset_paths):
@@ -77,17 +79,22 @@ def main():
                 env_stats[stem][dic['name']].append(dic['value'])
                 
 
-    # Process and Save stats
-    env_items_dict = {"Env1 Atk": {}, "Env1 Dec": {}, "Env1 Hold": {}, "Env1 Sus": {}, "Env1 Rel": {}}
-    final_env_stats = {stem: env_items_dict for stem in STEMS}
-    for stem in STEMS:
-        for item in env_items_dict:
-            final_env_stats[stem][item] = {
-                "mean": np.mean(env_stats[stem][item]),
-                "std": np.std(env_stats[stem][item])
-            }
+    with open("stats/env_stats.json", "w") as f:
+        json.dump(env_stats, f, indent=4)
 
-    with open("env_stats.json", "w") as f:
+
+    # Process and Save stats
+    final_env_stats = {}
+    for stem in env_stats:
+        for item in env_stats[stem]:
+            if len(env_stats[stem][item]) > 0:
+                final_env_stats[f"{stem}, {item}"] = {
+                    "mean": np.mean(env_stats[stem][item]),
+                    "std": np.std(env_stats[stem][item])
+                }
+
+
+    with open("stats/final_env_stats.json", "w") as f:
         json.dump(final_env_stats, f, indent=4)
 
 
