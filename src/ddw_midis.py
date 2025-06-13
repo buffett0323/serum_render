@@ -115,7 +115,9 @@ def main(plugin_path, preset_dir, sample_rate=44100, bpm=120,
     logger.setLevel(logging_level.upper())
 
     # Get all preset paths
-    preset_paths = list(glob(str(Path(preset_dir) / '**' / '*.fxp'), recursive=True))
+    preset_paths = list(glob(str(Path(preset_dir) / 'pad' / '*.fxp'), recursive=True))
+    preset_paths += list(glob(str(Path(preset_dir) / 'pad_original' / '*.fxp'), recursive=True))
+
 
     # Load all MIDI file paths
     with open(f"../info/{split}_midi_file_paths_satisfied.txt", "r") as f:
