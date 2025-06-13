@@ -5,6 +5,6 @@ python ddw_midis.py \
     --bpm 120 \
     --render-duration 5 \
     --num-workers 4 \
-    --output-dir ../rendered_audio/evaluation \
+    --output-dir ../rendered_audio/train \
     --log-level INFO \
-    --split evaluation
+    --split train
