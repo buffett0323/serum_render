@@ -1,0 +1,6002 @@
+[
+    {
+        "id": 0,
+        "stem": "lead",
+        "attack": 0.812,
+        "decay": 769.313,
+        "hold": 0.005,
+        "sustain": 0.156,
+        "release": 60.191,
+        "length": 830.321
+    },
+    {
+        "id": 1,
+        "stem": "lead",
+        "attack": 1.212,
+        "decay": 769.355,
+        "hold": 0.004,
+        "sustain": 0.229,
+        "release": 60.265,
+        "length": 830.836
+    },
+    {
+        "id": 2,
+        "stem": "lead",
+        "attack": 1.02,
+        "decay": 769.315,
+        "hold": 0.002,
+        "sustain": 0.791,
+        "release": 61.023,
+        "length": 831.36
+    },
+    {
+        "id": 3,
+        "stem": "lead",
+        "attack": 0.913,
+        "decay": 769.402,
+        "hold": 0.0,
+        "sustain": 0.87,
+        "release": 62.127,
+        "length": 832.442
+    },
+    {
+        "id": 4,
+        "stem": "lead",
+        "attack": 1.225,
+        "decay": 769.317,
+        "hold": 0.009,
+        "sustain": 0.389,
+        "release": 62.202,
+        "length": 832.753
+    },
+    {
+        "id": 5,
+        "stem": "lead",
+        "attack": 0.811,
+        "decay": 769.313,
+        "hold": 0.006,
+        "sustain": 0.655,
+        "release": 60.503,
+        "length": 830.633
+    },
+    {
+        "id": 6,
+        "stem": "lead",
+        "attack": 0.962,
+        "decay": 769.352,
+        "hold": 0.008,
+        "sustain": 0.335,
+        "release": 61.185,
+        "length": 831.5070000000001
+    },
+    {
+        "id": 7,
+        "stem": "lead",
+        "attack": 0.991,
+        "decay": 769.265,
+        "hold": 0.003,
+        "sustain": 0.376,
+        "release": 61.178,
+        "length": 831.437
+    },
+    {
+        "id": 8,
+        "stem": "lead",
+        "attack": 1.007,
+        "decay": 769.359,
+        "hold": 0.004,
+        "sustain": 0.517,
+        "release": 59.886,
+        "length": 830.256
+    },
+    {
+        "id": 9,
+        "stem": "lead",
+        "attack": 1.205,
+        "decay": 769.48,
+        "hold": 0.007,
+        "sustain": 0.299,
+        "release": 60.953,
+        "length": 831.645
+    },
+    {
+        "id": 10,
+        "stem": "lead",
+        "attack": 0.824,
+        "decay": 769.315,
+        "hold": 0.004,
+        "sustain": 0.954,
+        "release": 61.109,
+        "length": 831.2520000000001
+    },
+    {
+        "id": 11,
+        "stem": "lead",
+        "attack": 0.868,
+        "decay": 769.23,
+        "hold": 0.01,
+        "sustain": 0.922,
+        "release": 60.427,
+        "length": 830.5350000000001
+    },
+    {
+        "id": 12,
+        "stem": "lead",
+        "attack": 0.996,
+        "decay": 769.422,
+        "hold": 0.003,
+        "sustain": 0.978,
+        "release": 61.405,
+        "length": 831.826
+    },
+    {
+        "id": 13,
+        "stem": "lead",
+        "attack": 1.041,
+        "decay": 769.471,
+        "hold": 0.01,
+        "sustain": 0.359,
+        "release": 60.851,
+        "length": 831.373
+    },
+    {
+        "id": 14,
+        "stem": "lead",
+        "attack": 1.127,
+        "decay": 769.384,
+        "hold": 0.001,
+        "sustain": 0.242,
+        "release": 60.274,
+        "length": 830.786
+    },
+    {
+        "id": 15,
+        "stem": "lead",
+        "attack": 0.96,
+        "decay": 769.364,
+        "hold": 0.007,
+        "sustain": 0.354,
+        "release": 60.372,
+        "length": 830.703
+    },
+    {
+        "id": 16,
+        "stem": "lead",
+        "attack": 1.068,
+        "decay": 769.36,
+        "hold": 0.008,
+        "sustain": 0.245,
+        "release": 61.747,
+        "length": 832.183
+    },
+    {
+        "id": 17,
+        "stem": "lead",
+        "attack": 0.896,
+        "decay": 769.246,
+        "hold": 0.002,
+        "sustain": 0.407,
+        "release": 61.156,
+        "length": 831.2999999999998
+    },
+    {
+        "id": 18,
+        "stem": "lead",
+        "attack": 0.954,
+        "decay": 769.353,
+        "hold": 0.001,
+        "sustain": 0.334,
+        "release": 60.702,
+        "length": 831.0099999999999
+    },
+    {
+        "id": 19,
+        "stem": "lead",
+        "attack": 1.13,
+        "decay": 769.327,
+        "hold": 0.002,
+        "sustain": 0.862,
+        "release": 61.329,
+        "length": 831.7879999999999
+    },
+    {
+        "id": 20,
+        "stem": "lead",
+        "attack": 1.05,
+        "decay": 769.235,
+        "hold": 0.01,
+        "sustain": 0.754,
+        "release": 61.444,
+        "length": 831.7389999999999
+    },
+    {
+        "id": 21,
+        "stem": "lead",
+        "attack": 0.889,
+        "decay": 769.413,
+        "hold": 0.006,
+        "sustain": 0.253,
+        "release": 61.993,
+        "length": 832.301
+    },
+    {
+        "id": 22,
+        "stem": "lead",
+        "attack": 1.059,
+        "decay": 769.298,
+        "hold": 0.004,
+        "sustain": 0.177,
+        "release": 60.293,
+        "length": 830.654
+    },
+    {
+        "id": 23,
+        "stem": "lead",
+        "attack": 1.074,
+        "decay": 769.292,
+        "hold": 0.007,
+        "sustain": 0.378,
+        "release": 60.733,
+        "length": 831.1059999999999
+    },
+    {
+        "id": 24,
+        "stem": "lead",
+        "attack": 1.168,
+        "decay": 769.22,
+        "hold": 0.008,
+        "sustain": 0.675,
+        "release": 59.834,
+        "length": 830.23
+    },
+    {
+        "id": 25,
+        "stem": "lead",
+        "attack": 0.826,
+        "decay": 769.413,
+        "hold": 0.002,
+        "sustain": 0.218,
+        "release": 61.211,
+        "length": 831.452
+    },
+    {
+        "id": 26,
+        "stem": "lead",
+        "attack": 1.215,
+        "decay": 769.313,
+        "hold": 0.004,
+        "sustain": 0.228,
+        "release": 60.606,
+        "length": 831.138
+    },
+    {
+        "id": 27,
+        "stem": "lead",
+        "attack": 1.226,
+        "decay": 769.322,
+        "hold": 0.006,
+        "sustain": 0.328,
+        "release": 60.354,
+        "length": 830.908
+    },
+    {
+        "id": 28,
+        "stem": "lead",
+        "attack": 0.905,
+        "decay": 769.407,
+        "hold": 0.008,
+        "sustain": 0.829,
+        "release": 62.133,
+        "length": 832.4530000000001
+    },
+    {
+        "id": 29,
+        "stem": "lead",
+        "attack": 1.167,
+        "decay": 769.482,
+        "hold": 0.003,
+        "sustain": 0.922,
+        "release": 60.406,
+        "length": 831.058
+    },
+    {
+        "id": 30,
+        "stem": "lead",
+        "attack": 0.982,
+        "decay": 769.274,
+        "hold": 0.002,
+        "sustain": 0.843,
+        "release": 60.238,
+        "length": 830.4959999999999
+    },
+    {
+        "id": 31,
+        "stem": "lead",
+        "attack": 0.846,
+        "decay": 769.243,
+        "hold": 0.006,
+        "sustain": 0.746,
+        "release": 60.429,
+        "length": 830.524
+    },
+    {
+        "id": 32,
+        "stem": "lead",
+        "attack": 1.016,
+        "decay": 769.426,
+        "hold": 0.006,
+        "sustain": 0.226,
+        "release": 60.689,
+        "length": 831.137
+    },
+    {
+        "id": 33,
+        "stem": "lead",
+        "attack": 0.819,
+        "decay": 769.424,
+        "hold": 0.007,
+        "sustain": 0.362,
+        "release": 61.353,
+        "length": 831.6029999999998
+    },
+    {
+        "id": 34,
+        "stem": "lead",
+        "attack": 1.052,
+        "decay": 769.301,
+        "hold": 0.006,
+        "sustain": 0.868,
+        "release": 61.07,
+        "length": 831.4290000000001
+    },
+    {
+        "id": 35,
+        "stem": "lead",
+        "attack": 0.975,
+        "decay": 769.33,
+        "hold": 0.004,
+        "sustain": 0.322,
+        "release": 61.995,
+        "length": 832.3040000000001
+    },
+    {
+        "id": 36,
+        "stem": "lead",
+        "attack": 0.9,
+        "decay": 769.341,
+        "hold": 0.006,
+        "sustain": 0.241,
+        "release": 61.519,
+        "length": 831.766
+    },
+    {
+        "id": 37,
+        "stem": "lead",
+        "attack": 1.148,
+        "decay": 769.355,
+        "hold": 0.002,
+        "sustain": 0.36,
+        "release": 61.93,
+        "length": 832.435
+    },
+    {
+        "id": 38,
+        "stem": "lead",
+        "attack": 0.891,
+        "decay": 769.29,
+        "hold": 0.006,
+        "sustain": 0.888,
+        "release": 60.924,
+        "length": 831.1109999999999
+    },
+    {
+        "id": 39,
+        "stem": "lead",
+        "attack": 1.047,
+        "decay": 769.301,
+        "hold": 0.009,
+        "sustain": 0.988,
+        "release": 62.079,
+        "length": 832.436
+    },
+    {
+        "id": 40,
+        "stem": "lead",
+        "attack": 0.958,
+        "decay": 769.315,
+        "hold": 0.001,
+        "sustain": 0.664,
+        "release": 62.066,
+        "length": 832.34
+    },
+    {
+        "id": 41,
+        "stem": "lead",
+        "attack": 0.964,
+        "decay": 769.355,
+        "hold": 0.007,
+        "sustain": 0.397,
+        "release": 61.625,
+        "length": 831.951
+    },
+    {
+        "id": 42,
+        "stem": "lead",
+        "attack": 0.884,
+        "decay": 769.392,
+        "hold": 0.01,
+        "sustain": 0.614,
+        "release": 60.906,
+        "length": 831.192
+    },
+    {
+        "id": 43,
+        "stem": "lead",
+        "attack": 0.933,
+        "decay": 769.484,
+        "hold": 0.004,
+        "sustain": 0.537,
+        "release": 60.695,
+        "length": 831.1160000000001
+    },
+    {
+        "id": 44,
+        "stem": "lead",
+        "attack": 1.128,
+        "decay": 769.235,
+        "hold": 0.004,
+        "sustain": 0.649,
+        "release": 60.541,
+        "length": 830.9080000000001
+    },
+    {
+        "id": 45,
+        "stem": "lead",
+        "attack": 1.072,
+        "decay": 769.32,
+        "hold": 0.008,
+        "sustain": 0.411,
+        "release": 59.831,
+        "length": 830.2310000000001
+    },
+    {
+        "id": 46,
+        "stem": "lead",
+        "attack": 1.158,
+        "decay": 769.424,
+        "hold": 0.009,
+        "sustain": 0.771,
+        "release": 61.687,
+        "length": 832.278
+    },
+    {
+        "id": 47,
+        "stem": "lead",
+        "attack": 1.231,
+        "decay": 769.395,
+        "hold": 0.001,
+        "sustain": 0.353,
+        "release": 60.164,
+        "length": 830.7909999999999
+    },
+    {
+        "id": 48,
+        "stem": "lead",
+        "attack": 0.943,
+        "decay": 769.39,
+        "hold": 0.003,
+        "sustain": 0.662,
+        "release": 61.211,
+        "length": 831.547
+    },
+    {
+        "id": 49,
+        "stem": "lead",
+        "attack": 1.002,
+        "decay": 769.357,
+        "hold": 0.003,
+        "sustain": 0.638,
+        "release": 60.604,
+        "length": 830.966
+    },
+    {
+        "id": 50,
+        "stem": "lead",
+        "attack": 0.946,
+        "decay": 769.284,
+        "hold": 0.006,
+        "sustain": 0.575,
+        "release": 61.875,
+        "length": 832.111
+    },
+    {
+        "id": 51,
+        "stem": "lead",
+        "attack": 0.931,
+        "decay": 769.373,
+        "hold": 0.007,
+        "sustain": 0.528,
+        "release": 60.456,
+        "length": 830.767
+    },
+    {
+        "id": 52,
+        "stem": "lead",
+        "attack": 1.148,
+        "decay": 769.267,
+        "hold": 0.009,
+        "sustain": 0.49,
+        "release": 61.178,
+        "length": 831.6020000000001
+    },
+    {
+        "id": 53,
+        "stem": "lead",
+        "attack": 1.071,
+        "decay": 769.274,
+        "hold": 0.008,
+        "sustain": 0.493,
+        "release": 59.953,
+        "length": 830.306
+    },
+    {
+        "id": 54,
+        "stem": "lead",
+        "attack": 0.97,
+        "decay": 769.344,
+        "hold": 0.003,
+        "sustain": 0.201,
+        "release": 61.787,
+        "length": 832.1040000000002
+    },
+    {
+        "id": 55,
+        "stem": "lead",
+        "attack": 1.122,
+        "decay": 769.34,
+        "hold": 0.009,
+        "sustain": 0.985,
+        "release": 60.172,
+        "length": 830.643
+    },
+    {
+        "id": 56,
+        "stem": "lead",
+        "attack": 0.93,
+        "decay": 769.338,
+        "hold": 0.009,
+        "sustain": 0.668,
+        "release": 61.685,
+        "length": 831.962
+    },
+    {
+        "id": 57,
+        "stem": "lead",
+        "attack": 1.008,
+        "decay": 769.368,
+        "hold": 0.004,
+        "sustain": 0.322,
+        "release": 61.626,
+        "length": 832.0060000000001
+    },
+    {
+        "id": 58,
+        "stem": "lead",
+        "attack": 0.996,
+        "decay": 769.362,
+        "hold": 0.002,
+        "sustain": 0.516,
+        "release": 60.63,
+        "length": 830.9899999999999
+    },
+    {
+        "id": 59,
+        "stem": "lead",
+        "attack": 0.934,
+        "decay": 769.431,
+        "hold": 0.01,
+        "sustain": 0.365,
+        "release": 59.844,
+        "length": 830.219
+    },
+    {
+        "id": 60,
+        "stem": "lead",
+        "attack": 1.139,
+        "decay": 769.439,
+        "hold": 0.009,
+        "sustain": 0.724,
+        "release": 60.477,
+        "length": 831.064
+    },
+    {
+        "id": 61,
+        "stem": "lead",
+        "attack": 1.034,
+        "decay": 769.392,
+        "hold": 0.002,
+        "sustain": 0.777,
+        "release": 60.232,
+        "length": 830.66
+    },
+    {
+        "id": 62,
+        "stem": "lead",
+        "attack": 1.106,
+        "decay": 769.256,
+        "hold": 0.005,
+        "sustain": 0.98,
+        "release": 60.793,
+        "length": 831.16
+    },
+    {
+        "id": 63,
+        "stem": "lead",
+        "attack": 1.05,
+        "decay": 769.396,
+        "hold": 0.007,
+        "sustain": 0.207,
+        "release": 60.422,
+        "length": 830.8749999999999
+    },
+    {
+        "id": 64,
+        "stem": "lead",
+        "attack": 1.135,
+        "decay": 769.412,
+        "hold": 0.0,
+        "sustain": 0.19,
+        "release": 61.647,
+        "length": 832.1940000000001
+    },
+    {
+        "id": 65,
+        "stem": "lead",
+        "attack": 0.816,
+        "decay": 769.419,
+        "hold": 0.005,
+        "sustain": 0.434,
+        "release": 60.492,
+        "length": 830.732
+    },
+    {
+        "id": 66,
+        "stem": "lead",
+        "attack": 0.845,
+        "decay": 769.447,
+        "hold": 0.007,
+        "sustain": 0.719,
+        "release": 60.503,
+        "length": 830.802
+    },
+    {
+        "id": 67,
+        "stem": "lead",
+        "attack": 0.85,
+        "decay": 769.335,
+        "hold": 0.005,
+        "sustain": 0.427,
+        "release": 60.789,
+        "length": 830.979
+    },
+    {
+        "id": 68,
+        "stem": "lead",
+        "attack": 1.184,
+        "decay": 769.386,
+        "hold": 0.006,
+        "sustain": 0.418,
+        "release": 61.014,
+        "length": 831.5899999999999
+    },
+    {
+        "id": 69,
+        "stem": "lead",
+        "attack": 1.234,
+        "decay": 769.359,
+        "hold": 0.007,
+        "sustain": 0.804,
+        "release": 61.349,
+        "length": 831.9490000000001
+    },
+    {
+        "id": 70,
+        "stem": "lead",
+        "attack": 1.238,
+        "decay": 769.413,
+        "hold": 0.004,
+        "sustain": 0.615,
+        "release": 61.458,
+        "length": 832.113
+    },
+    {
+        "id": 71,
+        "stem": "lead",
+        "attack": 1.064,
+        "decay": 769.427,
+        "hold": 0.009,
+        "sustain": 0.758,
+        "release": 60.701,
+        "length": 831.201
+    },
+    {
+        "id": 72,
+        "stem": "lead",
+        "attack": 0.922,
+        "decay": 769.266,
+        "hold": 0.009,
+        "sustain": 0.727,
+        "release": 59.895,
+        "length": 830.092
+    },
+    {
+        "id": 73,
+        "stem": "lead",
+        "attack": 1.19,
+        "decay": 769.24,
+        "hold": 0.007,
+        "sustain": 0.19,
+        "release": 60.206,
+        "length": 830.643
+    },
+    {
+        "id": 74,
+        "stem": "lead",
+        "attack": 1.229,
+        "decay": 769.314,
+        "hold": 0.004,
+        "sustain": 0.461,
+        "release": 61.82,
+        "length": 832.3670000000001
+    },
+    {
+        "id": 75,
+        "stem": "lead",
+        "attack": 0.907,
+        "decay": 769.412,
+        "hold": 0.006,
+        "sustain": 0.257,
+        "release": 61.705,
+        "length": 832.0300000000001
+    },
+    {
+        "id": 76,
+        "stem": "lead",
+        "attack": 1.232,
+        "decay": 769.235,
+        "hold": 0.005,
+        "sustain": 0.467,
+        "release": 60.523,
+        "length": 830.995
+    },
+    {
+        "id": 77,
+        "stem": "lead",
+        "attack": 1.119,
+        "decay": 769.334,
+        "hold": 0.004,
+        "sustain": 0.471,
+        "release": 62.215,
+        "length": 832.672
+    },
+    {
+        "id": 78,
+        "stem": "lead",
+        "attack": 0.852,
+        "decay": 769.413,
+        "hold": 0.002,
+        "sustain": 0.52,
+        "release": 60.769,
+        "length": 831.036
+    },
+    {
+        "id": 79,
+        "stem": "lead",
+        "attack": 0.929,
+        "decay": 769.247,
+        "hold": 0.009,
+        "sustain": 0.88,
+        "release": 60.295,
+        "length": 830.4799999999999
+    },
+    {
+        "id": 80,
+        "stem": "lead",
+        "attack": 1.223,
+        "decay": 769.448,
+        "hold": 0.006,
+        "sustain": 0.764,
+        "release": 61.641,
+        "length": 832.3179999999999
+    },
+    {
+        "id": 81,
+        "stem": "lead",
+        "attack": 1.096,
+        "decay": 769.367,
+        "hold": 0.002,
+        "sustain": 0.902,
+        "release": 61.559,
+        "length": 832.0239999999999
+    },
+    {
+        "id": 82,
+        "stem": "lead",
+        "attack": 0.963,
+        "decay": 769.373,
+        "hold": 0.007,
+        "sustain": 0.427,
+        "release": 60.137,
+        "length": 830.48
+    },
+    {
+        "id": 83,
+        "stem": "lead",
+        "attack": 0.988,
+        "decay": 769.351,
+        "hold": 0.002,
+        "sustain": 0.827,
+        "release": 61.187,
+        "length": 831.528
+    },
+    {
+        "id": 84,
+        "stem": "lead",
+        "attack": 1.145,
+        "decay": 769.261,
+        "hold": 0.002,
+        "sustain": 0.814,
+        "release": 59.886,
+        "length": 830.2939999999999
+    },
+    {
+        "id": 85,
+        "stem": "lead",
+        "attack": 1.057,
+        "decay": 769.282,
+        "hold": 0.01,
+        "sustain": 0.315,
+        "release": 60.936,
+        "length": 831.2850000000001
+    },
+    {
+        "id": 86,
+        "stem": "lead",
+        "attack": 1.128,
+        "decay": 769.41,
+        "hold": 0.006,
+        "sustain": 0.522,
+        "release": 60.233,
+        "length": 830.7769999999999
+    },
+    {
+        "id": 87,
+        "stem": "lead",
+        "attack": 0.829,
+        "decay": 769.26,
+        "hold": 0.01,
+        "sustain": 0.695,
+        "release": 62.163,
+        "length": 832.262
+    },
+    {
+        "id": 88,
+        "stem": "lead",
+        "attack": 0.901,
+        "decay": 769.361,
+        "hold": 0.002,
+        "sustain": 0.149,
+        "release": 62.063,
+        "length": 832.3269999999999
+    },
+    {
+        "id": 89,
+        "stem": "lead",
+        "attack": 1.186,
+        "decay": 769.342,
+        "hold": 0.002,
+        "sustain": 0.33,
+        "release": 61.859,
+        "length": 832.389
+    },
+    {
+        "id": 90,
+        "stem": "lead",
+        "attack": 1.161,
+        "decay": 769.284,
+        "hold": 0.006,
+        "sustain": 0.243,
+        "release": 61.057,
+        "length": 831.5079999999999
+    },
+    {
+        "id": 91,
+        "stem": "lead",
+        "attack": 0.858,
+        "decay": 769.415,
+        "hold": 0.006,
+        "sustain": 0.781,
+        "release": 60.204,
+        "length": 830.4829999999998
+    },
+    {
+        "id": 92,
+        "stem": "lead",
+        "attack": 0.976,
+        "decay": 769.322,
+        "hold": 0.006,
+        "sustain": 0.767,
+        "release": 61.275,
+        "length": 831.579
+    },
+    {
+        "id": 93,
+        "stem": "lead",
+        "attack": 0.914,
+        "decay": 769.326,
+        "hold": 0.008,
+        "sustain": 0.945,
+        "release": 60.504,
+        "length": 830.7520000000001
+    },
+    {
+        "id": 94,
+        "stem": "lead",
+        "attack": 1.049,
+        "decay": 769.432,
+        "hold": 0.005,
+        "sustain": 0.985,
+        "release": 61.079,
+        "length": 831.5649999999999
+    },
+    {
+        "id": 95,
+        "stem": "lead",
+        "attack": 0.955,
+        "decay": 769.241,
+        "hold": 0.005,
+        "sustain": 0.992,
+        "release": 61.914,
+        "length": 832.115
+    },
+    {
+        "id": 96,
+        "stem": "lead",
+        "attack": 0.98,
+        "decay": 769.367,
+        "hold": 0.003,
+        "sustain": 0.137,
+        "release": 59.969,
+        "length": 830.3190000000001
+    },
+    {
+        "id": 97,
+        "stem": "lead",
+        "attack": 0.829,
+        "decay": 769.359,
+        "hold": 0.01,
+        "sustain": 0.827,
+        "release": 60.265,
+        "length": 830.463
+    },
+    {
+        "id": 98,
+        "stem": "lead",
+        "attack": 1.079,
+        "decay": 769.407,
+        "hold": 0.002,
+        "sustain": 0.818,
+        "release": 61.814,
+        "length": 832.3019999999999
+    },
+    {
+        "id": 99,
+        "stem": "lead",
+        "attack": 1.206,
+        "decay": 769.235,
+        "hold": 0.003,
+        "sustain": 0.482,
+        "release": 60.717,
+        "length": 831.1610000000001
+    },
+    {
+        "id": 100,
+        "stem": "keys",
+        "attack": 1.554,
+        "decay": 1162.499,
+        "hold": 0.077,
+        "sustain": 0.009,
+        "release": 187.526,
+        "length": 1351.6560000000002
+    },
+    {
+        "id": 101,
+        "stem": "keys",
+        "attack": 1.541,
+        "decay": 1161.161,
+        "hold": 0.036,
+        "sustain": 0.356,
+        "release": 184.886,
+        "length": 1347.624
+    },
+    {
+        "id": 102,
+        "stem": "keys",
+        "attack": 1.605,
+        "decay": 1163.083,
+        "hold": 0.048,
+        "sustain": 0.795,
+        "release": 185.063,
+        "length": 1349.799
+    },
+    {
+        "id": 103,
+        "stem": "keys",
+        "attack": 1.592,
+        "decay": 1163.043,
+        "hold": 0.074,
+        "sustain": 0.259,
+        "release": 185.756,
+        "length": 1350.4650000000001
+    },
+    {
+        "id": 104,
+        "stem": "keys",
+        "attack": 1.681,
+        "decay": 1161.819,
+        "hold": 0.077,
+        "sustain": 0.441,
+        "release": 184.32,
+        "length": 1347.897
+    },
+    {
+        "id": 105,
+        "stem": "keys",
+        "attack": 1.645,
+        "decay": 1161.473,
+        "hold": 0.073,
+        "sustain": 0.303,
+        "release": 184.772,
+        "length": 1347.963
+    },
+    {
+        "id": 106,
+        "stem": "keys",
+        "attack": 1.623,
+        "decay": 1163.073,
+        "hold": 0.071,
+        "sustain": 0.716,
+        "release": 184.683,
+        "length": 1349.45
+    },
+    {
+        "id": 107,
+        "stem": "keys",
+        "attack": 1.623,
+        "decay": 1161.093,
+        "hold": 0.045,
+        "sustain": 0.942,
+        "release": 186.36,
+        "length": 1349.121
+    },
+    {
+        "id": 108,
+        "stem": "keys",
+        "attack": 1.602,
+        "decay": 1161.542,
+        "hold": 0.062,
+        "sustain": 0.379,
+        "release": 184.248,
+        "length": 1347.454
+    },
+    {
+        "id": 109,
+        "stem": "keys",
+        "attack": 1.61,
+        "decay": 1162.197,
+        "hold": 0.078,
+        "sustain": 0.396,
+        "release": 186.858,
+        "length": 1350.7429999999997
+    },
+    {
+        "id": 110,
+        "stem": "keys",
+        "attack": 1.607,
+        "decay": 1162.903,
+        "hold": 0.034,
+        "sustain": 0.73,
+        "release": 184.404,
+        "length": 1348.948
+    },
+    {
+        "id": 111,
+        "stem": "keys",
+        "attack": 1.602,
+        "decay": 1161.666,
+        "hold": 0.012,
+        "sustain": 0.122,
+        "release": 187.229,
+        "length": 1350.509
+    },
+    {
+        "id": 112,
+        "stem": "keys",
+        "attack": 1.55,
+        "decay": 1161.388,
+        "hold": 0.009,
+        "sustain": 0.603,
+        "release": 183.904,
+        "length": 1346.8509999999999
+    },
+    {
+        "id": 113,
+        "stem": "keys",
+        "attack": 1.636,
+        "decay": 1161.628,
+        "hold": 0.043,
+        "sustain": 0.944,
+        "release": 187.481,
+        "length": 1350.7879999999998
+    },
+    {
+        "id": 114,
+        "stem": "keys",
+        "attack": 1.536,
+        "decay": 1161.615,
+        "hold": 0.025,
+        "sustain": 0.478,
+        "release": 187.864,
+        "length": 1351.0400000000002
+    },
+    {
+        "id": 115,
+        "stem": "keys",
+        "attack": 1.583,
+        "decay": 1162.356,
+        "hold": 0.007,
+        "sustain": 0.11,
+        "release": 183.482,
+        "length": 1347.428
+    },
+    {
+        "id": 116,
+        "stem": "keys",
+        "attack": 1.623,
+        "decay": 1162.376,
+        "hold": 0.049,
+        "sustain": 0.645,
+        "release": 183.663,
+        "length": 1347.711
+    },
+    {
+        "id": 117,
+        "stem": "keys",
+        "attack": 1.529,
+        "decay": 1161.629,
+        "hold": 0.005,
+        "sustain": 0.843,
+        "release": 186.222,
+        "length": 1349.385
+    },
+    {
+        "id": 118,
+        "stem": "keys",
+        "attack": 1.642,
+        "decay": 1162.033,
+        "hold": 0.074,
+        "sustain": 0.892,
+        "release": 183.533,
+        "length": 1347.282
+    },
+    {
+        "id": 119,
+        "stem": "keys",
+        "attack": 1.513,
+        "decay": 1162.041,
+        "hold": 0.009,
+        "sustain": 0.201,
+        "release": 186.615,
+        "length": 1350.1779999999999
+    },
+    {
+        "id": 120,
+        "stem": "keys",
+        "attack": 1.568,
+        "decay": 1160.709,
+        "hold": 0.032,
+        "sustain": 0.897,
+        "release": 184.68,
+        "length": 1346.989
+    },
+    {
+        "id": 121,
+        "stem": "keys",
+        "attack": 1.515,
+        "decay": 1161.477,
+        "hold": 0.056,
+        "sustain": 0.467,
+        "release": 185.125,
+        "length": 1348.1730000000002
+    },
+    {
+        "id": 122,
+        "stem": "keys",
+        "attack": 1.634,
+        "decay": 1162.418,
+        "hold": 0.041,
+        "sustain": 0.7,
+        "release": 187.46,
+        "length": 1351.5529999999999
+    },
+    {
+        "id": 123,
+        "stem": "keys",
+        "attack": 1.533,
+        "decay": 1162.285,
+        "hold": 0.072,
+        "sustain": 0.463,
+        "release": 184.092,
+        "length": 1347.982
+    },
+    {
+        "id": 124,
+        "stem": "keys",
+        "attack": 1.674,
+        "decay": 1162.606,
+        "hold": 0.033,
+        "sustain": 0.388,
+        "release": 184.587,
+        "length": 1348.8999999999999
+    },
+    {
+        "id": 125,
+        "stem": "keys",
+        "attack": 1.676,
+        "decay": 1162.899,
+        "hold": 0.07,
+        "sustain": 0.243,
+        "release": 185.068,
+        "length": 1349.7129999999997
+    },
+    {
+        "id": 126,
+        "stem": "keys",
+        "attack": 1.639,
+        "decay": 1163.019,
+        "hold": 0.018,
+        "sustain": 0.192,
+        "release": 183.721,
+        "length": 1348.397
+    },
+    {
+        "id": 127,
+        "stem": "keys",
+        "attack": 1.598,
+        "decay": 1161.302,
+        "hold": 0.067,
+        "sustain": 0.647,
+        "release": 184.05,
+        "length": 1347.0169999999998
+    },
+    {
+        "id": 128,
+        "stem": "keys",
+        "attack": 1.678,
+        "decay": 1161.193,
+        "hold": 0.055,
+        "sustain": 0.573,
+        "release": 183.895,
+        "length": 1346.8210000000001
+    },
+    {
+        "id": 129,
+        "stem": "keys",
+        "attack": 1.635,
+        "decay": 1163.004,
+        "hold": 0.022,
+        "sustain": 0.824,
+        "release": 186.542,
+        "length": 1351.2029999999997
+    },
+    {
+        "id": 130,
+        "stem": "keys",
+        "attack": 1.604,
+        "decay": 1162.834,
+        "hold": 0.034,
+        "sustain": 0.067,
+        "release": 185.492,
+        "length": 1349.9640000000002
+    },
+    {
+        "id": 131,
+        "stem": "keys",
+        "attack": 1.637,
+        "decay": 1161.973,
+        "hold": 0.047,
+        "sustain": 0.074,
+        "release": 187.305,
+        "length": 1350.962
+    },
+    {
+        "id": 132,
+        "stem": "keys",
+        "attack": 1.568,
+        "decay": 1160.993,
+        "hold": 0.064,
+        "sustain": 0.467,
+        "release": 183.446,
+        "length": 1346.071
+    },
+    {
+        "id": 133,
+        "stem": "keys",
+        "attack": 1.645,
+        "decay": 1162.063,
+        "hold": 0.019,
+        "sustain": 0.266,
+        "release": 185.747,
+        "length": 1349.4740000000002
+    },
+    {
+        "id": 134,
+        "stem": "keys",
+        "attack": 1.588,
+        "decay": 1161.123,
+        "hold": 0.071,
+        "sustain": 0.069,
+        "release": 187.544,
+        "length": 1350.326
+    },
+    {
+        "id": 135,
+        "stem": "keys",
+        "attack": 1.62,
+        "decay": 1162.935,
+        "hold": 0.01,
+        "sustain": 0.493,
+        "release": 187.499,
+        "length": 1352.0639999999999
+    },
+    {
+        "id": 136,
+        "stem": "keys",
+        "attack": 1.51,
+        "decay": 1161.862,
+        "hold": 0.049,
+        "sustain": 0.473,
+        "release": 184.88,
+        "length": 1348.301
+    },
+    {
+        "id": 137,
+        "stem": "keys",
+        "attack": 1.635,
+        "decay": 1161.448,
+        "hold": 0.004,
+        "sustain": 0.689,
+        "release": 183.538,
+        "length": 1346.625
+    },
+    {
+        "id": 138,
+        "stem": "keys",
+        "attack": 1.563,
+        "decay": 1161.875,
+        "hold": 0.037,
+        "sustain": 0.66,
+        "release": 186.52,
+        "length": 1349.9950000000001
+    },
+    {
+        "id": 139,
+        "stem": "keys",
+        "attack": 1.576,
+        "decay": 1161.544,
+        "hold": 0.01,
+        "sustain": 0.026,
+        "release": 184.271,
+        "length": 1347.401
+    },
+    {
+        "id": 140,
+        "stem": "keys",
+        "attack": 1.594,
+        "decay": 1161.509,
+        "hold": 0.063,
+        "sustain": 0.789,
+        "release": 185.169,
+        "length": 1348.3350000000003
+    },
+    {
+        "id": 141,
+        "stem": "keys",
+        "attack": 1.63,
+        "decay": 1160.7,
+        "hold": 0.064,
+        "sustain": 0.553,
+        "release": 185.234,
+        "length": 1347.6280000000002
+    },
+    {
+        "id": 142,
+        "stem": "keys",
+        "attack": 1.534,
+        "decay": 1162.553,
+        "hold": 0.068,
+        "sustain": 0.312,
+        "release": 184.272,
+        "length": 1348.4270000000001
+    },
+    {
+        "id": 143,
+        "stem": "keys",
+        "attack": 1.587,
+        "decay": 1162.091,
+        "hold": 0.031,
+        "sustain": 0.464,
+        "release": 183.806,
+        "length": 1347.5149999999999
+    },
+    {
+        "id": 144,
+        "stem": "keys",
+        "attack": 1.657,
+        "decay": 1161.441,
+        "hold": 0.044,
+        "sustain": 0.639,
+        "release": 186.865,
+        "length": 1350.007
+    },
+    {
+        "id": 145,
+        "stem": "keys",
+        "attack": 1.586,
+        "decay": 1162.724,
+        "hold": 0.067,
+        "sustain": 0.173,
+        "release": 187.678,
+        "length": 1352.0549999999998
+    },
+    {
+        "id": 146,
+        "stem": "keys",
+        "attack": 1.613,
+        "decay": 1161.188,
+        "hold": 0.059,
+        "sustain": 0.647,
+        "release": 187.287,
+        "length": 1350.1470000000002
+    },
+    {
+        "id": 147,
+        "stem": "keys",
+        "attack": 1.515,
+        "decay": 1162.515,
+        "hold": 0.035,
+        "sustain": 0.73,
+        "release": 184.711,
+        "length": 1348.7760000000003
+    },
+    {
+        "id": 148,
+        "stem": "keys",
+        "attack": 1.638,
+        "decay": 1160.867,
+        "hold": 0.045,
+        "sustain": 0.084,
+        "release": 186.899,
+        "length": 1349.449
+    },
+    {
+        "id": 149,
+        "stem": "keys",
+        "attack": 1.61,
+        "decay": 1161.718,
+        "hold": 0.058,
+        "sustain": 0.005,
+        "release": 187.233,
+        "length": 1350.619
+    },
+    {
+        "id": 150,
+        "stem": "keys",
+        "attack": 1.513,
+        "decay": 1161.68,
+        "hold": 0.005,
+        "sustain": 0.411,
+        "release": 183.363,
+        "length": 1346.5610000000001
+    },
+    {
+        "id": 151,
+        "stem": "keys",
+        "attack": 1.661,
+        "decay": 1161.238,
+        "hold": 0.054,
+        "sustain": 0.533,
+        "release": 183.576,
+        "length": 1346.5290000000002
+    },
+    {
+        "id": 152,
+        "stem": "keys",
+        "attack": 1.648,
+        "decay": 1162.115,
+        "hold": 0.019,
+        "sustain": 0.783,
+        "release": 187.408,
+        "length": 1351.1899999999998
+    },
+    {
+        "id": 153,
+        "stem": "keys",
+        "attack": 1.534,
+        "decay": 1161.975,
+        "hold": 0.047,
+        "sustain": 0.346,
+        "release": 185.447,
+        "length": 1349.0030000000002
+    },
+    {
+        "id": 154,
+        "stem": "keys",
+        "attack": 1.671,
+        "decay": 1161.51,
+        "hold": 0.008,
+        "sustain": 0.726,
+        "release": 185.346,
+        "length": 1348.535
+    },
+    {
+        "id": 155,
+        "stem": "keys",
+        "attack": 1.657,
+        "decay": 1162.308,
+        "hold": 0.054,
+        "sustain": 0.156,
+        "release": 187.076,
+        "length": 1351.095
+    },
+    {
+        "id": 156,
+        "stem": "keys",
+        "attack": 1.549,
+        "decay": 1162.813,
+        "hold": 0.061,
+        "sustain": 0.02,
+        "release": 187.418,
+        "length": 1351.841
+    },
+    {
+        "id": 157,
+        "stem": "keys",
+        "attack": 1.616,
+        "decay": 1161.603,
+        "hold": 0.01,
+        "sustain": 0.226,
+        "release": 187.566,
+        "length": 1350.795
+    },
+    {
+        "id": 158,
+        "stem": "keys",
+        "attack": 1.546,
+        "decay": 1162.851,
+        "hold": 0.046,
+        "sustain": 0.202,
+        "release": 188.082,
+        "length": 1352.525
+    },
+    {
+        "id": 159,
+        "stem": "keys",
+        "attack": 1.61,
+        "decay": 1161.354,
+        "hold": 0.046,
+        "sustain": 0.588,
+        "release": 186.18,
+        "length": 1349.19
+    },
+    {
+        "id": 160,
+        "stem": "keys",
+        "attack": 1.627,
+        "decay": 1162.438,
+        "hold": 0.027,
+        "sustain": 0.653,
+        "release": 184.019,
+        "length": 1348.111
+    },
+    {
+        "id": 161,
+        "stem": "keys",
+        "attack": 1.589,
+        "decay": 1160.871,
+        "hold": 0.048,
+        "sustain": 0.834,
+        "release": 185.174,
+        "length": 1347.682
+    },
+    {
+        "id": 162,
+        "stem": "keys",
+        "attack": 1.545,
+        "decay": 1162.129,
+        "hold": 0.056,
+        "sustain": 0.578,
+        "release": 185.339,
+        "length": 1349.069
+    },
+    {
+        "id": 163,
+        "stem": "keys",
+        "attack": 1.572,
+        "decay": 1161.545,
+        "hold": 0.07,
+        "sustain": 0.901,
+        "release": 184.47,
+        "length": 1347.657
+    },
+    {
+        "id": 164,
+        "stem": "keys",
+        "attack": 1.528,
+        "decay": 1162.54,
+        "hold": 0.005,
+        "sustain": 0.386,
+        "release": 185.834,
+        "length": 1349.9070000000002
+    },
+    {
+        "id": 165,
+        "stem": "keys",
+        "attack": 1.605,
+        "decay": 1161.506,
+        "hold": 0.062,
+        "sustain": 0.785,
+        "release": 187.561,
+        "length": 1350.734
+    },
+    {
+        "id": 166,
+        "stem": "keys",
+        "attack": 1.645,
+        "decay": 1161.052,
+        "hold": 0.056,
+        "sustain": 0.37,
+        "release": 184.324,
+        "length": 1347.077
+    },
+    {
+        "id": 167,
+        "stem": "keys",
+        "attack": 1.573,
+        "decay": 1161.211,
+        "hold": 0.076,
+        "sustain": 0.426,
+        "release": 185.799,
+        "length": 1348.659
+    },
+    {
+        "id": 168,
+        "stem": "keys",
+        "attack": 1.542,
+        "decay": 1161.322,
+        "hold": 0.049,
+        "sustain": 0.255,
+        "release": 187.823,
+        "length": 1350.7359999999999
+    },
+    {
+        "id": 169,
+        "stem": "keys",
+        "attack": 1.585,
+        "decay": 1160.799,
+        "hold": 0.055,
+        "sustain": 0.135,
+        "release": 183.989,
+        "length": 1346.428
+    },
+    {
+        "id": 170,
+        "stem": "keys",
+        "attack": 1.513,
+        "decay": 1162.645,
+        "hold": 0.031,
+        "sustain": 0.755,
+        "release": 184.216,
+        "length": 1348.4049999999997
+    },
+    {
+        "id": 171,
+        "stem": "keys",
+        "attack": 1.546,
+        "decay": 1162.896,
+        "hold": 0.051,
+        "sustain": 0.525,
+        "release": 188.066,
+        "length": 1352.559
+    },
+    {
+        "id": 172,
+        "stem": "keys",
+        "attack": 1.596,
+        "decay": 1161.775,
+        "hold": 0.072,
+        "sustain": 0.736,
+        "release": 183.532,
+        "length": 1346.975
+    },
+    {
+        "id": 173,
+        "stem": "keys",
+        "attack": 1.515,
+        "decay": 1160.867,
+        "hold": 0.012,
+        "sustain": 0.088,
+        "release": 183.274,
+        "length": 1345.6680000000001
+    },
+    {
+        "id": 174,
+        "stem": "keys",
+        "attack": 1.557,
+        "decay": 1161.5,
+        "hold": 0.017,
+        "sustain": 0.553,
+        "release": 186.952,
+        "length": 1350.026
+    },
+    {
+        "id": 175,
+        "stem": "keys",
+        "attack": 1.604,
+        "decay": 1161.926,
+        "hold": 0.06,
+        "sustain": 0.437,
+        "release": 183.621,
+        "length": 1347.211
+    },
+    {
+        "id": 176,
+        "stem": "keys",
+        "attack": 1.524,
+        "decay": 1162.9,
+        "hold": 0.029,
+        "sustain": 0.375,
+        "release": 186.775,
+        "length": 1351.228
+    },
+    {
+        "id": 177,
+        "stem": "keys",
+        "attack": 1.611,
+        "decay": 1162.621,
+        "hold": 0.048,
+        "sustain": 0.198,
+        "release": 185.968,
+        "length": 1350.2480000000003
+    },
+    {
+        "id": 178,
+        "stem": "keys",
+        "attack": 1.6,
+        "decay": 1162.738,
+        "hold": 0.009,
+        "sustain": 0.621,
+        "release": 185.939,
+        "length": 1350.286
+    },
+    {
+        "id": 179,
+        "stem": "keys",
+        "attack": 1.555,
+        "decay": 1162.617,
+        "hold": 0.007,
+        "sustain": 0.559,
+        "release": 188.051,
+        "length": 1352.23
+    },
+    {
+        "id": 180,
+        "stem": "keys",
+        "attack": 1.638,
+        "decay": 1162.54,
+        "hold": 0.034,
+        "sustain": 0.024,
+        "release": 185.069,
+        "length": 1349.281
+    },
+    {
+        "id": 181,
+        "stem": "keys",
+        "attack": 1.583,
+        "decay": 1162.941,
+        "hold": 0.046,
+        "sustain": 0.605,
+        "release": 187.419,
+        "length": 1351.9890000000003
+    },
+    {
+        "id": 182,
+        "stem": "keys",
+        "attack": 1.609,
+        "decay": 1162.447,
+        "hold": 0.027,
+        "sustain": 0.945,
+        "release": 184.07,
+        "length": 1348.1529999999998
+    },
+    {
+        "id": 183,
+        "stem": "keys",
+        "attack": 1.53,
+        "decay": 1162.147,
+        "hold": 0.013,
+        "sustain": 0.473,
+        "release": 185.726,
+        "length": 1349.4159999999997
+    },
+    {
+        "id": 184,
+        "stem": "keys",
+        "attack": 1.572,
+        "decay": 1162.233,
+        "hold": 0.018,
+        "sustain": 0.562,
+        "release": 187.456,
+        "length": 1351.2789999999998
+    },
+    {
+        "id": 185,
+        "stem": "keys",
+        "attack": 1.647,
+        "decay": 1163.065,
+        "hold": 0.005,
+        "sustain": 0.701,
+        "release": 184.726,
+        "length": 1349.4430000000002
+    },
+    {
+        "id": 186,
+        "stem": "keys",
+        "attack": 1.519,
+        "decay": 1161.606,
+        "hold": 0.069,
+        "sustain": 0.451,
+        "release": 184.493,
+        "length": 1347.687
+    },
+    {
+        "id": 187,
+        "stem": "keys",
+        "attack": 1.549,
+        "decay": 1162.682,
+        "hold": 0.053,
+        "sustain": 0.703,
+        "release": 184.947,
+        "length": 1349.2310000000002
+    },
+    {
+        "id": 188,
+        "stem": "keys",
+        "attack": 1.587,
+        "decay": 1162.134,
+        "hold": 0.046,
+        "sustain": 0.235,
+        "release": 184.044,
+        "length": 1347.8110000000001
+    },
+    {
+        "id": 189,
+        "stem": "keys",
+        "attack": 1.533,
+        "decay": 1162.963,
+        "hold": 0.036,
+        "sustain": 0.17,
+        "release": 185.46,
+        "length": 1349.992
+    },
+    {
+        "id": 190,
+        "stem": "keys",
+        "attack": 1.646,
+        "decay": 1163.092,
+        "hold": 0.003,
+        "sustain": 0.493,
+        "release": 185.691,
+        "length": 1350.432
+    },
+    {
+        "id": 191,
+        "stem": "keys",
+        "attack": 1.635,
+        "decay": 1162.094,
+        "hold": 0.022,
+        "sustain": 0.868,
+        "release": 185.673,
+        "length": 1349.424
+    },
+    {
+        "id": 192,
+        "stem": "keys",
+        "attack": 1.615,
+        "decay": 1163.094,
+        "hold": 0.014,
+        "sustain": 0.133,
+        "release": 183.663,
+        "length": 1348.386
+    },
+    {
+        "id": 193,
+        "stem": "keys",
+        "attack": 1.518,
+        "decay": 1162.479,
+        "hold": 0.052,
+        "sustain": 0.619,
+        "release": 186.45,
+        "length": 1350.499
+    },
+    {
+        "id": 194,
+        "stem": "keys",
+        "attack": 1.611,
+        "decay": 1161.607,
+        "hold": 0.031,
+        "sustain": 0.059,
+        "release": 183.904,
+        "length": 1347.153
+    },
+    {
+        "id": 195,
+        "stem": "keys",
+        "attack": 1.621,
+        "decay": 1162.13,
+        "hold": 0.068,
+        "sustain": 0.164,
+        "release": 184.856,
+        "length": 1348.6750000000002
+    },
+    {
+        "id": 196,
+        "stem": "keys",
+        "attack": 1.526,
+        "decay": 1161.305,
+        "hold": 0.03,
+        "sustain": 0.77,
+        "release": 183.78,
+        "length": 1346.641
+    },
+    {
+        "id": 197,
+        "stem": "keys",
+        "attack": 1.524,
+        "decay": 1162.596,
+        "hold": 0.076,
+        "sustain": 0.362,
+        "release": 187.227,
+        "length": 1351.423
+    },
+    {
+        "id": 198,
+        "stem": "keys",
+        "attack": 1.645,
+        "decay": 1162.168,
+        "hold": 0.009,
+        "sustain": 0.858,
+        "release": 184.42,
+        "length": 1348.242
+    },
+    {
+        "id": 199,
+        "stem": "keys",
+        "attack": 1.536,
+        "decay": 1162.233,
+        "hold": 0.074,
+        "sustain": 0.617,
+        "release": 184.774,
+        "length": 1348.6170000000002
+    },
+    {
+        "id": 200,
+        "stem": "pad",
+        "attack": 104.75,
+        "decay": 895.165,
+        "hold": 0.0,
+        "sustain": 0.752,
+        "release": 285.946,
+        "length": 1285.8609999999999
+    },
+    {
+        "id": 201,
+        "stem": "pad",
+        "attack": 104.351,
+        "decay": 895.237,
+        "hold": 0.0,
+        "sustain": 0.759,
+        "release": 286.678,
+        "length": 1286.266
+    },
+    {
+        "id": 202,
+        "stem": "pad",
+        "attack": 104.907,
+        "decay": 894.904,
+        "hold": 0.0,
+        "sustain": 0.867,
+        "release": 288.144,
+        "length": 1287.955
+    },
+    {
+        "id": 203,
+        "stem": "pad",
+        "attack": 104.385,
+        "decay": 895.38,
+        "hold": 0.0,
+        "sustain": 0.729,
+        "release": 294.228,
+        "length": 1293.993
+    },
+    {
+        "id": 204,
+        "stem": "pad",
+        "attack": 104.682,
+        "decay": 895.227,
+        "hold": 0.0,
+        "sustain": 0.85,
+        "release": 292.335,
+        "length": 1292.244
+    },
+    {
+        "id": 205,
+        "stem": "pad",
+        "attack": 102.655,
+        "decay": 895.161,
+        "hold": 0.0,
+        "sustain": 0.907,
+        "release": 288.605,
+        "length": 1286.4209999999998
+    },
+    {
+        "id": 206,
+        "stem": "pad",
+        "attack": 107.248,
+        "decay": 895.282,
+        "hold": 0.0,
+        "sustain": 0.842,
+        "release": 295.597,
+        "length": 1298.127
+    },
+    {
+        "id": 207,
+        "stem": "pad",
+        "attack": 105.484,
+        "decay": 894.926,
+        "hold": 0.0,
+        "sustain": 0.757,
+        "release": 288.818,
+        "length": 1289.228
+    },
+    {
+        "id": 208,
+        "stem": "pad",
+        "attack": 106.89,
+        "decay": 895.322,
+        "hold": 0.0,
+        "sustain": 0.907,
+        "release": 294.266,
+        "length": 1296.478
+    },
+    {
+        "id": 209,
+        "stem": "pad",
+        "attack": 104.043,
+        "decay": 895.134,
+        "hold": 0.0,
+        "sustain": 0.926,
+        "release": 286.41,
+        "length": 1285.587
+    },
+    {
+        "id": 210,
+        "stem": "pad",
+        "attack": 106.933,
+        "decay": 895.329,
+        "hold": 0.0,
+        "sustain": 0.986,
+        "release": 289.015,
+        "length": 1291.277
+    },
+    {
+        "id": 211,
+        "stem": "pad",
+        "attack": 105.549,
+        "decay": 895.325,
+        "hold": 0.0,
+        "sustain": 0.752,
+        "release": 291.905,
+        "length": 1292.779
+    },
+    {
+        "id": 212,
+        "stem": "pad",
+        "attack": 102.491,
+        "decay": 894.896,
+        "hold": 0.0,
+        "sustain": 0.854,
+        "release": 287.228,
+        "length": 1284.615
+    },
+    {
+        "id": 213,
+        "stem": "pad",
+        "attack": 102.864,
+        "decay": 895.163,
+        "hold": 0.0,
+        "sustain": 0.949,
+        "release": 295.096,
+        "length": 1293.123
+    },
+    {
+        "id": 214,
+        "stem": "pad",
+        "attack": 107.69,
+        "decay": 895.194,
+        "hold": 0.0,
+        "sustain": 0.896,
+        "release": 293.072,
+        "length": 1295.9560000000001
+    },
+    {
+        "id": 215,
+        "stem": "pad",
+        "attack": 104.802,
+        "decay": 894.927,
+        "hold": 0.0,
+        "sustain": 0.978,
+        "release": 286.345,
+        "length": 1286.074
+    },
+    {
+        "id": 216,
+        "stem": "pad",
+        "attack": 103.624,
+        "decay": 894.956,
+        "hold": 0.0,
+        "sustain": 0.92,
+        "release": 293.017,
+        "length": 1291.597
+    },
+    {
+        "id": 217,
+        "stem": "pad",
+        "attack": 106.955,
+        "decay": 895.099,
+        "hold": 0.0,
+        "sustain": 0.735,
+        "release": 287.47,
+        "length": 1289.5240000000001
+    },
+    {
+        "id": 218,
+        "stem": "pad",
+        "attack": 106.779,
+        "decay": 895.216,
+        "hold": 0.0,
+        "sustain": 0.931,
+        "release": 285.783,
+        "length": 1287.778
+    },
+    {
+        "id": 219,
+        "stem": "pad",
+        "attack": 104.156,
+        "decay": 895.365,
+        "hold": 0.0,
+        "sustain": 0.966,
+        "release": 290.274,
+        "length": 1289.795
+    },
+    {
+        "id": 220,
+        "stem": "pad",
+        "attack": 106.68,
+        "decay": 894.974,
+        "hold": 0.0,
+        "sustain": 0.936,
+        "release": 288.105,
+        "length": 1289.759
+    },
+    {
+        "id": 221,
+        "stem": "pad",
+        "attack": 107.806,
+        "decay": 895.075,
+        "hold": 0.0,
+        "sustain": 0.767,
+        "release": 289.342,
+        "length": 1292.223
+    },
+    {
+        "id": 222,
+        "stem": "pad",
+        "attack": 103.802,
+        "decay": 895.01,
+        "hold": 0.0,
+        "sustain": 0.904,
+        "release": 290.738,
+        "length": 1289.55
+    },
+    {
+        "id": 223,
+        "stem": "pad",
+        "attack": 105.237,
+        "decay": 895.26,
+        "hold": 0.0,
+        "sustain": 0.885,
+        "release": 287.958,
+        "length": 1288.455
+    },
+    {
+        "id": 224,
+        "stem": "pad",
+        "attack": 102.493,
+        "decay": 895.426,
+        "hold": 0.0,
+        "sustain": 0.984,
+        "release": 292.672,
+        "length": 1290.5910000000001
+    },
+    {
+        "id": 225,
+        "stem": "pad",
+        "attack": 104.663,
+        "decay": 895.108,
+        "hold": 0.0,
+        "sustain": 0.882,
+        "release": 295.207,
+        "length": 1294.978
+    },
+    {
+        "id": 226,
+        "stem": "pad",
+        "attack": 104.869,
+        "decay": 895.222,
+        "hold": 0.0,
+        "sustain": 0.962,
+        "release": 296.237,
+        "length": 1296.328
+    },
+    {
+        "id": 227,
+        "stem": "pad",
+        "attack": 106.014,
+        "decay": 894.91,
+        "hold": 0.0,
+        "sustain": 0.93,
+        "release": 294.998,
+        "length": 1295.922
+    },
+    {
+        "id": 228,
+        "stem": "pad",
+        "attack": 103.673,
+        "decay": 895.129,
+        "hold": 0.0,
+        "sustain": 0.763,
+        "release": 295.316,
+        "length": 1294.118
+    },
+    {
+        "id": 229,
+        "stem": "pad",
+        "attack": 104.855,
+        "decay": 895.001,
+        "hold": 0.0,
+        "sustain": 0.985,
+        "release": 290.286,
+        "length": 1290.142
+    },
+    {
+        "id": 230,
+        "stem": "pad",
+        "attack": 102.858,
+        "decay": 895.063,
+        "hold": 0.0,
+        "sustain": 0.88,
+        "release": 288.104,
+        "length": 1286.025
+    },
+    {
+        "id": 231,
+        "stem": "pad",
+        "attack": 104.658,
+        "decay": 895.118,
+        "hold": 0.0,
+        "sustain": 0.767,
+        "release": 287.635,
+        "length": 1287.411
+    },
+    {
+        "id": 232,
+        "stem": "pad",
+        "attack": 106.337,
+        "decay": 895.096,
+        "hold": 0.0,
+        "sustain": 0.856,
+        "release": 292.337,
+        "length": 1293.77
+    },
+    {
+        "id": 233,
+        "stem": "pad",
+        "attack": 106.438,
+        "decay": 895.346,
+        "hold": 0.0,
+        "sustain": 0.827,
+        "release": 296.481,
+        "length": 1298.2649999999999
+    },
+    {
+        "id": 234,
+        "stem": "pad",
+        "attack": 104.995,
+        "decay": 895.233,
+        "hold": 0.0,
+        "sustain": 0.768,
+        "release": 289.909,
+        "length": 1290.137
+    },
+    {
+        "id": 235,
+        "stem": "pad",
+        "attack": 104.297,
+        "decay": 895.274,
+        "hold": 0.0,
+        "sustain": 0.93,
+        "release": 289.418,
+        "length": 1288.989
+    },
+    {
+        "id": 236,
+        "stem": "pad",
+        "attack": 106.28,
+        "decay": 894.947,
+        "hold": 0.0,
+        "sustain": 0.96,
+        "release": 292.489,
+        "length": 1293.716
+    },
+    {
+        "id": 237,
+        "stem": "pad",
+        "attack": 104.181,
+        "decay": 894.886,
+        "hold": 0.0,
+        "sustain": 0.774,
+        "release": 288.21,
+        "length": 1287.277
+    },
+    {
+        "id": 238,
+        "stem": "pad",
+        "attack": 104.416,
+        "decay": 895.044,
+        "hold": 0.0,
+        "sustain": 0.801,
+        "release": 288.841,
+        "length": 1288.301
+    },
+    {
+        "id": 239,
+        "stem": "pad",
+        "attack": 106.185,
+        "decay": 895.374,
+        "hold": 0.0,
+        "sustain": 0.855,
+        "release": 286.181,
+        "length": 1287.74
+    },
+    {
+        "id": 240,
+        "stem": "pad",
+        "attack": 105.714,
+        "decay": 895.091,
+        "hold": 0.0,
+        "sustain": 0.736,
+        "release": 293.236,
+        "length": 1294.0410000000002
+    },
+    {
+        "id": 241,
+        "stem": "pad",
+        "attack": 104.861,
+        "decay": 894.939,
+        "hold": 0.0,
+        "sustain": 0.744,
+        "release": 290.152,
+        "length": 1289.952
+    },
+    {
+        "id": 242,
+        "stem": "pad",
+        "attack": 105.14,
+        "decay": 895.29,
+        "hold": 0.0,
+        "sustain": 0.94,
+        "release": 294.214,
+        "length": 1294.644
+    },
+    {
+        "id": 243,
+        "stem": "pad",
+        "attack": 102.652,
+        "decay": 895.36,
+        "hold": 0.0,
+        "sustain": 0.772,
+        "release": 288.336,
+        "length": 1286.348
+    },
+    {
+        "id": 244,
+        "stem": "pad",
+        "attack": 102.371,
+        "decay": 895.008,
+        "hold": 0.0,
+        "sustain": 0.781,
+        "release": 293.307,
+        "length": 1290.6860000000001
+    },
+    {
+        "id": 245,
+        "stem": "pad",
+        "attack": 105.654,
+        "decay": 895.239,
+        "hold": 0.0,
+        "sustain": 0.864,
+        "release": 295.54,
+        "length": 1296.433
+    },
+    {
+        "id": 246,
+        "stem": "pad",
+        "attack": 102.488,
+        "decay": 895.012,
+        "hold": 0.0,
+        "sustain": 0.863,
+        "release": 295.585,
+        "length": 1293.085
+    },
+    {
+        "id": 247,
+        "stem": "pad",
+        "attack": 104.937,
+        "decay": 895.145,
+        "hold": 0.0,
+        "sustain": 0.72,
+        "release": 289.029,
+        "length": 1289.1109999999999
+    },
+    {
+        "id": 248,
+        "stem": "pad",
+        "attack": 106.455,
+        "decay": 895.322,
+        "hold": 0.0,
+        "sustain": 0.861,
+        "release": 294.068,
+        "length": 1295.845
+    },
+    {
+        "id": 249,
+        "stem": "pad",
+        "attack": 104.251,
+        "decay": 895.414,
+        "hold": 0.0,
+        "sustain": 0.955,
+        "release": 286.78,
+        "length": 1286.445
+    },
+    {
+        "id": 250,
+        "stem": "pad",
+        "attack": 103.749,
+        "decay": 895.4,
+        "hold": 0.0,
+        "sustain": 0.744,
+        "release": 294.284,
+        "length": 1293.433
+    },
+    {
+        "id": 251,
+        "stem": "pad",
+        "attack": 107.558,
+        "decay": 895.195,
+        "hold": 0.0,
+        "sustain": 0.761,
+        "release": 289.521,
+        "length": 1292.2740000000001
+    },
+    {
+        "id": 252,
+        "stem": "pad",
+        "attack": 107.29,
+        "decay": 895.408,
+        "hold": 0.0,
+        "sustain": 0.933,
+        "release": 287.285,
+        "length": 1289.983
+    },
+    {
+        "id": 253,
+        "stem": "pad",
+        "attack": 105.213,
+        "decay": 895.413,
+        "hold": 0.0,
+        "sustain": 0.994,
+        "release": 285.504,
+        "length": 1286.13
+    },
+    {
+        "id": 254,
+        "stem": "pad",
+        "attack": 102.846,
+        "decay": 894.95,
+        "hold": 0.0,
+        "sustain": 0.949,
+        "release": 287.64,
+        "length": 1285.4360000000001
+    },
+    {
+        "id": 255,
+        "stem": "pad",
+        "attack": 106.396,
+        "decay": 895.087,
+        "hold": 0.0,
+        "sustain": 0.795,
+        "release": 289.65,
+        "length": 1291.1329999999998
+    },
+    {
+        "id": 256,
+        "stem": "pad",
+        "attack": 105.748,
+        "decay": 895.336,
+        "hold": 0.0,
+        "sustain": 0.751,
+        "release": 290.443,
+        "length": 1291.527
+    },
+    {
+        "id": 257,
+        "stem": "pad",
+        "attack": 106.446,
+        "decay": 895.179,
+        "hold": 0.0,
+        "sustain": 0.872,
+        "release": 287.199,
+        "length": 1288.824
+    },
+    {
+        "id": 258,
+        "stem": "pad",
+        "attack": 107.819,
+        "decay": 894.996,
+        "hold": 0.0,
+        "sustain": 0.961,
+        "release": 286.081,
+        "length": 1288.896
+    },
+    {
+        "id": 259,
+        "stem": "pad",
+        "attack": 102.53,
+        "decay": 895.409,
+        "hold": 0.0,
+        "sustain": 0.726,
+        "release": 291.01,
+        "length": 1288.949
+    },
+    {
+        "id": 260,
+        "stem": "pad",
+        "attack": 102.409,
+        "decay": 895.116,
+        "hold": 0.0,
+        "sustain": 0.826,
+        "release": 293.077,
+        "length": 1290.6019999999999
+    },
+    {
+        "id": 261,
+        "stem": "pad",
+        "attack": 102.933,
+        "decay": 894.887,
+        "hold": 0.0,
+        "sustain": 0.886,
+        "release": 289.827,
+        "length": 1287.647
+    },
+    {
+        "id": 262,
+        "stem": "pad",
+        "attack": 106.87,
+        "decay": 895.304,
+        "hold": 0.0,
+        "sustain": 0.715,
+        "release": 285.14,
+        "length": 1287.3139999999999
+    },
+    {
+        "id": 263,
+        "stem": "pad",
+        "attack": 102.91,
+        "decay": 894.969,
+        "hold": 0.0,
+        "sustain": 0.989,
+        "release": 295.246,
+        "length": 1293.125
+    },
+    {
+        "id": 264,
+        "stem": "pad",
+        "attack": 107.781,
+        "decay": 895.111,
+        "hold": 0.0,
+        "sustain": 0.928,
+        "release": 287.556,
+        "length": 1290.448
+    },
+    {
+        "id": 265,
+        "stem": "pad",
+        "attack": 103.688,
+        "decay": 895.046,
+        "hold": 0.0,
+        "sustain": 0.743,
+        "release": 289.76,
+        "length": 1288.4940000000001
+    },
+    {
+        "id": 266,
+        "stem": "pad",
+        "attack": 104.226,
+        "decay": 895.312,
+        "hold": 0.0,
+        "sustain": 0.718,
+        "release": 285.153,
+        "length": 1284.691
+    },
+    {
+        "id": 267,
+        "stem": "pad",
+        "attack": 103.653,
+        "decay": 895.232,
+        "hold": 0.0,
+        "sustain": 0.997,
+        "release": 292.696,
+        "length": 1291.5810000000001
+    },
+    {
+        "id": 268,
+        "stem": "pad",
+        "attack": 105.541,
+        "decay": 895.319,
+        "hold": 0.0,
+        "sustain": 0.955,
+        "release": 290.253,
+        "length": 1291.1129999999998
+    },
+    {
+        "id": 269,
+        "stem": "pad",
+        "attack": 104.257,
+        "decay": 895.191,
+        "hold": 0.0,
+        "sustain": 0.743,
+        "release": 289.538,
+        "length": 1288.986
+    },
+    {
+        "id": 270,
+        "stem": "pad",
+        "attack": 104.271,
+        "decay": 895.079,
+        "hold": 0.0,
+        "sustain": 0.776,
+        "release": 288.868,
+        "length": 1288.2179999999998
+    },
+    {
+        "id": 271,
+        "stem": "pad",
+        "attack": 104.638,
+        "decay": 895.303,
+        "hold": 0.0,
+        "sustain": 0.787,
+        "release": 295.431,
+        "length": 1295.372
+    },
+    {
+        "id": 272,
+        "stem": "pad",
+        "attack": 102.562,
+        "decay": 894.916,
+        "hold": 0.0,
+        "sustain": 0.805,
+        "release": 289.528,
+        "length": 1287.006
+    },
+    {
+        "id": 273,
+        "stem": "pad",
+        "attack": 105.063,
+        "decay": 895.108,
+        "hold": 0.0,
+        "sustain": 0.773,
+        "release": 289.713,
+        "length": 1289.884
+    },
+    {
+        "id": 274,
+        "stem": "pad",
+        "attack": 107.199,
+        "decay": 895.244,
+        "hold": 0.0,
+        "sustain": 0.96,
+        "release": 291.825,
+        "length": 1294.268
+    },
+    {
+        "id": 275,
+        "stem": "pad",
+        "attack": 105.269,
+        "decay": 895.099,
+        "hold": 0.0,
+        "sustain": 0.76,
+        "release": 286.836,
+        "length": 1287.2040000000002
+    },
+    {
+        "id": 276,
+        "stem": "pad",
+        "attack": 105.874,
+        "decay": 895.076,
+        "hold": 0.0,
+        "sustain": 0.919,
+        "release": 295.243,
+        "length": 1296.193
+    },
+    {
+        "id": 277,
+        "stem": "pad",
+        "attack": 102.547,
+        "decay": 894.96,
+        "hold": 0.0,
+        "sustain": 0.817,
+        "release": 296.217,
+        "length": 1293.7240000000002
+    },
+    {
+        "id": 278,
+        "stem": "pad",
+        "attack": 105.393,
+        "decay": 895.245,
+        "hold": 0.0,
+        "sustain": 0.86,
+        "release": 289.046,
+        "length": 1289.684
+    },
+    {
+        "id": 279,
+        "stem": "pad",
+        "attack": 106.99,
+        "decay": 895.142,
+        "hold": 0.0,
+        "sustain": 0.718,
+        "release": 290.034,
+        "length": 1292.1660000000002
+    },
+    {
+        "id": 280,
+        "stem": "pad",
+        "attack": 105.241,
+        "decay": 895.342,
+        "hold": 0.0,
+        "sustain": 0.996,
+        "release": 291.867,
+        "length": 1292.45
+    },
+    {
+        "id": 281,
+        "stem": "pad",
+        "attack": 104.773,
+        "decay": 894.999,
+        "hold": 0.0,
+        "sustain": 0.817,
+        "release": 295.008,
+        "length": 1294.78
+    },
+    {
+        "id": 282,
+        "stem": "pad",
+        "attack": 107.136,
+        "decay": 894.984,
+        "hold": 0.0,
+        "sustain": 0.872,
+        "release": 288.521,
+        "length": 1290.641
+    },
+    {
+        "id": 283,
+        "stem": "pad",
+        "attack": 106.14,
+        "decay": 895.394,
+        "hold": 0.0,
+        "sustain": 0.993,
+        "release": 286.462,
+        "length": 1287.996
+    },
+    {
+        "id": 284,
+        "stem": "pad",
+        "attack": 106.805,
+        "decay": 895.382,
+        "hold": 0.0,
+        "sustain": 0.837,
+        "release": 288.677,
+        "length": 1290.864
+    },
+    {
+        "id": 285,
+        "stem": "pad",
+        "attack": 107.201,
+        "decay": 895.036,
+        "hold": 0.0,
+        "sustain": 0.717,
+        "release": 292.4,
+        "length": 1294.637
+    },
+    {
+        "id": 286,
+        "stem": "pad",
+        "attack": 106.662,
+        "decay": 895.125,
+        "hold": 0.0,
+        "sustain": 0.991,
+        "release": 293.588,
+        "length": 1295.375
+    },
+    {
+        "id": 287,
+        "stem": "pad",
+        "attack": 102.335,
+        "decay": 894.97,
+        "hold": 0.0,
+        "sustain": 0.898,
+        "release": 291.124,
+        "length": 1288.429
+    },
+    {
+        "id": 288,
+        "stem": "pad",
+        "attack": 107.034,
+        "decay": 894.999,
+        "hold": 0.0,
+        "sustain": 0.786,
+        "release": 285.642,
+        "length": 1287.675
+    },
+    {
+        "id": 289,
+        "stem": "pad",
+        "attack": 102.43,
+        "decay": 895.253,
+        "hold": 0.0,
+        "sustain": 0.878,
+        "release": 289.957,
+        "length": 1287.6399999999999
+    },
+    {
+        "id": 290,
+        "stem": "pad",
+        "attack": 106.848,
+        "decay": 894.895,
+        "hold": 0.0,
+        "sustain": 0.859,
+        "release": 287.099,
+        "length": 1288.8419999999999
+    },
+    {
+        "id": 291,
+        "stem": "pad",
+        "attack": 105.654,
+        "decay": 895.075,
+        "hold": 0.0,
+        "sustain": 0.742,
+        "release": 296.446,
+        "length": 1297.1750000000002
+    },
+    {
+        "id": 292,
+        "stem": "pad",
+        "attack": 106.917,
+        "decay": 895.095,
+        "hold": 0.0,
+        "sustain": 0.833,
+        "release": 294.304,
+        "length": 1296.316
+    },
+    {
+        "id": 293,
+        "stem": "pad",
+        "attack": 105.916,
+        "decay": 895.24,
+        "hold": 0.0,
+        "sustain": 0.756,
+        "release": 293.014,
+        "length": 1294.17
+    },
+    {
+        "id": 294,
+        "stem": "pad",
+        "attack": 102.795,
+        "decay": 895.093,
+        "hold": 0.0,
+        "sustain": 0.823,
+        "release": 296.51,
+        "length": 1294.398
+    },
+    {
+        "id": 295,
+        "stem": "pad",
+        "attack": 105.22,
+        "decay": 895.118,
+        "hold": 0.0,
+        "sustain": 0.738,
+        "release": 295.296,
+        "length": 1295.634
+    },
+    {
+        "id": 296,
+        "stem": "pad",
+        "attack": 107.194,
+        "decay": 895.093,
+        "hold": 0.0,
+        "sustain": 0.966,
+        "release": 294.477,
+        "length": 1296.764
+    },
+    {
+        "id": 297,
+        "stem": "pad",
+        "attack": 102.74,
+        "decay": 895.409,
+        "hold": 0.0,
+        "sustain": 0.811,
+        "release": 285.303,
+        "length": 1283.452
+    },
+    {
+        "id": 298,
+        "stem": "pad",
+        "attack": 103.3,
+        "decay": 894.97,
+        "hold": 0.0,
+        "sustain": 0.881,
+        "release": 294.846,
+        "length": 1293.116
+    },
+    {
+        "id": 299,
+        "stem": "pad",
+        "attack": 104.196,
+        "decay": 895.207,
+        "hold": 0.0,
+        "sustain": 0.722,
+        "release": 285.165,
+        "length": 1284.568
+    },
+    {
+        "id": 300,
+        "stem": "pluck",
+        "attack": 0.458,
+        "decay": 633.835,
+        "hold": 0.003,
+        "sustain": 0.253,
+        "release": 161.379,
+        "length": 795.6750000000001
+    },
+    {
+        "id": 301,
+        "stem": "pluck",
+        "attack": 0.403,
+        "decay": 633.826,
+        "hold": 0.007,
+        "sustain": 0.374,
+        "release": 160.483,
+        "length": 794.719
+    },
+    {
+        "id": 302,
+        "stem": "pluck",
+        "attack": 0.453,
+        "decay": 633.803,
+        "hold": 0.012,
+        "sustain": 0.582,
+        "release": 156.507,
+        "length": 790.7749999999999
+    },
+    {
+        "id": 303,
+        "stem": "pluck",
+        "attack": 0.444,
+        "decay": 633.813,
+        "hold": 0.014,
+        "sustain": 0.215,
+        "release": 158.221,
+        "length": 792.492
+    },
+    {
+        "id": 304,
+        "stem": "pluck",
+        "attack": 0.441,
+        "decay": 633.831,
+        "hold": 0.012,
+        "sustain": 0.205,
+        "release": 158.765,
+        "length": 793.049
+    },
+    {
+        "id": 305,
+        "stem": "pluck",
+        "attack": 0.395,
+        "decay": 633.788,
+        "hold": 0.007,
+        "sustain": 0.665,
+        "release": 158.1,
+        "length": 792.29
+    },
+    {
+        "id": 306,
+        "stem": "pluck",
+        "attack": 0.392,
+        "decay": 633.832,
+        "hold": 0.013,
+        "sustain": 0.459,
+        "release": 161.072,
+        "length": 795.3090000000001
+    },
+    {
+        "id": 307,
+        "stem": "pluck",
+        "attack": 0.451,
+        "decay": 633.842,
+        "hold": 0.005,
+        "sustain": 0.302,
+        "release": 159.312,
+        "length": 793.61
+    },
+    {
+        "id": 308,
+        "stem": "pluck",
+        "attack": 0.444,
+        "decay": 633.825,
+        "hold": 0.009,
+        "sustain": 0.49,
+        "release": 159.561,
+        "length": 793.839
+    },
+    {
+        "id": 309,
+        "stem": "pluck",
+        "attack": 0.456,
+        "decay": 633.799,
+        "hold": 0.009,
+        "sustain": 0.263,
+        "release": 157.521,
+        "length": 791.785
+    },
+    {
+        "id": 310,
+        "stem": "pluck",
+        "attack": 0.458,
+        "decay": 633.801,
+        "hold": 0.001,
+        "sustain": 0.409,
+        "release": 158.864,
+        "length": 793.124
+    },
+    {
+        "id": 311,
+        "stem": "pluck",
+        "attack": 0.448,
+        "decay": 633.791,
+        "hold": 0.018,
+        "sustain": 0.151,
+        "release": 159.722,
+        "length": 793.979
+    },
+    {
+        "id": 312,
+        "stem": "pluck",
+        "attack": 0.398,
+        "decay": 633.847,
+        "hold": 0.011,
+        "sustain": 0.818,
+        "release": 160.181,
+        "length": 794.437
+    },
+    {
+        "id": 313,
+        "stem": "pluck",
+        "attack": 0.394,
+        "decay": 633.83,
+        "hold": 0.002,
+        "sustain": 0.712,
+        "release": 158.514,
+        "length": 792.74
+    },
+    {
+        "id": 314,
+        "stem": "pluck",
+        "attack": 0.408,
+        "decay": 633.842,
+        "hold": 0.016,
+        "sustain": 0.404,
+        "release": 157.563,
+        "length": 791.829
+    },
+    {
+        "id": 315,
+        "stem": "pluck",
+        "attack": 0.393,
+        "decay": 633.817,
+        "hold": 0.004,
+        "sustain": 0.698,
+        "release": 157.229,
+        "length": 791.4430000000001
+    },
+    {
+        "id": 316,
+        "stem": "pluck",
+        "attack": 0.464,
+        "decay": 633.832,
+        "hold": 0.019,
+        "sustain": 0.632,
+        "release": 156.519,
+        "length": 790.8340000000001
+    },
+    {
+        "id": 317,
+        "stem": "pluck",
+        "attack": 0.44,
+        "decay": 633.845,
+        "hold": 0.012,
+        "sustain": 0.062,
+        "release": 156.57,
+        "length": 790.867
+    },
+    {
+        "id": 318,
+        "stem": "pluck",
+        "attack": 0.405,
+        "decay": 633.821,
+        "hold": 0.001,
+        "sustain": 0.496,
+        "release": 161.13,
+        "length": 795.357
+    },
+    {
+        "id": 319,
+        "stem": "pluck",
+        "attack": 0.42,
+        "decay": 633.791,
+        "hold": 0.004,
+        "sustain": 0.494,
+        "release": 156.901,
+        "length": 791.116
+    },
+    {
+        "id": 320,
+        "stem": "pluck",
+        "attack": 0.395,
+        "decay": 633.793,
+        "hold": 0.019,
+        "sustain": 0.811,
+        "release": 157.221,
+        "length": 791.428
+    },
+    {
+        "id": 321,
+        "stem": "pluck",
+        "attack": 0.416,
+        "decay": 633.795,
+        "hold": 0.014,
+        "sustain": 0.6,
+        "release": 159.824,
+        "length": 794.049
+    },
+    {
+        "id": 322,
+        "stem": "pluck",
+        "attack": 0.403,
+        "decay": 633.825,
+        "hold": 0.003,
+        "sustain": 0.962,
+        "release": 160.39,
+        "length": 794.6210000000001
+    },
+    {
+        "id": 323,
+        "stem": "pluck",
+        "attack": 0.393,
+        "decay": 633.807,
+        "hold": 0.019,
+        "sustain": 0.143,
+        "release": 160.729,
+        "length": 794.9480000000001
+    },
+    {
+        "id": 324,
+        "stem": "pluck",
+        "attack": 0.438,
+        "decay": 633.858,
+        "hold": 0.018,
+        "sustain": 0.594,
+        "release": 155.747,
+        "length": 790.0609999999999
+    },
+    {
+        "id": 325,
+        "stem": "pluck",
+        "attack": 0.404,
+        "decay": 633.858,
+        "hold": 0.017,
+        "sustain": 0.09,
+        "release": 158.312,
+        "length": 792.591
+    },
+    {
+        "id": 326,
+        "stem": "pluck",
+        "attack": 0.426,
+        "decay": 633.814,
+        "hold": 0.019,
+        "sustain": 0.196,
+        "release": 156.767,
+        "length": 791.0260000000001
+    },
+    {
+        "id": 327,
+        "stem": "pluck",
+        "attack": 0.453,
+        "decay": 633.857,
+        "hold": 0.011,
+        "sustain": 0.122,
+        "release": 161.295,
+        "length": 795.6159999999999
+    },
+    {
+        "id": 328,
+        "stem": "pluck",
+        "attack": 0.411,
+        "decay": 633.796,
+        "hold": 0.008,
+        "sustain": 0.539,
+        "release": 156.514,
+        "length": 790.729
+    },
+    {
+        "id": 329,
+        "stem": "pluck",
+        "attack": 0.454,
+        "decay": 633.79,
+        "hold": 0.015,
+        "sustain": 0.814,
+        "release": 161.34,
+        "length": 795.5989999999999
+    },
+    {
+        "id": 330,
+        "stem": "pluck",
+        "attack": 0.416,
+        "decay": 633.834,
+        "hold": 0.013,
+        "sustain": 0.061,
+        "release": 158.468,
+        "length": 792.731
+    },
+    {
+        "id": 331,
+        "stem": "pluck",
+        "attack": 0.419,
+        "decay": 633.798,
+        "hold": 0.019,
+        "sustain": 0.569,
+        "release": 160.547,
+        "length": 794.783
+    },
+    {
+        "id": 332,
+        "stem": "pluck",
+        "attack": 0.431,
+        "decay": 633.82,
+        "hold": 0.018,
+        "sustain": 0.422,
+        "release": 161.611,
+        "length": 795.8800000000001
+    },
+    {
+        "id": 333,
+        "stem": "pluck",
+        "attack": 0.462,
+        "decay": 633.791,
+        "hold": 0.003,
+        "sustain": 0.133,
+        "release": 158.55,
+        "length": 792.806
+    },
+    {
+        "id": 334,
+        "stem": "pluck",
+        "attack": 0.427,
+        "decay": 633.837,
+        "hold": 0.018,
+        "sustain": 0.781,
+        "release": 156.901,
+        "length": 791.183
+    },
+    {
+        "id": 335,
+        "stem": "pluck",
+        "attack": 0.465,
+        "decay": 633.836,
+        "hold": 0.019,
+        "sustain": 0.662,
+        "release": 159.321,
+        "length": 793.6410000000001
+    },
+    {
+        "id": 336,
+        "stem": "pluck",
+        "attack": 0.435,
+        "decay": 633.856,
+        "hold": 0.019,
+        "sustain": 0.768,
+        "release": 161.221,
+        "length": 795.531
+    },
+    {
+        "id": 337,
+        "stem": "pluck",
+        "attack": 0.431,
+        "decay": 633.82,
+        "hold": 0.018,
+        "sustain": 0.631,
+        "release": 161.622,
+        "length": 795.8910000000001
+    },
+    {
+        "id": 338,
+        "stem": "pluck",
+        "attack": 0.435,
+        "decay": 633.794,
+        "hold": 0.013,
+        "sustain": 0.735,
+        "release": 155.672,
+        "length": 789.914
+    },
+    {
+        "id": 339,
+        "stem": "pluck",
+        "attack": 0.403,
+        "decay": 633.839,
+        "hold": 0.01,
+        "sustain": 0.099,
+        "release": 155.677,
+        "length": 789.9290000000001
+    },
+    {
+        "id": 340,
+        "stem": "pluck",
+        "attack": 0.404,
+        "decay": 633.824,
+        "hold": 0.018,
+        "sustain": 0.611,
+        "release": 161.143,
+        "length": 795.389
+    },
+    {
+        "id": 341,
+        "stem": "pluck",
+        "attack": 0.431,
+        "decay": 633.831,
+        "hold": 0.006,
+        "sustain": 0.036,
+        "release": 159.268,
+        "length": 793.5360000000001
+    },
+    {
+        "id": 342,
+        "stem": "pluck",
+        "attack": 0.45,
+        "decay": 633.819,
+        "hold": 0.004,
+        "sustain": 0.467,
+        "release": 160.34,
+        "length": 794.613
+    },
+    {
+        "id": 343,
+        "stem": "pluck",
+        "attack": 0.42,
+        "decay": 633.846,
+        "hold": 0.02,
+        "sustain": 0.711,
+        "release": 161.314,
+        "length": 795.5999999999999
+    },
+    {
+        "id": 344,
+        "stem": "pluck",
+        "attack": 0.41,
+        "decay": 633.854,
+        "hold": 0.002,
+        "sustain": 0.56,
+        "release": 158.329,
+        "length": 792.595
+    },
+    {
+        "id": 345,
+        "stem": "pluck",
+        "attack": 0.399,
+        "decay": 633.836,
+        "hold": 0.013,
+        "sustain": 0.342,
+        "release": 156.168,
+        "length": 790.416
+    },
+    {
+        "id": 346,
+        "stem": "pluck",
+        "attack": 0.452,
+        "decay": 633.789,
+        "hold": 0.01,
+        "sustain": 0.923,
+        "release": 161.612,
+        "length": 795.8629999999999
+    },
+    {
+        "id": 347,
+        "stem": "pluck",
+        "attack": 0.434,
+        "decay": 633.801,
+        "hold": 0.014,
+        "sustain": 0.198,
+        "release": 158.208,
+        "length": 792.457
+    },
+    {
+        "id": 348,
+        "stem": "pluck",
+        "attack": 0.444,
+        "decay": 633.795,
+        "hold": 0.002,
+        "sustain": 0.301,
+        "release": 157.814,
+        "length": 792.0549999999998
+    },
+    {
+        "id": 349,
+        "stem": "pluck",
+        "attack": 0.397,
+        "decay": 633.833,
+        "hold": 0.017,
+        "sustain": 0.529,
+        "release": 159.476,
+        "length": 793.7230000000001
+    },
+    {
+        "id": 350,
+        "stem": "pluck",
+        "attack": 0.45,
+        "decay": 633.858,
+        "hold": 0.018,
+        "sustain": 0.406,
+        "release": 157.396,
+        "length": 791.722
+    },
+    {
+        "id": 351,
+        "stem": "pluck",
+        "attack": 0.421,
+        "decay": 633.822,
+        "hold": 0.008,
+        "sustain": 0.139,
+        "release": 160.01,
+        "length": 794.2610000000001
+    },
+    {
+        "id": 352,
+        "stem": "pluck",
+        "attack": 0.456,
+        "decay": 633.788,
+        "hold": 0.006,
+        "sustain": 0.826,
+        "release": 157.657,
+        "length": 791.907
+    },
+    {
+        "id": 353,
+        "stem": "pluck",
+        "attack": 0.418,
+        "decay": 633.857,
+        "hold": 0.003,
+        "sustain": 0.077,
+        "release": 158.657,
+        "length": 792.9350000000001
+    },
+    {
+        "id": 354,
+        "stem": "pluck",
+        "attack": 0.421,
+        "decay": 633.835,
+        "hold": 0.019,
+        "sustain": 0.045,
+        "release": 159.167,
+        "length": 793.4420000000001
+    },
+    {
+        "id": 355,
+        "stem": "pluck",
+        "attack": 0.433,
+        "decay": 633.856,
+        "hold": 0.007,
+        "sustain": 0.297,
+        "release": 158.979,
+        "length": 793.275
+    },
+    {
+        "id": 356,
+        "stem": "pluck",
+        "attack": 0.406,
+        "decay": 633.795,
+        "hold": 0.019,
+        "sustain": 0.975,
+        "release": 161.052,
+        "length": 795.2719999999999
+    },
+    {
+        "id": 357,
+        "stem": "pluck",
+        "attack": 0.445,
+        "decay": 633.808,
+        "hold": 0.02,
+        "sustain": 0.942,
+        "release": 160.756,
+        "length": 795.029
+    },
+    {
+        "id": 358,
+        "stem": "pluck",
+        "attack": 0.433,
+        "decay": 633.797,
+        "hold": 0.02,
+        "sustain": 0.128,
+        "release": 160.557,
+        "length": 794.807
+    },
+    {
+        "id": 359,
+        "stem": "pluck",
+        "attack": 0.405,
+        "decay": 633.828,
+        "hold": 0.011,
+        "sustain": 0.551,
+        "release": 156.123,
+        "length": 790.367
+    },
+    {
+        "id": 360,
+        "stem": "pluck",
+        "attack": 0.417,
+        "decay": 633.835,
+        "hold": 0.016,
+        "sustain": 0.031,
+        "release": 160.419,
+        "length": 794.687
+    },
+    {
+        "id": 361,
+        "stem": "pluck",
+        "attack": 0.398,
+        "decay": 633.804,
+        "hold": 0.016,
+        "sustain": 0.874,
+        "release": 157.389,
+        "length": 791.607
+    },
+    {
+        "id": 362,
+        "stem": "pluck",
+        "attack": 0.431,
+        "decay": 633.805,
+        "hold": 0.005,
+        "sustain": 0.585,
+        "release": 159.826,
+        "length": 794.067
+    },
+    {
+        "id": 363,
+        "stem": "pluck",
+        "attack": 0.403,
+        "decay": 633.822,
+        "hold": 0.017,
+        "sustain": 0.38,
+        "release": 161.553,
+        "length": 795.7950000000001
+    },
+    {
+        "id": 364,
+        "stem": "pluck",
+        "attack": 0.431,
+        "decay": 633.848,
+        "hold": 0.012,
+        "sustain": 0.348,
+        "release": 161.186,
+        "length": 795.477
+    },
+    {
+        "id": 365,
+        "stem": "pluck",
+        "attack": 0.427,
+        "decay": 633.813,
+        "hold": 0.006,
+        "sustain": 0.615,
+        "release": 161.603,
+        "length": 795.8489999999999
+    },
+    {
+        "id": 366,
+        "stem": "pluck",
+        "attack": 0.451,
+        "decay": 633.823,
+        "hold": 0.013,
+        "sustain": 0.367,
+        "release": 159.072,
+        "length": 793.359
+    },
+    {
+        "id": 367,
+        "stem": "pluck",
+        "attack": 0.446,
+        "decay": 633.82,
+        "hold": 0.01,
+        "sustain": 0.203,
+        "release": 160.754,
+        "length": 795.0300000000001
+    },
+    {
+        "id": 368,
+        "stem": "pluck",
+        "attack": 0.403,
+        "decay": 633.82,
+        "hold": 0.018,
+        "sustain": 0.599,
+        "release": 157.042,
+        "length": 791.2830000000001
+    },
+    {
+        "id": 369,
+        "stem": "pluck",
+        "attack": 0.425,
+        "decay": 633.815,
+        "hold": 0.017,
+        "sustain": 0.21,
+        "release": 158.162,
+        "length": 792.4190000000001
+    },
+    {
+        "id": 370,
+        "stem": "pluck",
+        "attack": 0.435,
+        "decay": 633.805,
+        "hold": 0.001,
+        "sustain": 0.1,
+        "release": 157.456,
+        "length": 791.6969999999999
+    },
+    {
+        "id": 371,
+        "stem": "pluck",
+        "attack": 0.452,
+        "decay": 633.801,
+        "hold": 0.009,
+        "sustain": 0.06,
+        "release": 158.751,
+        "length": 793.013
+    },
+    {
+        "id": 372,
+        "stem": "pluck",
+        "attack": 0.395,
+        "decay": 633.815,
+        "hold": 0.008,
+        "sustain": 0.998,
+        "release": 160.118,
+        "length": 794.336
+    },
+    {
+        "id": 373,
+        "stem": "pluck",
+        "attack": 0.433,
+        "decay": 633.795,
+        "hold": 0.014,
+        "sustain": 0.851,
+        "release": 156.37,
+        "length": 790.612
+    },
+    {
+        "id": 374,
+        "stem": "pluck",
+        "attack": 0.433,
+        "decay": 633.852,
+        "hold": 0.018,
+        "sustain": 0.174,
+        "release": 160.765,
+        "length": 795.068
+    },
+    {
+        "id": 375,
+        "stem": "pluck",
+        "attack": 0.447,
+        "decay": 633.846,
+        "hold": 0.013,
+        "sustain": 0.646,
+        "release": 158.734,
+        "length": 793.0400000000001
+    },
+    {
+        "id": 376,
+        "stem": "pluck",
+        "attack": 0.42,
+        "decay": 633.805,
+        "hold": 0.001,
+        "sustain": 0.046,
+        "release": 160.154,
+        "length": 794.3799999999999
+    },
+    {
+        "id": 377,
+        "stem": "pluck",
+        "attack": 0.443,
+        "decay": 633.821,
+        "hold": 0.001,
+        "sustain": 0.939,
+        "release": 161.524,
+        "length": 795.789
+    },
+    {
+        "id": 378,
+        "stem": "pluck",
+        "attack": 0.414,
+        "decay": 633.802,
+        "hold": 0.008,
+        "sustain": 0.425,
+        "release": 159.375,
+        "length": 793.599
+    },
+    {
+        "id": 379,
+        "stem": "pluck",
+        "attack": 0.455,
+        "decay": 633.835,
+        "hold": 0.006,
+        "sustain": 0.394,
+        "release": 160.297,
+        "length": 794.5930000000001
+    },
+    {
+        "id": 380,
+        "stem": "pluck",
+        "attack": 0.429,
+        "decay": 633.803,
+        "hold": 0.019,
+        "sustain": 0.099,
+        "release": 160.25,
+        "length": 794.501
+    },
+    {
+        "id": 381,
+        "stem": "pluck",
+        "attack": 0.431,
+        "decay": 633.858,
+        "hold": 0.011,
+        "sustain": 0.762,
+        "release": 156.85,
+        "length": 791.15
+    },
+    {
+        "id": 382,
+        "stem": "pluck",
+        "attack": 0.466,
+        "decay": 633.83,
+        "hold": 0.016,
+        "sustain": 0.248,
+        "release": 160.185,
+        "length": 794.4970000000001
+    },
+    {
+        "id": 383,
+        "stem": "pluck",
+        "attack": 0.409,
+        "decay": 633.835,
+        "hold": 0.008,
+        "sustain": 0.924,
+        "release": 159.632,
+        "length": 793.884
+    },
+    {
+        "id": 384,
+        "stem": "pluck",
+        "attack": 0.399,
+        "decay": 633.83,
+        "hold": 0.018,
+        "sustain": 0.283,
+        "release": 161.004,
+        "length": 795.2510000000001
+    },
+    {
+        "id": 385,
+        "stem": "pluck",
+        "attack": 0.429,
+        "decay": 633.795,
+        "hold": 0.02,
+        "sustain": 0.192,
+        "release": 158.451,
+        "length": 792.6949999999999
+    },
+    {
+        "id": 386,
+        "stem": "pluck",
+        "attack": 0.424,
+        "decay": 633.817,
+        "hold": 0.018,
+        "sustain": 0.897,
+        "release": 161.318,
+        "length": 795.577
+    },
+    {
+        "id": 387,
+        "stem": "pluck",
+        "attack": 0.467,
+        "decay": 633.822,
+        "hold": 0.018,
+        "sustain": 0.211,
+        "release": 157.287,
+        "length": 791.594
+    },
+    {
+        "id": 388,
+        "stem": "pluck",
+        "attack": 0.399,
+        "decay": 633.814,
+        "hold": 0.014,
+        "sustain": 0.865,
+        "release": 156.842,
+        "length": 791.069
+    },
+    {
+        "id": 389,
+        "stem": "pluck",
+        "attack": 0.44,
+        "decay": 633.83,
+        "hold": 0.016,
+        "sustain": 0.098,
+        "release": 161.088,
+        "length": 795.374
+    },
+    {
+        "id": 390,
+        "stem": "pluck",
+        "attack": 0.432,
+        "decay": 633.837,
+        "hold": 0.004,
+        "sustain": 0.741,
+        "release": 157.213,
+        "length": 791.486
+    },
+    {
+        "id": 391,
+        "stem": "pluck",
+        "attack": 0.452,
+        "decay": 633.826,
+        "hold": 0.016,
+        "sustain": 0.049,
+        "release": 160.828,
+        "length": 795.122
+    },
+    {
+        "id": 392,
+        "stem": "pluck",
+        "attack": 0.438,
+        "decay": 633.847,
+        "hold": 0.01,
+        "sustain": 0.301,
+        "release": 157.779,
+        "length": 792.074
+    },
+    {
+        "id": 393,
+        "stem": "pluck",
+        "attack": 0.42,
+        "decay": 633.789,
+        "hold": 0.006,
+        "sustain": 0.245,
+        "release": 159.539,
+        "length": 793.7539999999999
+    },
+    {
+        "id": 394,
+        "stem": "pluck",
+        "attack": 0.453,
+        "decay": 633.821,
+        "hold": 0.01,
+        "sustain": 0.113,
+        "release": 160.395,
+        "length": 794.679
+    },
+    {
+        "id": 395,
+        "stem": "pluck",
+        "attack": 0.454,
+        "decay": 633.846,
+        "hold": 0.005,
+        "sustain": 0.379,
+        "release": 158.171,
+        "length": 792.4759999999999
+    },
+    {
+        "id": 396,
+        "stem": "pluck",
+        "attack": 0.425,
+        "decay": 633.847,
+        "hold": 0.006,
+        "sustain": 0.79,
+        "release": 157.786,
+        "length": 792.0639999999999
+    },
+    {
+        "id": 397,
+        "stem": "pluck",
+        "attack": 0.447,
+        "decay": 633.835,
+        "hold": 0.006,
+        "sustain": 0.302,
+        "release": 160.551,
+        "length": 794.8389999999999
+    },
+    {
+        "id": 398,
+        "stem": "pluck",
+        "attack": 0.456,
+        "decay": 633.796,
+        "hold": 0.019,
+        "sustain": 0.331,
+        "release": 159.508,
+        "length": 793.7790000000001
+    },
+    {
+        "id": 399,
+        "stem": "pluck",
+        "attack": 0.404,
+        "decay": 633.796,
+        "hold": 0.009,
+        "sustain": 0.038,
+        "release": 161.463,
+        "length": 795.672
+    },
+    {
+        "id": 400,
+        "stem": "synth",
+        "attack": 2.63,
+        "decay": 917.262,
+        "hold": 0.874,
+        "sustain": 0.492,
+        "release": 227.939,
+        "length": 1148.705
+    },
+    {
+        "id": 401,
+        "stem": "synth",
+        "attack": 2.899,
+        "decay": 917.405,
+        "hold": 0.757,
+        "sustain": 0.309,
+        "release": 228.312,
+        "length": 1149.373
+    },
+    {
+        "id": 402,
+        "stem": "synth",
+        "attack": 2.531,
+        "decay": 917.358,
+        "hold": 0.906,
+        "sustain": 0.281,
+        "release": 227.505,
+        "length": 1148.2999999999997
+    },
+    {
+        "id": 403,
+        "stem": "synth",
+        "attack": 2.79,
+        "decay": 917.45,
+        "hold": 0.843,
+        "sustain": 0.789,
+        "release": 231.819,
+        "length": 1152.902
+    },
+    {
+        "id": 404,
+        "stem": "synth",
+        "attack": 3.085,
+        "decay": 917.043,
+        "hold": 0.781,
+        "sustain": 0.855,
+        "release": 231.165,
+        "length": 1152.074
+    },
+    {
+        "id": 405,
+        "stem": "synth",
+        "attack": 3.113,
+        "decay": 917.246,
+        "hold": 0.716,
+        "sustain": 0.37,
+        "release": 228.694,
+        "length": 1149.769
+    },
+    {
+        "id": 406,
+        "stem": "synth",
+        "attack": 2.838,
+        "decay": 917.442,
+        "hold": 0.228,
+        "sustain": 0.633,
+        "release": 233.239,
+        "length": 1153.7469999999998
+    },
+    {
+        "id": 407,
+        "stem": "synth",
+        "attack": 2.868,
+        "decay": 917.702,
+        "hold": 0.721,
+        "sustain": 0.752,
+        "release": 227.959,
+        "length": 1149.25
+    },
+    {
+        "id": 408,
+        "stem": "synth",
+        "attack": 3.098,
+        "decay": 917.123,
+        "hold": 0.525,
+        "sustain": 0.734,
+        "release": 231.422,
+        "length": 1152.168
+    },
+    {
+        "id": 409,
+        "stem": "synth",
+        "attack": 2.856,
+        "decay": 917.783,
+        "hold": 1.088,
+        "sustain": 0.769,
+        "release": 228.404,
+        "length": 1150.1309999999999
+    },
+    {
+        "id": 410,
+        "stem": "synth",
+        "attack": 3.211,
+        "decay": 917.282,
+        "hold": 0.77,
+        "sustain": 0.183,
+        "release": 232.709,
+        "length": 1153.972
+    },
+    {
+        "id": 411,
+        "stem": "synth",
+        "attack": 2.871,
+        "decay": 917.54,
+        "hold": 0.8,
+        "sustain": 0.899,
+        "release": 226.86,
+        "length": 1148.071
+    },
+    {
+        "id": 412,
+        "stem": "synth",
+        "attack": 3.057,
+        "decay": 917.349,
+        "hold": 0.463,
+        "sustain": 0.974,
+        "release": 232.897,
+        "length": 1153.766
+    },
+    {
+        "id": 413,
+        "stem": "synth",
+        "attack": 2.854,
+        "decay": 917.402,
+        "hold": 0.021,
+        "sustain": 0.531,
+        "release": 226.52,
+        "length": 1146.797
+    },
+    {
+        "id": 414,
+        "stem": "synth",
+        "attack": 2.781,
+        "decay": 917.676,
+        "hold": 1.004,
+        "sustain": 0.963,
+        "release": 230.722,
+        "length": 1152.183
+    },
+    {
+        "id": 415,
+        "stem": "synth",
+        "attack": 2.527,
+        "decay": 917.693,
+        "hold": 0.134,
+        "sustain": 0.171,
+        "release": 232.959,
+        "length": 1153.313
+    },
+    {
+        "id": 416,
+        "stem": "synth",
+        "attack": 2.554,
+        "decay": 917.271,
+        "hold": 0.766,
+        "sustain": 0.698,
+        "release": 229.405,
+        "length": 1149.9959999999999
+    },
+    {
+        "id": 417,
+        "stem": "synth",
+        "attack": 2.815,
+        "decay": 917.416,
+        "hold": 0.661,
+        "sustain": 0.877,
+        "release": 233.017,
+        "length": 1153.909
+    },
+    {
+        "id": 418,
+        "stem": "synth",
+        "attack": 2.747,
+        "decay": 917.431,
+        "hold": 0.133,
+        "sustain": 0.42,
+        "release": 228.733,
+        "length": 1149.044
+    },
+    {
+        "id": 419,
+        "stem": "synth",
+        "attack": 2.93,
+        "decay": 917.78,
+        "hold": 0.15,
+        "sustain": 0.28,
+        "release": 231.158,
+        "length": 1152.0179999999998
+    },
+    {
+        "id": 420,
+        "stem": "synth",
+        "attack": 3.219,
+        "decay": 917.709,
+        "hold": 0.362,
+        "sustain": 0.883,
+        "release": 231.105,
+        "length": 1152.395
+    },
+    {
+        "id": 421,
+        "stem": "synth",
+        "attack": 2.619,
+        "decay": 917.1,
+        "hold": 0.211,
+        "sustain": 0.696,
+        "release": 227.019,
+        "length": 1146.949
+    },
+    {
+        "id": 422,
+        "stem": "synth",
+        "attack": 2.576,
+        "decay": 917.623,
+        "hold": 0.393,
+        "sustain": 0.591,
+        "release": 231.656,
+        "length": 1152.248
+    },
+    {
+        "id": 423,
+        "stem": "synth",
+        "attack": 2.493,
+        "decay": 917.45,
+        "hold": 0.205,
+        "sustain": 0.987,
+        "release": 227.235,
+        "length": 1147.3830000000003
+    },
+    {
+        "id": 424,
+        "stem": "synth",
+        "attack": 3.005,
+        "decay": 917.153,
+        "hold": 0.152,
+        "sustain": 0.562,
+        "release": 233.419,
+        "length": 1153.729
+    },
+    {
+        "id": 425,
+        "stem": "synth",
+        "attack": 2.976,
+        "decay": 917.73,
+        "hold": 0.903,
+        "sustain": 0.929,
+        "release": 232.177,
+        "length": 1153.786
+    },
+    {
+        "id": 426,
+        "stem": "synth",
+        "attack": 3.185,
+        "decay": 917.223,
+        "hold": 0.997,
+        "sustain": 0.86,
+        "release": 228.663,
+        "length": 1150.0679999999998
+    },
+    {
+        "id": 427,
+        "stem": "synth",
+        "attack": 2.833,
+        "decay": 917.31,
+        "hold": 0.091,
+        "sustain": 0.932,
+        "release": 230.548,
+        "length": 1150.782
+    },
+    {
+        "id": 428,
+        "stem": "synth",
+        "attack": 2.563,
+        "decay": 917.095,
+        "hold": 0.829,
+        "sustain": 0.934,
+        "release": 229.686,
+        "length": 1150.173
+    },
+    {
+        "id": 429,
+        "stem": "synth",
+        "attack": 3.092,
+        "decay": 917.153,
+        "hold": 0.212,
+        "sustain": 0.528,
+        "release": 227.185,
+        "length": 1147.642
+    },
+    {
+        "id": 430,
+        "stem": "synth",
+        "attack": 3.098,
+        "decay": 917.777,
+        "hold": 0.509,
+        "sustain": 0.577,
+        "release": 231.227,
+        "length": 1152.611
+    },
+    {
+        "id": 431,
+        "stem": "synth",
+        "attack": 2.66,
+        "decay": 917.04,
+        "hold": 0.407,
+        "sustain": 0.764,
+        "release": 230.98,
+        "length": 1151.087
+    },
+    {
+        "id": 432,
+        "stem": "synth",
+        "attack": 2.745,
+        "decay": 917.622,
+        "hold": 0.175,
+        "sustain": 1.0,
+        "release": 229.109,
+        "length": 1149.6509999999998
+    },
+    {
+        "id": 433,
+        "stem": "synth",
+        "attack": 2.683,
+        "decay": 917.532,
+        "hold": 0.221,
+        "sustain": 0.829,
+        "release": 229.725,
+        "length": 1150.161
+    },
+    {
+        "id": 434,
+        "stem": "synth",
+        "attack": 3.181,
+        "decay": 917.115,
+        "hold": 0.987,
+        "sustain": 0.904,
+        "release": 228.272,
+        "length": 1149.555
+    },
+    {
+        "id": 435,
+        "stem": "synth",
+        "attack": 2.823,
+        "decay": 917.615,
+        "hold": 0.34,
+        "sustain": 0.855,
+        "release": 228.717,
+        "length": 1149.4950000000001
+    },
+    {
+        "id": 436,
+        "stem": "synth",
+        "attack": 2.778,
+        "decay": 917.265,
+        "hold": 1.121,
+        "sustain": 0.91,
+        "release": 231.633,
+        "length": 1152.797
+    },
+    {
+        "id": 437,
+        "stem": "synth",
+        "attack": 3.06,
+        "decay": 917.219,
+        "hold": 0.168,
+        "sustain": 0.477,
+        "release": 231.155,
+        "length": 1151.602
+    },
+    {
+        "id": 438,
+        "stem": "synth",
+        "attack": 2.783,
+        "decay": 917.24,
+        "hold": 0.501,
+        "sustain": 0.856,
+        "release": 231.363,
+        "length": 1151.887
+    },
+    {
+        "id": 439,
+        "stem": "synth",
+        "attack": 2.481,
+        "decay": 917.168,
+        "hold": 0.533,
+        "sustain": 0.953,
+        "release": 230.042,
+        "length": 1150.224
+    },
+    {
+        "id": 440,
+        "stem": "synth",
+        "attack": 3.099,
+        "decay": 917.272,
+        "hold": 0.327,
+        "sustain": 0.829,
+        "release": 230.954,
+        "length": 1151.652
+    },
+    {
+        "id": 441,
+        "stem": "synth",
+        "attack": 2.594,
+        "decay": 917.399,
+        "hold": 0.356,
+        "sustain": 0.169,
+        "release": 231.102,
+        "length": 1151.451
+    },
+    {
+        "id": 442,
+        "stem": "synth",
+        "attack": 2.529,
+        "decay": 917.664,
+        "hold": 0.878,
+        "sustain": 0.926,
+        "release": 226.684,
+        "length": 1147.755
+    },
+    {
+        "id": 443,
+        "stem": "synth",
+        "attack": 2.465,
+        "decay": 917.226,
+        "hold": 0.633,
+        "sustain": 0.934,
+        "release": 228.345,
+        "length": 1148.669
+    },
+    {
+        "id": 444,
+        "stem": "synth",
+        "attack": 3.029,
+        "decay": 917.407,
+        "hold": 1.096,
+        "sustain": 0.592,
+        "release": 230.729,
+        "length": 1152.261
+    },
+    {
+        "id": 445,
+        "stem": "synth",
+        "attack": 3.169,
+        "decay": 917.395,
+        "hold": 0.747,
+        "sustain": 0.448,
+        "release": 226.73,
+        "length": 1148.041
+    },
+    {
+        "id": 446,
+        "stem": "synth",
+        "attack": 3.127,
+        "decay": 917.746,
+        "hold": 0.194,
+        "sustain": 0.951,
+        "release": 232.232,
+        "length": 1153.299
+    },
+    {
+        "id": 447,
+        "stem": "synth",
+        "attack": 2.762,
+        "decay": 917.356,
+        "hold": 0.663,
+        "sustain": 0.835,
+        "release": 231.867,
+        "length": 1152.648
+    },
+    {
+        "id": 448,
+        "stem": "synth",
+        "attack": 2.62,
+        "decay": 917.225,
+        "hold": 0.905,
+        "sustain": 0.801,
+        "release": 231.933,
+        "length": 1152.683
+    },
+    {
+        "id": 449,
+        "stem": "synth",
+        "attack": 2.726,
+        "decay": 917.724,
+        "hold": 0.819,
+        "sustain": 0.502,
+        "release": 227.974,
+        "length": 1149.243
+    },
+    {
+        "id": 450,
+        "stem": "synth",
+        "attack": 2.89,
+        "decay": 917.106,
+        "hold": 0.705,
+        "sustain": 0.436,
+        "release": 229.136,
+        "length": 1149.837
+    },
+    {
+        "id": 451,
+        "stem": "synth",
+        "attack": 2.76,
+        "decay": 917.641,
+        "hold": 0.972,
+        "sustain": 0.423,
+        "release": 231.84,
+        "length": 1153.213
+    },
+    {
+        "id": 452,
+        "stem": "synth",
+        "attack": 3.205,
+        "decay": 917.492,
+        "hold": 0.25,
+        "sustain": 0.167,
+        "release": 228.135,
+        "length": 1149.0819999999999
+    },
+    {
+        "id": 453,
+        "stem": "synth",
+        "attack": 2.61,
+        "decay": 917.745,
+        "hold": 0.141,
+        "sustain": 0.787,
+        "release": 227.733,
+        "length": 1148.229
+    },
+    {
+        "id": 454,
+        "stem": "synth",
+        "attack": 2.762,
+        "decay": 917.641,
+        "hold": 0.923,
+        "sustain": 0.371,
+        "release": 229.033,
+        "length": 1150.359
+    },
+    {
+        "id": 455,
+        "stem": "synth",
+        "attack": 2.5,
+        "decay": 917.089,
+        "hold": 0.555,
+        "sustain": 0.261,
+        "release": 228.332,
+        "length": 1148.476
+    },
+    {
+        "id": 456,
+        "stem": "synth",
+        "attack": 2.537,
+        "decay": 917.717,
+        "hold": 1.059,
+        "sustain": 0.79,
+        "release": 231.486,
+        "length": 1152.799
+    },
+    {
+        "id": 457,
+        "stem": "synth",
+        "attack": 2.8,
+        "decay": 917.121,
+        "hold": 0.467,
+        "sustain": 0.737,
+        "release": 228.158,
+        "length": 1148.5459999999998
+    },
+    {
+        "id": 458,
+        "stem": "synth",
+        "attack": 2.522,
+        "decay": 917.109,
+        "hold": 0.119,
+        "sustain": 0.605,
+        "release": 226.383,
+        "length": 1146.133
+    },
+    {
+        "id": 459,
+        "stem": "synth",
+        "attack": 2.786,
+        "decay": 917.401,
+        "hold": 0.829,
+        "sustain": 0.506,
+        "release": 232.233,
+        "length": 1153.2489999999998
+    },
+    {
+        "id": 460,
+        "stem": "synth",
+        "attack": 2.446,
+        "decay": 917.406,
+        "hold": 0.522,
+        "sustain": 0.31,
+        "release": 231.62,
+        "length": 1151.9940000000001
+    },
+    {
+        "id": 461,
+        "stem": "synth",
+        "attack": 3.13,
+        "decay": 917.437,
+        "hold": 0.605,
+        "sustain": 0.208,
+        "release": 226.668,
+        "length": 1147.8400000000001
+    },
+    {
+        "id": 462,
+        "stem": "synth",
+        "attack": 2.473,
+        "decay": 917.621,
+        "hold": 0.669,
+        "sustain": 0.855,
+        "release": 231.634,
+        "length": 1152.397
+    },
+    {
+        "id": 463,
+        "stem": "synth",
+        "attack": 2.48,
+        "decay": 917.206,
+        "hold": 1.1,
+        "sustain": 0.245,
+        "release": 233.262,
+        "length": 1154.048
+    },
+    {
+        "id": 464,
+        "stem": "synth",
+        "attack": 3.083,
+        "decay": 917.495,
+        "hold": 0.696,
+        "sustain": 0.94,
+        "release": 230.057,
+        "length": 1151.331
+    },
+    {
+        "id": 465,
+        "stem": "synth",
+        "attack": 2.555,
+        "decay": 917.453,
+        "hold": 0.233,
+        "sustain": 0.736,
+        "release": 226.707,
+        "length": 1146.9479999999999
+    },
+    {
+        "id": 466,
+        "stem": "synth",
+        "attack": 2.915,
+        "decay": 917.332,
+        "hold": 0.652,
+        "sustain": 0.882,
+        "release": 232.734,
+        "length": 1153.633
+    },
+    {
+        "id": 467,
+        "stem": "synth",
+        "attack": 2.572,
+        "decay": 917.526,
+        "hold": 0.631,
+        "sustain": 0.924,
+        "release": 228.295,
+        "length": 1149.024
+    },
+    {
+        "id": 468,
+        "stem": "synth",
+        "attack": 3.213,
+        "decay": 917.049,
+        "hold": 1.046,
+        "sustain": 0.551,
+        "release": 227.24,
+        "length": 1148.548
+    },
+    {
+        "id": 469,
+        "stem": "synth",
+        "attack": 2.476,
+        "decay": 917.123,
+        "hold": 0.86,
+        "sustain": 0.699,
+        "release": 229.412,
+        "length": 1149.871
+    },
+    {
+        "id": 470,
+        "stem": "synth",
+        "attack": 2.93,
+        "decay": 917.645,
+        "hold": 0.723,
+        "sustain": 0.382,
+        "release": 228.963,
+        "length": 1150.261
+    },
+    {
+        "id": 471,
+        "stem": "synth",
+        "attack": 2.831,
+        "decay": 917.17,
+        "hold": 0.22,
+        "sustain": 0.895,
+        "release": 231.138,
+        "length": 1151.359
+    },
+    {
+        "id": 472,
+        "stem": "synth",
+        "attack": 3.23,
+        "decay": 917.158,
+        "hold": 0.771,
+        "sustain": 0.335,
+        "release": 232.154,
+        "length": 1153.313
+    },
+    {
+        "id": 473,
+        "stem": "synth",
+        "attack": 3.146,
+        "decay": 917.698,
+        "hold": 0.475,
+        "sustain": 0.35,
+        "release": 228.777,
+        "length": 1150.096
+    },
+    {
+        "id": 474,
+        "stem": "synth",
+        "attack": 2.747,
+        "decay": 917.434,
+        "hold": 0.82,
+        "sustain": 0.349,
+        "release": 231.771,
+        "length": 1152.772
+    },
+    {
+        "id": 475,
+        "stem": "synth",
+        "attack": 3.044,
+        "decay": 917.35,
+        "hold": 0.491,
+        "sustain": 0.904,
+        "release": 226.682,
+        "length": 1147.567
+    },
+    {
+        "id": 476,
+        "stem": "synth",
+        "attack": 2.947,
+        "decay": 917.121,
+        "hold": 0.771,
+        "sustain": 0.645,
+        "release": 228.794,
+        "length": 1149.633
+    },
+    {
+        "id": 477,
+        "stem": "synth",
+        "attack": 3.064,
+        "decay": 917.644,
+        "hold": 1.124,
+        "sustain": 0.371,
+        "release": 232.591,
+        "length": 1154.423
+    },
+    {
+        "id": 478,
+        "stem": "synth",
+        "attack": 2.994,
+        "decay": 917.596,
+        "hold": 0.108,
+        "sustain": 0.517,
+        "release": 231.796,
+        "length": 1152.494
+    },
+    {
+        "id": 479,
+        "stem": "synth",
+        "attack": 2.882,
+        "decay": 917.249,
+        "hold": 0.922,
+        "sustain": 0.628,
+        "release": 228.854,
+        "length": 1149.907
+    },
+    {
+        "id": 480,
+        "stem": "synth",
+        "attack": 3.084,
+        "decay": 917.123,
+        "hold": 0.007,
+        "sustain": 0.454,
+        "release": 232.937,
+        "length": 1153.1509999999998
+    },
+    {
+        "id": 481,
+        "stem": "synth",
+        "attack": 2.436,
+        "decay": 917.402,
+        "hold": 0.64,
+        "sustain": 0.608,
+        "release": 228.283,
+        "length": 1148.761
+    },
+    {
+        "id": 482,
+        "stem": "synth",
+        "attack": 2.807,
+        "decay": 917.593,
+        "hold": 0.745,
+        "sustain": 0.169,
+        "release": 226.576,
+        "length": 1147.721
+    },
+    {
+        "id": 483,
+        "stem": "synth",
+        "attack": 2.435,
+        "decay": 917.622,
+        "hold": 0.764,
+        "sustain": 0.305,
+        "release": 231.911,
+        "length": 1152.732
+    },
+    {
+        "id": 484,
+        "stem": "synth",
+        "attack": 3.216,
+        "decay": 917.182,
+        "hold": 0.134,
+        "sustain": 0.672,
+        "release": 230.617,
+        "length": 1151.1490000000001
+    },
+    {
+        "id": 485,
+        "stem": "synth",
+        "attack": 2.994,
+        "decay": 917.14,
+        "hold": 0.005,
+        "sustain": 0.68,
+        "release": 233.335,
+        "length": 1153.474
+    },
+    {
+        "id": 486,
+        "stem": "synth",
+        "attack": 2.654,
+        "decay": 917.707,
+        "hold": 0.169,
+        "sustain": 0.776,
+        "release": 231.59,
+        "length": 1152.12
+    },
+    {
+        "id": 487,
+        "stem": "synth",
+        "attack": 2.676,
+        "decay": 917.556,
+        "hold": 1.001,
+        "sustain": 0.918,
+        "release": 231.164,
+        "length": 1152.397
+    },
+    {
+        "id": 488,
+        "stem": "synth",
+        "attack": 2.847,
+        "decay": 917.447,
+        "hold": 0.54,
+        "sustain": 0.932,
+        "release": 231.237,
+        "length": 1152.071
+    },
+    {
+        "id": 489,
+        "stem": "synth",
+        "attack": 2.899,
+        "decay": 917.389,
+        "hold": 0.681,
+        "sustain": 0.976,
+        "release": 226.847,
+        "length": 1147.816
+    },
+    {
+        "id": 490,
+        "stem": "synth",
+        "attack": 3.049,
+        "decay": 917.067,
+        "hold": 0.242,
+        "sustain": 0.204,
+        "release": 228.698,
+        "length": 1149.056
+    },
+    {
+        "id": 491,
+        "stem": "synth",
+        "attack": 2.479,
+        "decay": 917.254,
+        "hold": 0.409,
+        "sustain": 0.479,
+        "release": 226.86,
+        "length": 1147.002
+    },
+    {
+        "id": 492,
+        "stem": "synth",
+        "attack": 2.761,
+        "decay": 917.479,
+        "hold": 0.015,
+        "sustain": 0.546,
+        "release": 227.06,
+        "length": 1147.315
+    },
+    {
+        "id": 493,
+        "stem": "synth",
+        "attack": 2.538,
+        "decay": 917.61,
+        "hold": 0.894,
+        "sustain": 0.834,
+        "release": 228.606,
+        "length": 1149.6480000000001
+    },
+    {
+        "id": 494,
+        "stem": "synth",
+        "attack": 2.875,
+        "decay": 917.435,
+        "hold": 0.365,
+        "sustain": 0.669,
+        "release": 231.313,
+        "length": 1151.9879999999998
+    },
+    {
+        "id": 495,
+        "stem": "synth",
+        "attack": 2.631,
+        "decay": 917.684,
+        "hold": 0.028,
+        "sustain": 0.939,
+        "release": 230.961,
+        "length": 1151.304
+    },
+    {
+        "id": 496,
+        "stem": "synth",
+        "attack": 2.999,
+        "decay": 917.266,
+        "hold": 0.912,
+        "sustain": 0.297,
+        "release": 232.478,
+        "length": 1153.655
+    },
+    {
+        "id": 497,
+        "stem": "synth",
+        "attack": 3.224,
+        "decay": 917.635,
+        "hold": 0.033,
+        "sustain": 0.945,
+        "release": 229.412,
+        "length": 1150.304
+    },
+    {
+        "id": 498,
+        "stem": "synth",
+        "attack": 2.523,
+        "decay": 917.589,
+        "hold": 0.925,
+        "sustain": 0.575,
+        "release": 227.892,
+        "length": 1148.929
+    },
+    {
+        "id": 499,
+        "stem": "synth",
+        "attack": 2.508,
+        "decay": 917.451,
+        "hold": 1.108,
+        "sustain": 0.401,
+        "release": 233.297,
+        "length": 1154.364
+    },
+    {
+        "id": 500,
+        "stem": "vox",
+        "attack": 3.487,
+        "decay": 693.821,
+        "hold": 0.051,
+        "sustain": 0.214,
+        "release": 91.253,
+        "length": 788.6120000000001
+    },
+    {
+        "id": 501,
+        "stem": "vox",
+        "attack": 3.368,
+        "decay": 693.814,
+        "hold": 0.367,
+        "sustain": 0.54,
+        "release": 92.458,
+        "length": 790.007
+    },
+    {
+        "id": 502,
+        "stem": "vox",
+        "attack": 3.255,
+        "decay": 693.634,
+        "hold": 0.051,
+        "sustain": 0.77,
+        "release": 90.601,
+        "length": 787.541
+    },
+    {
+        "id": 503,
+        "stem": "vox",
+        "attack": 3.04,
+        "decay": 693.693,
+        "hold": 0.027,
+        "sustain": 0.034,
+        "release": 91.294,
+        "length": 788.054
+    },
+    {
+        "id": 504,
+        "stem": "vox",
+        "attack": 3.771,
+        "decay": 693.671,
+        "hold": 0.365,
+        "sustain": 0.896,
+        "release": 92.981,
+        "length": 790.788
+    },
+    {
+        "id": 505,
+        "stem": "vox",
+        "attack": 3.696,
+        "decay": 693.671,
+        "hold": 0.675,
+        "sustain": 0.231,
+        "release": 92.777,
+        "length": 790.8190000000001
+    },
+    {
+        "id": 506,
+        "stem": "vox",
+        "attack": 3.363,
+        "decay": 693.64,
+        "hold": 0.075,
+        "sustain": 0.122,
+        "release": 90.426,
+        "length": 787.5040000000001
+    },
+    {
+        "id": 507,
+        "stem": "vox",
+        "attack": 3.974,
+        "decay": 693.666,
+        "hold": 0.398,
+        "sustain": 0.575,
+        "release": 90.418,
+        "length": 788.4560000000001
+    },
+    {
+        "id": 508,
+        "stem": "vox",
+        "attack": 3.166,
+        "decay": 693.817,
+        "hold": 0.054,
+        "sustain": 0.364,
+        "release": 91.933,
+        "length": 788.97
+    },
+    {
+        "id": 509,
+        "stem": "vox",
+        "attack": 3.141,
+        "decay": 693.609,
+        "hold": 0.187,
+        "sustain": 0.484,
+        "release": 92.516,
+        "length": 789.453
+    },
+    {
+        "id": 510,
+        "stem": "vox",
+        "attack": 2.154,
+        "decay": 693.781,
+        "hold": 0.187,
+        "sustain": 0.163,
+        "release": 92.992,
+        "length": 789.1139999999999
+    },
+    {
+        "id": 511,
+        "stem": "vox",
+        "attack": 1.785,
+        "decay": 693.773,
+        "hold": 0.704,
+        "sustain": 0.674,
+        "release": 92.137,
+        "length": 788.3989999999999
+    },
+    {
+        "id": 512,
+        "stem": "vox",
+        "attack": 1.946,
+        "decay": 693.721,
+        "hold": 0.27,
+        "sustain": 0.869,
+        "release": 91.876,
+        "length": 787.813
+    },
+    {
+        "id": 513,
+        "stem": "vox",
+        "attack": 2.106,
+        "decay": 693.629,
+        "hold": 0.174,
+        "sustain": 0.409,
+        "release": 93.273,
+        "length": 789.182
+    },
+    {
+        "id": 514,
+        "stem": "vox",
+        "attack": 3.681,
+        "decay": 693.648,
+        "hold": 0.474,
+        "sustain": 0.571,
+        "release": 93.184,
+        "length": 790.9870000000001
+    },
+    {
+        "id": 515,
+        "stem": "vox",
+        "attack": 3.808,
+        "decay": 693.751,
+        "hold": 0.25,
+        "sustain": 0.185,
+        "release": 92.048,
+        "length": 789.857
+    },
+    {
+        "id": 516,
+        "stem": "vox",
+        "attack": 2.059,
+        "decay": 693.672,
+        "hold": 0.083,
+        "sustain": 0.801,
+        "release": 90.608,
+        "length": 786.422
+    },
+    {
+        "id": 517,
+        "stem": "vox",
+        "attack": 1.975,
+        "decay": 693.719,
+        "hold": 0.556,
+        "sustain": 0.083,
+        "release": 91.625,
+        "length": 787.8750000000001
+    },
+    {
+        "id": 518,
+        "stem": "vox",
+        "attack": 2.435,
+        "decay": 693.605,
+        "hold": 0.149,
+        "sustain": 0.595,
+        "release": 91.028,
+        "length": 787.217
+    },
+    {
+        "id": 519,
+        "stem": "vox",
+        "attack": 2.431,
+        "decay": 693.753,
+        "hold": 0.633,
+        "sustain": 0.359,
+        "release": 92.571,
+        "length": 789.3880000000001
+    },
+    {
+        "id": 520,
+        "stem": "vox",
+        "attack": 2.011,
+        "decay": 693.65,
+        "hold": 0.603,
+        "sustain": 0.164,
+        "release": 91.367,
+        "length": 787.6309999999999
+    },
+    {
+        "id": 521,
+        "stem": "vox",
+        "attack": 2.811,
+        "decay": 693.764,
+        "hold": 0.569,
+        "sustain": 0.02,
+        "release": 92.601,
+        "length": 789.745
+    },
+    {
+        "id": 522,
+        "stem": "vox",
+        "attack": 2.503,
+        "decay": 693.602,
+        "hold": 0.068,
+        "sustain": 0.178,
+        "release": 92.864,
+        "length": 789.037
+    },
+    {
+        "id": 523,
+        "stem": "vox",
+        "attack": 2.278,
+        "decay": 693.623,
+        "hold": 0.36,
+        "sustain": 0.372,
+        "release": 91.285,
+        "length": 787.546
+    },
+    {
+        "id": 524,
+        "stem": "vox",
+        "attack": 2.3,
+        "decay": 693.702,
+        "hold": 0.045,
+        "sustain": 0.141,
+        "release": 90.464,
+        "length": 786.511
+    },
+    {
+        "id": 525,
+        "stem": "vox",
+        "attack": 3.769,
+        "decay": 693.789,
+        "hold": 0.254,
+        "sustain": 0.717,
+        "release": 93.058,
+        "length": 790.87
+    },
+    {
+        "id": 526,
+        "stem": "vox",
+        "attack": 3.455,
+        "decay": 693.785,
+        "hold": 0.129,
+        "sustain": 0.661,
+        "release": 91.616,
+        "length": 788.985
+    },
+    {
+        "id": 527,
+        "stem": "vox",
+        "attack": 3.096,
+        "decay": 693.609,
+        "hold": 0.553,
+        "sustain": 0.858,
+        "release": 91.417,
+        "length": 788.6750000000001
+    },
+    {
+        "id": 528,
+        "stem": "vox",
+        "attack": 3.269,
+        "decay": 693.833,
+        "hold": 0.027,
+        "sustain": 0.933,
+        "release": 91.1,
+        "length": 788.229
+    },
+    {
+        "id": 529,
+        "stem": "vox",
+        "attack": 3.885,
+        "decay": 693.707,
+        "hold": 0.404,
+        "sustain": 0.273,
+        "release": 91.901,
+        "length": 789.8969999999999
+    },
+    {
+        "id": 530,
+        "stem": "vox",
+        "attack": 2.284,
+        "decay": 693.646,
+        "hold": 0.402,
+        "sustain": 0.8,
+        "release": 92.281,
+        "length": 788.613
+    },
+    {
+        "id": 531,
+        "stem": "vox",
+        "attack": 3.745,
+        "decay": 693.826,
+        "hold": 0.129,
+        "sustain": 0.129,
+        "release": 91.293,
+        "length": 788.993
+    },
+    {
+        "id": 532,
+        "stem": "vox",
+        "attack": 1.764,
+        "decay": 693.653,
+        "hold": 0.054,
+        "sustain": 0.34,
+        "release": 91.562,
+        "length": 787.033
+    },
+    {
+        "id": 533,
+        "stem": "vox",
+        "attack": 1.927,
+        "decay": 693.621,
+        "hold": 0.422,
+        "sustain": 0.196,
+        "release": 90.548,
+        "length": 786.518
+    },
+    {
+        "id": 534,
+        "stem": "vox",
+        "attack": 3.925,
+        "decay": 693.814,
+        "hold": 0.174,
+        "sustain": 0.3,
+        "release": 93.384,
+        "length": 791.2969999999999
+    },
+    {
+        "id": 535,
+        "stem": "vox",
+        "attack": 2.202,
+        "decay": 693.844,
+        "hold": 0.177,
+        "sustain": 0.927,
+        "release": 91.743,
+        "length": 787.9660000000001
+    },
+    {
+        "id": 536,
+        "stem": "vox",
+        "attack": 1.812,
+        "decay": 693.672,
+        "hold": 0.577,
+        "sustain": 0.318,
+        "release": 91.216,
+        "length": 787.277
+    },
+    {
+        "id": 537,
+        "stem": "vox",
+        "attack": 3.854,
+        "decay": 693.585,
+        "hold": 0.361,
+        "sustain": 0.239,
+        "release": 92.631,
+        "length": 790.431
+    },
+    {
+        "id": 538,
+        "stem": "vox",
+        "attack": 2.995,
+        "decay": 693.581,
+        "hold": 0.622,
+        "sustain": 0.797,
+        "release": 92.823,
+        "length": 790.021
+    },
+    {
+        "id": 539,
+        "stem": "vox",
+        "attack": 2.644,
+        "decay": 693.656,
+        "hold": 0.135,
+        "sustain": 0.597,
+        "release": 92.241,
+        "length": 788.6759999999999
+    },
+    {
+        "id": 540,
+        "stem": "vox",
+        "attack": 3.07,
+        "decay": 693.819,
+        "hold": 0.374,
+        "sustain": 0.853,
+        "release": 90.817,
+        "length": 788.08
+    },
+    {
+        "id": 541,
+        "stem": "vox",
+        "attack": 2.746,
+        "decay": 693.699,
+        "hold": 0.527,
+        "sustain": 0.607,
+        "release": 91.901,
+        "length": 788.8729999999999
+    },
+    {
+        "id": 542,
+        "stem": "vox",
+        "attack": 3.177,
+        "decay": 693.823,
+        "hold": 0.663,
+        "sustain": 0.903,
+        "release": 90.794,
+        "length": 788.457
+    },
+    {
+        "id": 543,
+        "stem": "vox",
+        "attack": 2.777,
+        "decay": 693.782,
+        "hold": 0.075,
+        "sustain": 0.484,
+        "release": 90.788,
+        "length": 787.4220000000001
+    },
+    {
+        "id": 544,
+        "stem": "vox",
+        "attack": 2.334,
+        "decay": 693.704,
+        "hold": 0.487,
+        "sustain": 0.729,
+        "release": 91.155,
+        "length": 787.6799999999998
+    },
+    {
+        "id": 545,
+        "stem": "vox",
+        "attack": 2.034,
+        "decay": 693.671,
+        "hold": 0.26,
+        "sustain": 0.593,
+        "release": 92.739,
+        "length": 788.7040000000001
+    },
+    {
+        "id": 546,
+        "stem": "vox",
+        "attack": 3.914,
+        "decay": 693.637,
+        "hold": 0.565,
+        "sustain": 0.757,
+        "release": 91.352,
+        "length": 789.468
+    },
+    {
+        "id": 547,
+        "stem": "vox",
+        "attack": 2.451,
+        "decay": 693.697,
+        "hold": 0.005,
+        "sustain": 0.369,
+        "release": 93.259,
+        "length": 789.412
+    },
+    {
+        "id": 548,
+        "stem": "vox",
+        "attack": 2.091,
+        "decay": 693.793,
+        "hold": 0.167,
+        "sustain": 0.357,
+        "release": 93.319,
+        "length": 789.37
+    },
+    {
+        "id": 549,
+        "stem": "vox",
+        "attack": 2.576,
+        "decay": 693.697,
+        "hold": 0.47,
+        "sustain": 0.554,
+        "release": 92.58,
+        "length": 789.3230000000001
+    },
+    {
+        "id": 550,
+        "stem": "vox",
+        "attack": 3.166,
+        "decay": 693.677,
+        "hold": 0.322,
+        "sustain": 0.244,
+        "release": 92.143,
+        "length": 789.3080000000001
+    },
+    {
+        "id": 551,
+        "stem": "vox",
+        "attack": 1.654,
+        "decay": 693.611,
+        "hold": 0.519,
+        "sustain": 0.009,
+        "release": 92.069,
+        "length": 787.853
+    },
+    {
+        "id": 552,
+        "stem": "vox",
+        "attack": 3.443,
+        "decay": 693.571,
+        "hold": 0.3,
+        "sustain": 0.146,
+        "release": 92.191,
+        "length": 789.505
+    },
+    {
+        "id": 553,
+        "stem": "vox",
+        "attack": 2.577,
+        "decay": 693.694,
+        "hold": 0.437,
+        "sustain": 0.365,
+        "release": 93.205,
+        "length": 789.913
+    },
+    {
+        "id": 554,
+        "stem": "vox",
+        "attack": 2.345,
+        "decay": 693.652,
+        "hold": 0.621,
+        "sustain": 0.755,
+        "release": 91.27,
+        "length": 787.888
+    },
+    {
+        "id": 555,
+        "stem": "vox",
+        "attack": 3.058,
+        "decay": 693.737,
+        "hold": 0.424,
+        "sustain": 0.673,
+        "release": 92.699,
+        "length": 789.9179999999999
+    },
+    {
+        "id": 556,
+        "stem": "vox",
+        "attack": 2.232,
+        "decay": 693.598,
+        "hold": 0.318,
+        "sustain": 0.798,
+        "release": 92.751,
+        "length": 788.8989999999999
+    },
+    {
+        "id": 557,
+        "stem": "vox",
+        "attack": 3.934,
+        "decay": 693.836,
+        "hold": 0.047,
+        "sustain": 0.655,
+        "release": 91.931,
+        "length": 789.748
+    },
+    {
+        "id": 558,
+        "stem": "vox",
+        "attack": 3.365,
+        "decay": 693.615,
+        "hold": 0.358,
+        "sustain": 0.905,
+        "release": 92.764,
+        "length": 790.102
+    },
+    {
+        "id": 559,
+        "stem": "vox",
+        "attack": 1.62,
+        "decay": 693.73,
+        "hold": 0.041,
+        "sustain": 0.525,
+        "release": 93.328,
+        "length": 788.719
+    },
+    {
+        "id": 560,
+        "stem": "vox",
+        "attack": 3.365,
+        "decay": 693.839,
+        "hold": 0.631,
+        "sustain": 0.383,
+        "release": 93.289,
+        "length": 791.124
+    },
+    {
+        "id": 561,
+        "stem": "vox",
+        "attack": 3.884,
+        "decay": 693.569,
+        "hold": 0.398,
+        "sustain": 0.728,
+        "release": 90.525,
+        "length": 788.376
+    },
+    {
+        "id": 562,
+        "stem": "vox",
+        "attack": 3.069,
+        "decay": 693.737,
+        "hold": 0.635,
+        "sustain": 0.463,
+        "release": 91.689,
+        "length": 789.1299999999999
+    },
+    {
+        "id": 563,
+        "stem": "vox",
+        "attack": 3.14,
+        "decay": 693.574,
+        "hold": 0.216,
+        "sustain": 0.699,
+        "release": 90.404,
+        "length": 787.334
+    },
+    {
+        "id": 564,
+        "stem": "vox",
+        "attack": 1.861,
+        "decay": 693.753,
+        "hold": 0.318,
+        "sustain": 0.77,
+        "release": 90.906,
+        "length": 786.838
+    },
+    {
+        "id": 565,
+        "stem": "vox",
+        "attack": 2.504,
+        "decay": 693.812,
+        "hold": 0.639,
+        "sustain": 0.84,
+        "release": 90.949,
+        "length": 787.904
+    },
+    {
+        "id": 566,
+        "stem": "vox",
+        "attack": 2.968,
+        "decay": 693.661,
+        "hold": 0.228,
+        "sustain": 0.587,
+        "release": 91.352,
+        "length": 788.2089999999998
+    },
+    {
+        "id": 567,
+        "stem": "vox",
+        "attack": 2.827,
+        "decay": 693.654,
+        "hold": 0.003,
+        "sustain": 0.65,
+        "release": 92.086,
+        "length": 788.57
+    },
+    {
+        "id": 568,
+        "stem": "vox",
+        "attack": 2.186,
+        "decay": 693.815,
+        "hold": 0.33,
+        "sustain": 0.174,
+        "release": 93.111,
+        "length": 789.4420000000001
+    },
+    {
+        "id": 569,
+        "stem": "vox",
+        "attack": 2.501,
+        "decay": 693.714,
+        "hold": 0.178,
+        "sustain": 0.602,
+        "release": 93.152,
+        "length": 789.5450000000001
+    },
+    {
+        "id": 570,
+        "stem": "vox",
+        "attack": 2.22,
+        "decay": 693.675,
+        "hold": 0.513,
+        "sustain": 0.66,
+        "release": 91.391,
+        "length": 787.799
+    },
+    {
+        "id": 571,
+        "stem": "vox",
+        "attack": 1.911,
+        "decay": 693.551,
+        "hold": 0.384,
+        "sustain": 0.672,
+        "release": 92.037,
+        "length": 787.883
+    },
+    {
+        "id": 572,
+        "stem": "vox",
+        "attack": 2.509,
+        "decay": 693.727,
+        "hold": 0.569,
+        "sustain": 0.91,
+        "release": 90.785,
+        "length": 787.5899999999999
+    },
+    {
+        "id": 573,
+        "stem": "vox",
+        "attack": 1.746,
+        "decay": 693.717,
+        "hold": 0.595,
+        "sustain": 0.28,
+        "release": 91.71,
+        "length": 787.768
+    },
+    {
+        "id": 574,
+        "stem": "vox",
+        "attack": 1.845,
+        "decay": 693.721,
+        "hold": 0.117,
+        "sustain": 0.44,
+        "release": 92.77,
+        "length": 788.453
+    },
+    {
+        "id": 575,
+        "stem": "vox",
+        "attack": 3.026,
+        "decay": 693.735,
+        "hold": 0.135,
+        "sustain": 0.9,
+        "release": 91.037,
+        "length": 787.933
+    },
+    {
+        "id": 576,
+        "stem": "vox",
+        "attack": 2.872,
+        "decay": 693.575,
+        "hold": 0.396,
+        "sustain": 0.264,
+        "release": 90.743,
+        "length": 787.586
+    },
+    {
+        "id": 577,
+        "stem": "vox",
+        "attack": 1.625,
+        "decay": 693.6,
+        "hold": 0.237,
+        "sustain": 0.263,
+        "release": 90.409,
+        "length": 785.871
+    },
+    {
+        "id": 578,
+        "stem": "vox",
+        "attack": 2.727,
+        "decay": 693.649,
+        "hold": 0.217,
+        "sustain": 0.922,
+        "release": 90.834,
+        "length": 787.4269999999999
+    },
+    {
+        "id": 579,
+        "stem": "vox",
+        "attack": 3.807,
+        "decay": 693.588,
+        "hold": 0.592,
+        "sustain": 0.308,
+        "release": 91.177,
+        "length": 789.164
+    },
+    {
+        "id": 580,
+        "stem": "vox",
+        "attack": 3.356,
+        "decay": 693.801,
+        "hold": 0.613,
+        "sustain": 0.056,
+        "release": 91.196,
+        "length": 788.9660000000001
+    },
+    {
+        "id": 581,
+        "stem": "vox",
+        "attack": 3.883,
+        "decay": 693.663,
+        "hold": 0.561,
+        "sustain": 0.956,
+        "release": 91.118,
+        "length": 789.2250000000001
+    },
+    {
+        "id": 582,
+        "stem": "vox",
+        "attack": 1.738,
+        "decay": 693.618,
+        "hold": 0.329,
+        "sustain": 0.646,
+        "release": 92.58,
+        "length": 788.2650000000001
+    },
+    {
+        "id": 583,
+        "stem": "vox",
+        "attack": 1.83,
+        "decay": 693.735,
+        "hold": 0.701,
+        "sustain": 0.033,
+        "release": 92.911,
+        "length": 789.1770000000001
+    },
+    {
+        "id": 584,
+        "stem": "vox",
+        "attack": 2.463,
+        "decay": 693.577,
+        "hold": 0.654,
+        "sustain": 0.898,
+        "release": 92.073,
+        "length": 788.7669999999999
+    },
+    {
+        "id": 585,
+        "stem": "vox",
+        "attack": 2.415,
+        "decay": 693.846,
+        "hold": 0.646,
+        "sustain": 0.677,
+        "release": 92.175,
+        "length": 789.0819999999999
+    },
+    {
+        "id": 586,
+        "stem": "vox",
+        "attack": 3.964,
+        "decay": 693.563,
+        "hold": 0.026,
+        "sustain": 0.572,
+        "release": 92.4,
+        "length": 789.953
+    },
+    {
+        "id": 587,
+        "stem": "vox",
+        "attack": 3.485,
+        "decay": 693.696,
+        "hold": 0.213,
+        "sustain": 0.246,
+        "release": 91.245,
+        "length": 788.639
+    },
+    {
+        "id": 588,
+        "stem": "vox",
+        "attack": 3.223,
+        "decay": 693.711,
+        "hold": 0.562,
+        "sustain": 0.582,
+        "release": 93.127,
+        "length": 790.6229999999999
+    },
+    {
+        "id": 589,
+        "stem": "vox",
+        "attack": 2.434,
+        "decay": 693.777,
+        "hold": 0.637,
+        "sustain": 0.676,
+        "release": 92.807,
+        "length": 789.655
+    },
+    {
+        "id": 590,
+        "stem": "vox",
+        "attack": 1.969,
+        "decay": 693.797,
+        "hold": 0.531,
+        "sustain": 0.156,
+        "release": 91.437,
+        "length": 787.734
+    },
+    {
+        "id": 591,
+        "stem": "vox",
+        "attack": 1.655,
+        "decay": 693.621,
+        "hold": 0.118,
+        "sustain": 0.626,
+        "release": 91.997,
+        "length": 787.391
+    },
+    {
+        "id": 592,
+        "stem": "vox",
+        "attack": 2.085,
+        "decay": 693.754,
+        "hold": 0.247,
+        "sustain": 0.638,
+        "release": 92.581,
+        "length": 788.667
+    },
+    {
+        "id": 593,
+        "stem": "vox",
+        "attack": 3.474,
+        "decay": 693.817,
+        "hold": 0.297,
+        "sustain": 0.921,
+        "release": 92.063,
+        "length": 789.6510000000001
+    },
+    {
+        "id": 594,
+        "stem": "vox",
+        "attack": 1.925,
+        "decay": 693.793,
+        "hold": 0.398,
+        "sustain": 0.837,
+        "release": 92.972,
+        "length": 789.088
+    },
+    {
+        "id": 595,
+        "stem": "vox",
+        "attack": 3.881,
+        "decay": 693.682,
+        "hold": 0.376,
+        "sustain": 0.69,
+        "release": 90.765,
+        "length": 788.704
+    },
+    {
+        "id": 596,
+        "stem": "vox",
+        "attack": 2.333,
+        "decay": 693.788,
+        "hold": 0.026,
+        "sustain": 0.168,
+        "release": 93.249,
+        "length": 789.396
+    },
+    {
+        "id": 597,
+        "stem": "vox",
+        "attack": 2.366,
+        "decay": 693.706,
+        "hold": 0.113,
+        "sustain": 0.203,
+        "release": 90.894,
+        "length": 787.0790000000001
+    },
+    {
+        "id": 598,
+        "stem": "vox",
+        "attack": 3.239,
+        "decay": 693.818,
+        "hold": 0.213,
+        "sustain": 0.762,
+        "release": 91.418,
+        "length": 788.688
+    },
+    {
+        "id": 599,
+        "stem": "vox",
+        "attack": 2.486,
+        "decay": 693.697,
+        "hold": 0.303,
+        "sustain": 0.106,
+        "release": 90.963,
+        "length": 787.449
+    }
+]

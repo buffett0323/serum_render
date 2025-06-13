@@ -1,10 +1,7 @@
-import numpy as np, soundfile as sf, json, random, uuid
+import json
+import random
 from pathlib import Path
-from tqdm import trange, tqdm
 from util import SERUM_ADSR
-
-
-
 
 
 if __name__ == "__main__":
@@ -17,7 +14,7 @@ if __name__ == "__main__":
     ADSR_counter = 0
     
     for stem in stems:
-        for i in trange(100):
+        for i in range(100):
             # Random parameters in milliseconds
             A = round(random.uniform(SERUM_ADSR[stem]["a1"], SERUM_ADSR[stem]["a2"]), 3)
             D = round(random.uniform(SERUM_ADSR[stem]["d1"], SERUM_ADSR[stem]["d2"]), 3)
@@ -38,5 +35,5 @@ if __name__ == "__main__":
             ADSR_counter += 1
         
 
-    with open(OUT_DIR / "metadata.json", "w") as f:
+    with open(OUT_DIR / "envelopes_metadata.json", "w") as f:
         json.dump(meta, f, indent=4, ensure_ascii=False)
