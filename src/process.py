@@ -9,7 +9,7 @@ from pedalboard import load_plugin
 from pedalboard.io import AudioFile
 from mido import MidiFile, Message, merge_tracks, tick2second
 
-from visualize_midi import plot_midi_piano_roll
+from midi_selection import plot_midi_piano_roll
 
 SERUM_PLUGIN_PATH = os.path.expanduser("/Users/bliu/Library/Audio/Plug-Ins/Components/Serum.component") #"/Library/Audio/Plug-Ins/Components/Serum.component" #os.path.expanduser("/Users/bliu/Library/Audio/Plug-Ins/Components/Serum.component")
 PLUGIN_NAME = "Serum" #"Serum 2" # "Serum 2 FX"
