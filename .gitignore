@@ -1,6 +1,7 @@
 __pycache__
 rendered_audio/
 rendered_one_shot/
+vstpreset/
 sample_audio/
 serum_preset/
 midi/maestro_v3/
