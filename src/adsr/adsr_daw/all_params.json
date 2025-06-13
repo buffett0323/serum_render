@@ -1,0 +1,947 @@
+{
+    "MasterVol": {
+        "value": 0.43276453018188477
+    },
+    "A Vol": {
+        "value": 0.0
+    },
+    "A Pan": {
+        "value": 0.5
+    },
+    "A Octave": {
+        "value": 0.3717041015625
+    },
+    "A Semi": {
+        "value": 0.5
+    },
+    "A Fine": {
+        "value": 0.5
+    },
+    "A Unison": {
+        "value": 0.0
+    },
+    "A UniDet": {
+        "value": 0.0
+    },
+    "A UniBlend": {
+        "value": 0.0
+    },
+    "A Warp": {
+        "value": 0.6932737231254578
+    },
+    "A CoarsePit": {
+        "value": 0.5
+    },
+    "A WTPos": {
+        "value": 0.31399059295654297
+    },
+    "A RandPhase": {
+        "value": 0.0
+    },
+    "A Phase": {
+        "value": 0.0
+    },
+    "B Vol": {
+        "value": 0.0
+    },
+    "B Pan": {
+        "value": 0.5
+    },
+    "B Octave": {
+        "value": 0.3376922607421875
+    },
+    "B Semi": {
+        "value": 0.5
+    },
+    "B Fine": {
+        "value": 0.5
+    },
+    "B Unison": {
+        "value": 0.0
+    },
+    "B UniDet": {
+        "value": 0.5
+    },
+    "B UniBlend": {
+        "value": 0.75
+    },
+    "B Warp": {
+        "value": 0.5524773597717285
+    },
+    "B CoarsePit": {
+        "value": 0.5
+    },
+    "B WTPos": {
+        "value": 0.3135964870452881
+    },
+    "B RandPhase": {
+        "value": 0.0
+    },
+    "B Phase": {
+        "value": 0.5
+    },
+    "Noise Level": {
+        "value": 0.25
+    },
+    "Noise Pitch": {
+        "value": 0.5
+    },
+    "Noise Fine": {
+        "value": 0.5
+    },
+    "Noise Pan": {
+        "value": 0.5
+    },
+    "Noise RandPhase": {
+        "value": 0.0
+    },
+    "Noise Phase": {
+        "value": 0.0
+    },
+    "Sub Osc Level": {
+        "value": 0.75
+    },
+    "Sub Osc Pan": {
+        "value": 0.5
+    },
+    "Env1 Atk": {
+        "value": 0.10999999940395355
+    },
+    "Env1 Hold": {
+        "value": 0.0
+    },
+    "Env1 Dec": {
+        "value": 0.48267149925231934
+    },
+    "Env1 Sus": {
+        "value": 1.0
+    },
+    "Env1 Rel": {
+        "value": 0.2150000035762787
+    },
+    "OscA>Fil": {
+        "value": 1.0
+    },
+    "OscB>Fil": {
+        "value": 1.0
+    },
+    "OscN>Fil": {
+        "value": 0.0
+    },
+    "OscS>Fil": {
+        "value": 0.0
+    },
+    "Fil Type": {
+        "value": 0.6421052813529968
+    },
+    "Fil Cutoff": {
+        "value": 0.3676500618457794
+    },
+    "Fil Reso": {
+        "value": 0.4484477937221527
+    },
+    "Fil Driv": {
+        "value": 0.0
+    },
+    "Fil Var": {
+        "value": 0.0
+    },
+    "Fil Mix": {
+        "value": 0.5206620097160339
+    },
+    "Fil Stereo": {
+        "value": 0.5
+    },
+    "Env2 Atk": {
+        "value": 0.10999999940395355
+    },
+    "Env2 Hld": {
+        "value": 0.0
+    },
+    "Env2 Dec": {
+        "value": 0.5
+    },
+    "Env2 Sus": {
+        "value": 1.0
+    },
+    "Env2 Rel": {
+        "value": 0.2150000035762787
+    },
+    "Env3 Atk": {
+        "value": 0.10999999940395355
+    },
+    "Env3 Hld": {
+        "value": 0.0
+    },
+    "Env3 Dec": {
+        "value": 0.5
+    },
+    "Env3 Sus": {
+        "value": 1.0
+    },
+    "Env3 Rel": {
+        "value": 0.2150000035762787
+    },
+    "LFO1 Rate": {
+        "value": 0.46785908937454224
+    },
+    "LFO2 Rate": {
+        "value": 0.5
+    },
+    "LFO3 Rate": {
+        "value": 0.5
+    },
+    "LFO4 Rate": {
+        "value": 0.5
+    },
+    "PortTime": {
+        "value": 0.9473684430122375
+    },
+    "PortCurve": {
+        "value": 0.4259999990463257
+    },
+    "Chaos1 BPM": {
+        "value": 0.0
+    },
+    "Chaos2 BPM": {
+        "value": 0.0
+    },
+    "Chaos1 Rate": {
+        "value": 0.2511889934539795
+    },
+    "Chaos2 Rate": {
+        "value": 0.2511889934539795
+    },
+    "A curve1": {
+        "value": 0.49950000643730164
+    },
+    "D curve1": {
+        "value": 0.6660000085830688
+    },
+    "R curve1": {
+        "value": 0.6660000085830688
+    },
+    "A curve2": {
+        "value": 0.49950000643730164
+    },
+    "D curve2": {
+        "value": 0.6660000085830688
+    },
+    "R curve2": {
+        "value": 0.6660000085830688
+    },
+    "A curve3": {
+        "value": 0.49950000643730164
+    },
+    "D curve3": {
+        "value": 0.6660000085830688
+    },
+    "R curve3": {
+        "value": 0.6660000085830688
+    },
+    "Mast.Tun": {
+        "value": 0.5
+    },
+    "Verb Wet": {
+        "value": 0.17649124562740326
+    },
+    "VerbSize": {
+        "value": 0.0
+    },
+    "Decay": {
+        "value": 0.0
+    },
+    "VerbLoCt": {
+        "value": 0.0
+    },
+    "Spin Rate": {
+        "value": 0.2800000011920929
+    },
+    "VerbHiCt": {
+        "value": 0.5
+    },
+    "Spin Depth": {
+        "value": 1.0
+    },
+    "EQ FrqL": {
+        "value": 0.03914037346839905
+    },
+    "EQ FrqH": {
+        "value": 0.4335438013076782
+    },
+    "EQ Q L": {
+        "value": 0.5254386067390442
+    },
+    "EQ Q H": {
+        "value": 0.5342105627059937
+    },
+    "EQ VolL": {
+        "value": 1.0
+    },
+    "EQ VolH": {
+        "value": 0.7587718963623047
+    },
+    "EQ TypL": {
+        "value": 1.0
+    },
+    "EQ TypH": {
+        "value": 0.5
+    },
+    "Dist_Wet": {
+        "value": 1.0
+    },
+    "Dist_Drv": {
+        "value": 0.25
+    },
+    "Dist_L/B/H": {
+        "value": 0.0
+    },
+    "Dist_Mode": {
+        "value": 0.0
+    },
+    "Dist_Freq": {
+        "value": 0.5
+    },
+    "Dist_BW": {
+        "value": 0.5
+    },
+    "Dist_PrePost": {
+        "value": 0.0
+    },
+    "Flg_Wet": {
+        "value": 1.0
+    },
+    "Flg_BPM_Sync": {
+        "value": 0.0
+    },
+    "Flg_Rate": {
+        "value": 0.25
+    },
+    "Flg_Dep": {
+        "value": 1.0
+    },
+    "Flg_Feed": {
+        "value": 0.5
+    },
+    "Flg_Stereo": {
+        "value": 0.5
+    },
+    "Phs_Wet": {
+        "value": 0.33134591579437256
+    },
+    "Phs_BPM_Sync": {
+        "value": 1.0
+    },
+    "Phs_Rate": {
+        "value": 0.6003803014755249
+    },
+    "Phs_Dpth": {
+        "value": 0.28777754306793213
+    },
+    "Phs_Frq": {
+        "value": 0.0
+    },
+    "Phs_Feed": {
+        "value": 0.27558597922325134
+    },
+    "Phs_Stereo": {
+        "value": 1.0
+    },
+    "Cho_Wet": {
+        "value": 0.5
+    },
+    "Cho_BPM_Sync": {
+        "value": 0.0
+    },
+    "Cho_Rate": {
+        "value": 0.25
+    },
+    "Cho_Dly": {
+        "value": 0.5
+    },
+    "Cho_Dly2": {
+        "value": 0.0
+    },
+    "Cho_Dep": {
+        "value": 1.0
+    },
+    "Cho_Feed": {
+        "value": 0.10000000149011612
+    },
+    "Cho_Filt": {
+        "value": 0.5
+    },
+    "Dly_Wet": {
+        "value": 0.30000001192092896
+    },
+    "Dly_Freq": {
+        "value": 0.5
+    },
+    "Dly_BW": {
+        "value": 0.800000011920929
+    },
+    "Dly_BPM_Sync": {
+        "value": 1.0
+    },
+    "Dly_Link": {
+        "value": 0.0
+    },
+    "Dly_TimL": {
+        "value": 0.625
+    },
+    "Dly_TimR": {
+        "value": 0.625
+    },
+    "Dly_Mode": {
+        "value": 0.0
+    },
+    "Dly_Feed": {
+        "value": 0.4000000059604645
+    },
+    "Dly_Off L": {
+        "value": 0.5
+    },
+    "Dly_Off R": {
+        "value": 0.5
+    },
+    "Cmp_Thr": {
+        "value": 0.5799582004547119
+    },
+    "Cmp_Rat": {
+        "value": 0.75
+    },
+    "Cmp_Att": {
+        "value": 0.30000001192092896
+    },
+    "Cmp_Rel": {
+        "value": 0.30000001192092896
+    },
+    "CmpGain": {
+        "value": 0.39912280440330505
+    },
+    "CmpMBnd": {
+        "value": 1.0
+    },
+    "FX Fil Wet": {
+        "value": 1.0
+    },
+    "FX Fil Type": {
+        "value": 0.25263160467147827
+    },
+    "FX Fil Freq": {
+        "value": 0.289764940738678
+    },
+    "FX Fil Reso": {
+        "value": 0.5635793805122375
+    },
+    "FX Fil Drive": {
+        "value": 0.45255962014198303
+    },
+    "FX Fil Var": {
+        "value": 0.3042249083518982
+    },
+    "Hyp_Wet": {
+        "value": 0.49561402201652527
+    },
+    "Hyp_Rate": {
+        "value": 0.4000000059604645
+    },
+    "Hyp_Detune": {
+        "value": 0.25
+    },
+    "Hyp_Unison": {
+        "value": 0.5714285969734192
+    },
+    "Hyp_Retrig": {
+        "value": 0.0
+    },
+    "HypDim_Size": {
+        "value": 0.04005618393421173
+    },
+    "HypDim_Mix": {
+        "value": 0.4391275942325592
+    },
+    "Dist Enable": {
+        "value": 0.0
+    },
+    "Flg Enable": {
+        "value": 0.0
+    },
+    "Phs Enable": {
+        "value": 1.0
+    },
+    "Cho Enable": {
+        "value": 0.0
+    },
+    "Dly Enable": {
+        "value": 0.0
+    },
+    "Comp Enable": {
+        "value": 1.0
+    },
+    "Rev Enable": {
+        "value": 1.0
+    },
+    "EQ Enable": {
+        "value": 1.0
+    },
+    "FX Fil Enable": {
+        "value": 1.0
+    },
+    "Hyp Enable": {
+        "value": 1.0
+    },
+    "OscAPitchTrack": {
+        "value": 1.0
+    },
+    "OscBPitchTrack": {
+        "value": 1.0
+    },
+    "Bend U": {
+        "value": 0.5416666865348816
+    },
+    "Bend D": {
+        "value": 0.4583333432674408
+    },
+    "WarpOscA": {
+        "value": 0.21739131212234497
+    },
+    "WarpOscB": {
+        "value": 0.260869562625885
+    },
+    "SubOscShape": {
+        "value": 0.0
+    },
+    "SubOscOctave": {
+        "value": 0.5
+    },
+    "A Uni LR": {
+        "value": 1.0
+    },
+    "B Uni LR": {
+        "value": 1.0
+    },
+    "A Uni Warp": {
+        "value": 0.5
+    },
+    "B Uni Warp": {
+        "value": 0.5
+    },
+    "A Uni WTPos": {
+        "value": 0.5
+    },
+    "B Uni WTPos": {
+        "value": 0.5
+    },
+    "A Uni Stack": {
+        "value": 0.0
+    },
+    "B Uni Stack": {
+        "value": 0.0
+    },
+    "Mod 1 amt": {
+        "value": 0.574561357498169
+    },
+    "Mod 1 out": {
+        "value": 1.0
+    },
+    "Mod 2 amt": {
+        "value": 0.6821842193603516
+    },
+    "Mod 2 out": {
+        "value": 1.0
+    },
+    "Mod 3 amt": {
+        "value": 0.6964089870452881
+    },
+    "Mod 3 out": {
+        "value": 1.0
+    },
+    "Mod 4 amt": {
+        "value": 1.0
+    },
+    "Mod 4 out": {
+        "value": 1.0
+    },
+    "Mod 5 amt": {
+        "value": 0.6732456088066101
+    },
+    "Mod 5 out": {
+        "value": 1.0
+    },
+    "Mod 6 amt": {
+        "value": 0.41042110323905945
+    },
+    "Mod 6 out": {
+        "value": 1.0
+    },
+    "Mod 7 amt": {
+        "value": 1.0
+    },
+    "Mod 7 out": {
+        "value": 1.0
+    },
+    "Mod 8 amt": {
+        "value": 1.0
+    },
+    "Mod 8 out": {
+        "value": 1.0
+    },
+    "Mod 9 amt": {
+        "value": 0.7396689653396606
+    },
+    "Mod 9 out": {
+        "value": 1.0
+    },
+    "Mod10 amt": {
+        "value": 0.6371728181838989
+    },
+    "Mod10 out": {
+        "value": 1.0
+    },
+    "Mod11 amt": {
+        "value": 0.5438596606254578
+    },
+    "Mod11 out": {
+        "value": 1.0
+    },
+    "Mod12 amt": {
+        "value": 0.5570175647735596
+    },
+    "Mod12 out": {
+        "value": 1.0
+    },
+    "Mod13 amt": {
+        "value": 0.5
+    },
+    "Mod13 out": {
+        "value": 1.0
+    },
+    "Mod14 amt": {
+        "value": 0.0
+    },
+    "Mod14 out": {
+        "value": 1.0
+    },
+    "Mod15 amt": {
+        "value": 0.6710526347160339
+    },
+    "Mod15 out": {
+        "value": 1.0
+    },
+    "Mod16 amt": {
+        "value": 0.5656695365905762
+    },
+    "Mod16 out": {
+        "value": 1.0
+    },
+    "Osc A On": {
+        "value": 1.0
+    },
+    "Osc B On": {
+        "value": 1.0
+    },
+    "Osc N On": {
+        "value": 0.0
+    },
+    "Osc S On": {
+        "value": 0.0
+    },
+    "Filter On": {
+        "value": 1.0
+    },
+    "Mod Wheel": {
+        "value": 0.0
+    },
+    "DRIVE/FAT": {
+        "value": 0.11838679015636444
+    },
+    "Phs Cutoff": {
+        "value": 0.0
+    },
+    "Tone": {
+        "value": 1.0
+    },
+    "Rate": {
+        "value": 0.0
+    },
+    "Amp.": {
+        "value": 0.5
+    },
+    "LFO1 smooth": {
+        "value": 0.5219298005104065
+    },
+    "LFO2 smooth": {
+        "value": 0.5219298005104065
+    },
+    "LFO3 smooth": {
+        "value": 0.5219298005104065
+    },
+    "LFO4 smooth": {
+        "value": 0.5219298005104065
+    },
+    "Pitch Bend": {
+        "value": 0.5
+    },
+    "Mod17 amt": {
+        "value": 0.44444727897644043
+    },
+    "Mod17 out": {
+        "value": 1.0
+    },
+    "Mod18 amt": {
+        "value": 0.6681656837463379
+    },
+    "Mod18 out": {
+        "value": 1.0
+    },
+    "Mod19 amt": {
+        "value": 0.5
+    },
+    "Mod19 out": {
+        "value": 1.0
+    },
+    "Mod20 amt": {
+        "value": 0.5
+    },
+    "Mod20 out": {
+        "value": 1.0
+    },
+    "Mod21 amt": {
+        "value": 0.5
+    },
+    "Mod21 out": {
+        "value": 1.0
+    },
+    "Mod22 amt": {
+        "value": 0.5
+    },
+    "Mod22 out": {
+        "value": 1.0
+    },
+    "Mod23 amt": {
+        "value": 0.5
+    },
+    "Mod23 out": {
+        "value": 1.0
+    },
+    "Mod24 amt": {
+        "value": 0.5
+    },
+    "Mod24 out": {
+        "value": 1.0
+    },
+    "Mod25 amt": {
+        "value": 0.5
+    },
+    "Mod25 out": {
+        "value": 1.0
+    },
+    "Mod26 amt": {
+        "value": 0.5
+    },
+    "Mod26 out": {
+        "value": 1.0
+    },
+    "Mod27 amt": {
+        "value": 0.5
+    },
+    "Mod27 out": {
+        "value": 1.0
+    },
+    "Mod28 amt": {
+        "value": 0.5
+    },
+    "Mod28 out": {
+        "value": 1.0
+    },
+    "Mod29 amt": {
+        "value": 0.5
+    },
+    "Mod29 out": {
+        "value": 1.0
+    },
+    "Mod30 amt": {
+        "value": 0.5
+    },
+    "Mod30 out": {
+        "value": 1.0
+    },
+    "Mod31 amt": {
+        "value": 0.5
+    },
+    "Mod31 out": {
+        "value": 1.0
+    },
+    "Mod32 amt": {
+        "value": 0.5
+    },
+    "Mod32 out": {
+        "value": 1.0
+    },
+    "LFO5 Rate": {
+        "value": 0.5
+    },
+    "LFO6 Rate": {
+        "value": 0.5
+    },
+    "LFO7 Rate": {
+        "value": 0.5
+    },
+    "LFO8 Rate": {
+        "value": 0.5
+    },
+    "LFO5 smooth": {
+        "value": 0.5219298005104065
+    },
+    "LFO6 smooth": {
+        "value": 0.5219298005104065
+    },
+    "LFO7 smooth": {
+        "value": 0.5219298005104065
+    },
+    "LFO8 smooth": {
+        "value": 0.5219298005104065
+    },
+    "FX Fil Pan": {
+        "value": 0.5
+    },
+    "Comp_Wet": {
+        "value": 1.0
+    },
+    "CompMB L": {
+        "value": 0.5
+    },
+    "CompMB M": {
+        "value": 0.5
+    },
+    "CompMB H": {
+        "value": 0.5
+    },
+    "LFO1 Rise": {
+        "value": 0.0
+    },
+    "LFO2 Rise": {
+        "value": 0.0
+    },
+    "LFO3 Rise": {
+        "value": 0.0
+    },
+    "LFO4 Rise": {
+        "value": 0.0
+    },
+    "LFO5 Rise": {
+        "value": 0.0
+    },
+    "LFO6 Rise": {
+        "value": 0.0
+    },
+    "LFO7 Rise": {
+        "value": 0.0
+    },
+    "LFO8 Rise": {
+        "value": 0.0
+    },
+    "LFO1 Delay": {
+        "value": 0.0
+    },
+    "LFO2 Delay": {
+        "value": 0.0
+    },
+    "LFO3 Delay": {
+        "value": 0.0
+    },
+    "LFO4 Delay": {
+        "value": 0.0
+    },
+    "LFO5 Delay": {
+        "value": 0.0
+    },
+    "LFO6 Delay": {
+        "value": 0.0
+    },
+    "LFO7 Delay": {
+        "value": 0.0
+    },
+    "LFO8 Delay": {
+        "value": 0.0
+    },
+    "FX Dist Level": {
+        "value": 0.5
+    },
+    "FX Flg Level": {
+        "value": 0.5
+    },
+    "FX Phaser Level": {
+        "value": 0.5
+    },
+    "FX Chorus Level": {
+        "value": 0.5
+    },
+    "FX Delay Level": {
+        "value": 0.5
+    },
+    "FX Comp Level": {
+        "value": 0.5
+    },
+    "FX Reverb Level": {
+        "value": 0.5
+    },
+    "FX DimExp Level": {
+        "value": 0.5
+    },
+    "FX Filter Level": {
+        "value": 0.5
+    },
+    "FX Hyper Level": {
+        "value": 0.5
+    },
+    "LFO Bus 1": {
+        "value": 0.0
+    },
+    "LFO Bus 2": {
+        "value": 0.0
+    },
+    "LFO Bus 3": {
+        "value": 0.0
+    },
+    "LFO Bus 4": {
+        "value": 0.0
+    },
+    "LFO Bus 5": {
+        "value": 0.0
+    },
+    "LFO Bus 6": {
+        "value": 0.0
+    },
+    "LFO Bus 7": {
+        "value": 0.0
+    },
+    "LFO Bus 8": {
+        "value": 0.0
+    },
+    "LFO Bus 9": {
+        "value": 0.0
+    },
+    "LFO Bus 10": {
+        "value": 0.0
+    },
+    "LFO Bus 11": {
+        "value": 0.0
+    },
+    "LFO Bus 12": {
+        "value": 0.0
+    },
+    "LFO Bus 13": {
+        "value": 0.0
+    },
+    "LFO Bus 14": {
+        "value": 0.0
+    },
+    "LFO Bus 15": {
+        "value": 0.0
+    },
+    "LFO Bus 16": {
+        "value": 0.0
+    }
+}

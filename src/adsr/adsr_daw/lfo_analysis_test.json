@@ -1,0 +1,68 @@
+{
+    "LFO1": {
+        "rate": 0.46785908937454224,
+        "smooth": 0.5219298005104065,
+        "rise": 0.0,
+        "delay": 0.0,
+        "is_active": true,
+        "activity_indicators": [
+            "non-default_rate"
+        ]
+    },
+    "LFO2": {
+        "rate": 0.5,
+        "smooth": 0.5219298005104065,
+        "rise": 0.0,
+        "delay": 0.0,
+        "is_active": false,
+        "activity_indicators": []
+    },
+    "LFO3": {
+        "rate": 0.5,
+        "smooth": 0.5219298005104065,
+        "rise": 0.0,
+        "delay": 0.0,
+        "is_active": false,
+        "activity_indicators": []
+    },
+    "LFO4": {
+        "rate": 0.5,
+        "smooth": 0.5219298005104065,
+        "rise": 0.0,
+        "delay": 0.0,
+        "is_active": false,
+        "activity_indicators": []
+    },
+    "LFO5": {
+        "rate": 0.5,
+        "smooth": 0.5219298005104065,
+        "rise": 0.0,
+        "delay": 0.0,
+        "is_active": false,
+        "activity_indicators": []
+    },
+    "LFO6": {
+        "rate": 0.5,
+        "smooth": 0.5219298005104065,
+        "rise": 0.0,
+        "delay": 0.0,
+        "is_active": false,
+        "activity_indicators": []
+    },
+    "LFO7": {
+        "rate": 0.5,
+        "smooth": 0.5219298005104065,
+        "rise": 0.0,
+        "delay": 0.0,
+        "is_active": false,
+        "activity_indicators": []
+    },
+    "LFO8": {
+        "rate": 0.5,
+        "smooth": 0.5219298005104065,
+        "rise": 0.0,
+        "delay": 0.0,
+        "is_active": false,
+        "activity_indicators": []
+    }
+}

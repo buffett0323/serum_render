@@ -34,7 +34,7 @@ A Python-based tool for generating and analyzing ADSR (Attack, Decay, Sustain, R
 
 ## Requirements
 
-- Python 3.8+
+- Python 3.9+
 - dawdreamer
 - numpy
 - scipy
@@ -114,9 +114,6 @@ This will:
 
 Contributions are welcome! Please feel free to submit a Pull Request.
 
-## License
-
-[Your chosen license]
 
 ## Acknowledgments
 
