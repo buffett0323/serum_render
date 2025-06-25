@@ -9,9 +9,10 @@ from functools import partial
 SAMPLE_RATE = 44100
 START_POINT = 22050
 AMOUNT = 10
-SPLIT = "test" # val # test
+SPLIT = "train" # val # test
 STEMS = ["lead", "keys", "pad", "pluck", "synth", "vox"]
-OUT_DIR = Path(f"/home/buffett/dataset/rendered_adsr_unpaired/{SPLIT}") #"/mnt/gestalt/home/buffett/rendered_adsr_dataset"
+BASE_DIR = "/mnt/gestalt/home/buffett" #"/home/buffett/dataset"
+OUT_DIR = Path(f"{BASE_DIR}/rendered_adsr_unpaired/{SPLIT}") #"/mnt/gestalt/home/buffett/rendered_adsr_dataset"
 OUT_DIR.mkdir(exist_ok=True)
 
 def adsr_env(total_len, a, d, s_level, r):
@@ -172,7 +173,7 @@ if __name__ == "__main__":
     
     mp.set_start_method('spawn', force=True)
     
-    timbre_content_path = "/home/buffett/dataset/rendered_one_shot" #"/mnt/gestalt/home/buffett/rendered_one_shot"
+    timbre_content_path = f"{BASE_DIR}/rendered_one_shot" #"/mnt/gestalt/home/buffett/rendered_one_shot"
     timbre_content_pairs = []
     with open("stats/chosen_timbre_content_pairs.txt", "r") as f:
         for line in f:
