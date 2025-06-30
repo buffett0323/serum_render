@@ -7,19 +7,20 @@ Output naming pattern:  T###_ADSR###_C###.wav  (zero-padded indices)
 """
 
 import os
-import random
 import glob
 import json
-import librosa
-from typing import Dict, List
+import multiprocessing as mp
+import argparse
+import time
+from typing import Dict, List, Tuple
+from functools import partial
 
 import numpy as np
 import soundfile as sf
 import pretty_midi
 from tqdm import tqdm
 from util import SAMPLE_RATE, ms_to_samples
-from scipy import signal
-from librosa.effects import pitch_shift, time_stretch
+from librosa.effects import pitch_shift
 
 
 # ---------------------------------------------------------------------
@@ -27,15 +28,19 @@ from librosa.effects import pitch_shift, time_stretch
 # ---------------------------------------------------------------------
 SPLIT        = "train"
 ADSR_PATH    = "stats/envelopes_train_new.json"
-TIMBRE_DIR   = "../../rendered_one_shot"   # folder with *.wav one-shots
+TIMBRE_DIR   = "/mnt/gestalt/home/buffett/adsr/rendered_one_shot"   # folder with *.wav one-shots
 MIDI_DIR     = f"../../info/{SPLIT}_midi_file_paths_satisfied.txt"    # folder with *.mid / *.midi files
-OUTPUT_DIR   = "../../rendered_t_adsr_c"   # rendered dataset will be written here
+OUTPUT_DIR   = "/mnt/gestalt/home/buffett/adsr/rendered_t_adsr_c"   # rendered dataset will be written here
 START_POINT  = 44100 * 1
 END_POINT    = 44100 * 4
 MIDI_AMOUNT  = 200 #500
 
 TOTAL_DURATION = 3 # seconds
 REFERENCE_MIDI_NOTE = 60 # C4
+
+# Multiprocessing configuration
+NUM_PROCESSES = None  # Set to None for auto-detection, or specify a number (e.g., 4, 8, 16)
+MAX_PROCESSES = 16    # Maximum number of processes to use
 
 
 # ---------------------------------------------------------------------
@@ -151,14 +156,19 @@ def render_midi(midi_path: str,
 
         
         # Apply envelope to timbre (only for the note duration)
-        note_audio = seg[:note_dur_samp] * env[:note_dur_samp]
+        # Ensure we don't exceed the length of the pitch-shifted audio
+        actual_note_dur = min(note_dur_samp, len(seg))
+        note_audio = seg[:actual_note_dur] * env[:actual_note_dur]
 
         # Mix into buffer (additive) - only the note part
-        mix[start_samp:start_samp + note_dur_samp] += note_audio
+        # Ensure we don't exceed the mix buffer bounds
+        end_samp = min(start_samp + actual_note_dur, total_samples)
+        if end_samp > start_samp:
+            mix[start_samp:end_samp] += note_audio[:end_samp - start_samp]
         
         # Handle release phase separately - it continues after note ends
-        if R_samples > 0 and note_dur_samp < total_env_samples:
-            release_start = note_dur_samp
+        if R_samples > 0 and actual_note_dur < total_env_samples:
+            release_start = actual_note_dur
             release_end = min(release_start + R_samples, total_env_samples)
             if release_end > release_start:
                 # For release, we need to continue the timbre (could be silence or last sample)
@@ -167,7 +177,7 @@ def render_midi(midi_path: str,
                 release_audio = release_timbre * release_env
                 
                 # Add release to the mix buffer
-                release_start_samp = start_samp + note_dur_samp
+                release_start_samp = start_samp + actual_note_dur
                 release_end_samp = min(release_start_samp + len(release_audio), total_samples)
                 if release_end_samp > release_start_samp:
                     mix[release_start_samp:release_end_samp] += release_audio[:release_end_samp - release_start_samp]
@@ -219,9 +229,68 @@ def get_midi_info(midi_path: str) -> Dict:
 
 
 # ---------------------------------------------------------------------
-# 4.  Main routine
+# 4.  Worker function for multiprocessing
+# ---------------------------------------------------------------------
+def render_single_combination(args: Tuple[int, int, int, np.ndarray, Dict, str, str]) -> Dict:
+    """
+    Worker function for multiprocessing.
+    Renders a single combination of timbre, ADSR envelope, and MIDI file.
+    
+    Args:
+        args: Tuple of (t_idx, a_idx, c_idx, timbre, adsr, midi_path, output_dir)
+    
+    Returns:
+        Dictionary with file metadata
+    """
+    t_idx, a_idx, c_idx, timbre, adsr, midi_path, output_dir = args
+    
+    try:
+        # Render the audio
+        audio = render_midi(midi_path, timbre, adsr)
+        
+        # Generate output filename and path
+        out_name = f"T{t_idx:03d}_ADSR{a_idx:03d}_C{c_idx:03d}.wav"
+        out_path = os.path.join(output_dir, out_name)
+        
+        # Save the audio file
+        sf.write(out_path, audio, SAMPLE_RATE)
+        
+        # Return metadata
+        return {
+            "filename": out_name,
+            "file_path": out_path,
+            "timbre_index": t_idx,
+            "timbre_id": f"T{t_idx:03d}",
+            "adsr_index": a_idx,
+            "adsr_id": f"ADSR{a_idx:03d}",
+            "midi_index": c_idx,
+            "midi_id": f"C{c_idx:03d}",
+            "duration": float(len(audio) / SAMPLE_RATE),
+            "samples": len(audio),
+            "sample_rate": SAMPLE_RATE,
+            "channels": 1,
+            "peak_amplitude": float(np.abs(audio).max()),
+            "rms_amplitude": float(np.sqrt(np.mean(audio**2))),
+            "success": True
+        }
+    except Exception as e:
+        # Return error metadata
+        return {
+            "filename": f"T{t_idx:03d}_ADSR{a_idx:03d}_C{c_idx:03d}.wav",
+            "timbre_index": t_idx,
+            "adsr_index": a_idx,
+            "midi_index": c_idx,
+            "error": str(e),
+            "success": False
+        }
+
+
+# ---------------------------------------------------------------------
+# 5.  Main routine
 # ---------------------------------------------------------------------
 def main():
+    start_time = time.time()
+    
     timbre_paths = sorted(glob.glob(os.path.join(TIMBRE_DIR, "*.wav")))
     
     # Load all MIDI file paths
@@ -298,46 +367,107 @@ def main():
         midi_info["full_path"] = midi_path
         metadata["midi_files"][f"C{c_idx:03d}"] = midi_info
 
-    # Rendering loop
-    for t_idx, timbre in enumerate(tqdm(timbres, desc="Rendering Dataset")):
+    # Prepare all combinations for multiprocessing
+    print("Preparing combinations for multiprocessing...")
+    combinations = []
+    for t_idx, timbre in enumerate(timbres):
         for a_idx, adsr in enumerate(adsr_bank):
             for c_idx, midi_path in enumerate(midi_paths):
-                audio = render_midi(midi_path, timbre, adsr)
-
-                out_name = f"T{t_idx:03d}_ADSR{a_idx:03d}_C{c_idx:03d}.wav"
-                out_path = os.path.join(OUTPUT_DIR, out_name)
-                sf.write(out_path, audio, SAMPLE_RATE)
+                combinations.append((t_idx, a_idx, c_idx, timbre, adsr, midi_path, OUTPUT_DIR))
+    
+    print(f"Total combinations to process: {len(combinations)}")
+    
+    # Use multiprocessing to render all combinations
+    if NUM_PROCESSES is None:
+        num_processes = min(mp.cpu_count(), MAX_PROCESSES)
+    else:
+        num_processes = min(NUM_PROCESSES, MAX_PROCESSES)
+    
+    print(f"Using {num_processes} processes for rendering...")
+    
+    # Process in chunks to avoid memory issues with large datasets
+    chunk_size = 1000  # Process 1000 combinations at a time
+    all_results = []
+    
+    render_start_time = time.time()
+    
+    # Add error handling for multiprocessing
+    try:
+        with mp.Pool(processes=num_processes) as pool:
+            for i in range(0, len(combinations), chunk_size):
+                chunk = combinations[i:i + chunk_size]
+                print(f"Processing chunk {i//chunk_size + 1}/{(len(combinations) + chunk_size - 1)//chunk_size}")
                 
-                # Add generated file metadata
-                file_metadata = {
-                    "filename": out_name,
-                    "file_path": out_path,
-                    "timbre_index": t_idx,
-                    "timbre_id": f"T{t_idx:03d}",
-                    "adsr_index": a_idx,
-                    "adsr_id": f"ADSR{a_idx:03d}",
-                    "midi_index": c_idx,
-                    "midi_id": f"C{c_idx:03d}",
-                    "duration": float(len(audio) / SAMPLE_RATE),
-                    "samples": len(audio),
-                    "sample_rate": SAMPLE_RATE,
-                    "channels": 1,
-                    "peak_amplitude": float(np.abs(audio).max()),
-                    "rms_amplitude": float(np.sqrt(np.mean(audio**2)))
-                }
-                metadata["generated_files"].append(file_metadata)
-                break
-            break
-        break
+                # Use tqdm to show progress for this chunk
+                chunk_results = list(tqdm(
+                    pool.imap(render_single_combination, chunk),
+                    total=len(chunk),
+                    desc=f"Chunk {i//chunk_size + 1}"
+                ))
+                all_results.extend(chunk_results)
+    except Exception as e:
+        print(f"Multiprocessing failed: {e}")
+        print("Falling back to sequential processing...")
+        all_results = []
+        for combo in tqdm(combinations, desc="Rendering Dataset (Sequential)"):
+            all_results.append(render_single_combination(combo))
+    
+    render_end_time = time.time()
+    print(f"Rendering completed in {render_end_time - render_start_time:.2f} seconds")
+    
+    # Collect results
+    successful_files = []
+    failed_files = []
+    for result in all_results:
+        if result.get("success", False):
+            successful_files.append(result)
+            metadata["generated_files"].append(result)
+        else:
+            failed_files.append(result)
+            print(f"Failed to render {result['filename']}: {result.get('error', 'Unknown error')}")
+    
+    print(f"Successfully generated {len(successful_files)} files")
+    if failed_files:
+        print(f"Failed to generate {len(failed_files)} files")
 
     # Save metadata
     metadata_path = os.path.join(OUTPUT_DIR, "metadata.json")
     with open(metadata_path, 'w') as f:
         json.dump(metadata, f, indent=2)
     
-    print(f"Generated {len(metadata['generated_files'])} files")
     print(f"Metadata saved to: {metadata_path}")
+
+    end_time = time.time()
+    print(f"Total time taken: {end_time - start_time:.2f} seconds")
 
 
 if __name__ == "__main__":
+    parser = argparse.ArgumentParser(description="Generate ADSR+Hold dataset from one-shot timbres and MIDI files")
+    parser.add_argument("--split", type=str, default="train", help="Dataset split (default: train)")
+    parser.add_argument("--adsr_path", type=str, default="stats/envelopes_train_new.json", help="Path to ADSR envelope JSON file")
+    parser.add_argument("--timbre_dir", type=str, default="/mnt/gestalt/home/buffett/adsr/rendered_one_shot", help="Directory containing one-shot timbres")
+    parser.add_argument("--midi_dir", type=str, default="../../info/train_midi_file_paths_satisfied.txt", help="Directory containing MIDI files")
+    parser.add_argument("--output_dir", type=str, default="/mnt/gestalt/home/buffett/adsr/rendered_t_adsr_c", help="Output directory for the rendered dataset")
+    parser.add_argument("--start_point", type=int, default=44100*1, help="Start point in seconds")
+    parser.add_argument("--end_point", type=int, default=44100*4, help="End point in seconds")
+    parser.add_argument("--midi_amount", type=int, default=200, help="Number of MIDI files to process")
+    parser.add_argument("--total_duration", type=float, default=3, help="Total duration of the rendered audio")
+    parser.add_argument("--reference_midi_note", type=int, default=60, help="Reference MIDI note for pitch shifting")
+    parser.add_argument("--num_processes", type=int, default=None, help="Number of processes for multiprocessing")
+    parser.add_argument("--max_processes", type=int, default=16, help="Maximum number of processes to use")
+    args = parser.parse_args()
+
+    SPLIT        = args.split
+    ADSR_PATH    = args.adsr_path
+    TIMBRE_DIR   = args.timbre_dir
+    MIDI_DIR     = args.midi_dir
+    OUTPUT_DIR   = args.output_dir
+    START_POINT  = args.start_point
+    END_POINT    = args.end_point
+    MIDI_AMOUNT  = args.midi_amount
+    TOTAL_DURATION = args.total_duration
+    REFERENCE_MIDI_NOTE = args.reference_midi_note
+    NUM_PROCESSES = args.num_processes
+    MAX_PROCESSES = args.max_processes
+
     main()
