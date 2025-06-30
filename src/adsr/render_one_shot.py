@@ -32,15 +32,14 @@ def main(plugin_path, preset_dir, sample_rate=44100, bpm=120,
     
     # Remove pluck presets
     for pp in preset_paths:
-        if 'pluck' in pp.lower():
+        if 'pluck' in pp.lower() or 'PL' in pp:
             preset_paths.remove(pp)
-        if 'PL' in pp:
-            preset_paths.remove(pp)
+    logger.info(f"After removing, we have {len(preset_paths)} presets")
 
     # Create output directory
     os.makedirs(output_dir, exist_ok=True)
 
-    # Calculate note duration (1 bars at 120 BPM = 4 seconds)
+    # Calculate note duration (1 bars at 120 BPM = 2 seconds)
     note_duration = calculate_note_duration(bars, bpm)
     render_duration = note_duration + 2.0  # Add 2 seconds for release tail
     
@@ -73,6 +72,7 @@ def main(plugin_path, preset_dir, sample_rate=44100, bpm=120,
         preset_to_id[preset_name] = id
         id_to_preset[id] = preset_name
         
+    os.makedirs('../info', exist_ok=True)
     with open('../info/preset_to_id.json', 'w') as f:
         json.dump(preset_to_id, f, indent=4, ensure_ascii=False)
     with open('../info/id_to_preset.json', 'w') as f:
@@ -83,35 +83,36 @@ def main(plugin_path, preset_dir, sample_rate=44100, bpm=120,
     time_seconds = 0.0
 
 
-    # # Process each preset
-    # for preset_path in tqdm(preset_paths, desc="Processing presets"):
-    #     preset_name = Path(preset_path).stem
+    # Process each preset
+    for preset_path in tqdm(preset_paths, desc="Processing presets"):
+        preset_name = Path(preset_path).stem
         
-    #     try:
-    #         # Load the preset
-    #         synth.load_preset(preset_path)
+        try:
+            # Load the preset
+            synth.load_preset(preset_path)
             
-    #         # Generate audio for each C note
-    #         for note_name, note_number in c_notes.items():
-    #             # Clear any previous MIDI
-    #             synth.clear_midi()
+            # Generate audio for each C note
+            for note_name, note_number in c_notes.items():
+                # Clear any previous MIDI
+                synth.clear_midi()
                 
-    #             # Add single MIDI note
-    #             synth.add_midi_note(note_number, velocity, time_seconds, note_duration)
+                # Add single MIDI note
+                synth.add_midi_note(note_number, velocity, time_seconds, note_duration)
                 
-    #             # Render audio
-    #             engine.render(render_duration)
-    #             audio = engine.get_audio()
+                # Render audio
+                engine.render(render_duration)
+                audio = engine.get_audio()
                 
-    #             # Save audio file
-    #             output_filename = f"T{preset_to_id[preset_name]}_{note_name}.wav"
-    #             output_path = Path(output_dir) / output_filename
-    #             wavfile.write(str(output_path), sample_rate, audio.transpose())
+                # Save audio file
+                output_filename = f"T{preset_to_id[preset_name]}_{note_name}.wav"
+                output_path = Path(output_dir) / output_filename
+                wavfile.write(str(output_path), sample_rate, audio.transpose())
                 
         
-    #     except Exception as e:
-    #         logger.error(f"Error processing preset {preset_name}: {e}")
-    #         continue
+        except Exception as e:
+            logger.error(f"Error processing preset {preset_name}: {e}")
+            continue
+
 
     logger.info('All done!')
 

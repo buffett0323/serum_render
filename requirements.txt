@@ -2,7 +2,7 @@ numpy
 pandas
 tqdm
 mido
-
+scipy
 pretty_midi
 soundfile
 pedalboard

@@ -1,6 +1,6 @@
 __pycache__
 rendered_audio/
-rendered_one_shot/
+# rendered_one_shot/
 vstpreset/
 sample_audio/
 serum_preset/
