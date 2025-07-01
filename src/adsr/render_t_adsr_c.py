@@ -42,6 +42,9 @@ REFERENCE_MIDI_NOTE = 60 # C4
 NUM_PROCESSES = None  # Set to None for auto-detection, or specify a number (e.g., 4, 8, 16)
 MAX_PROCESSES = 16    # Maximum number of processes to use
 
+# Optimization configuration
+USE_OPTIMIZED_RENDERING = True  # Use preloaded pitch-shifted timbres for better performance
+
 
 # ---------------------------------------------------------------------
 # 1.  Pitch-shifting function
@@ -85,12 +88,301 @@ def process_adsr(adsr):
 
 
 # ---------------------------------------------------------------------
-# 3.  Render a single MIDI with one timbre + one ADSR
+# 4.  Optimized rendering with preloaded pitch-shifted timbres
 # ---------------------------------------------------------------------
-def render_midi(midi_path: str,
-                timbre: np.ndarray,
-                adsr: Dict[str, float]) -> np.ndarray:
+def render_midi_optimized(midi_path: str,
+                         timbre: np.ndarray,
+                         adsr_bank: List[Dict[str, float]]) -> List[np.ndarray]:
     """
+    Optimized rendering that preloads pitch-shifted timbres for a MIDI file
+    and applies all ADSR envelopes at once.
+    
+    Returns a list of audio buffers, one for each ADSR envelope.
+    """
+    midi = pretty_midi.PrettyMIDI(midi_path)
+
+    # Total length: last note-off + Release
+    total_samples = int(np.ceil(TOTAL_DURATION * SAMPLE_RATE))
+    
+    # Use first instrument that has notes; otherwise skip
+    instruments = [inst for inst in midi.instruments if inst.notes]
+    if not instruments:
+        # Return empty audio for all ADSR envelopes
+        return [np.zeros(total_samples, dtype=np.float32) for _ in adsr_bank]
+
+    inst = instruments[0]
+    
+    # Preload all pitch-shifted timbres for this MIDI file
+    # print(f"Preloading pitch-shifted timbres for {midi_path}...")
+    pitch_shifted_timbres = {}
+    
+    # Get unique pitches in this MIDI file
+    unique_pitches = set()
+    for note in inst.notes:
+        if note.start < TOTAL_DURATION:
+            unique_pitches.add(note.pitch)
+    
+    # Preload pitch-shifted timbres for all unique pitches
+    for pitch in unique_pitches:
+        pitch_shift_steps = pitch - REFERENCE_MIDI_NOTE
+        pitch_shifted_timbres[pitch] = pitch_shift_audio(timbre, pitch_shift_steps)
+    
+    # print(f"Preloaded {len(pitch_shifted_timbres)} pitch-shifted timbres")
+    
+    # Render for each ADSR envelope
+    results = []
+    for adsr in adsr_bank:
+        mix = np.zeros(total_samples, dtype=np.float32)
+        
+        # Process each note
+        for note in inst.notes:
+            if note.start >= TOTAL_DURATION:
+                break
+            
+            start_samp = int(note.start * SAMPLE_RATE)
+            note_dur_samp = int((note.end - note.start) * SAMPLE_RATE)
+            note_dur_samp = max(note_dur_samp, 1)  # safety
+
+            # Get preloaded pitch-shifted timbre
+            seg = pitch_shifted_timbres[note.pitch]
+            
+            # Process ADSR data
+            length, A_samples, D_samples, S, R_samples = process_adsr(adsr)
+            
+            # Create envelope for the full note duration (including release)
+            total_env_samples = note_dur_samp + R_samples
+            env = np.zeros(total_env_samples, dtype=np.float32)
+            
+            # Attack phase (0 to 1)
+            if A_samples > 0:
+                attack_end = min(A_samples, total_env_samples)
+                env[:attack_end] = np.linspace(0, 1, attack_end, endpoint=False)
+            
+            # Decay phase (1 to sustain level)
+            if D_samples > 0 and A_samples < total_env_samples:
+                decay_start = A_samples
+                decay_end = min(decay_start + D_samples, total_env_samples)
+                if decay_end > decay_start:
+                    env[decay_start:decay_end] = np.linspace(1, S, decay_end - decay_start, endpoint=False)
+            
+            # Sustain phase (sustain level)
+            sustain_start = min(A_samples + D_samples, total_env_samples)
+            sustain_end = min(sustain_start + (total_env_samples - sustain_start - R_samples), total_env_samples)
+            if sustain_end > sustain_start:
+                env[sustain_start:sustain_end] = S
+            
+            # Release phase (sustain to 0) - starts when note ends
+            if R_samples > 0 and note_dur_samp < total_env_samples:
+                release_start = note_dur_samp
+                release_end = min(release_start + R_samples, total_env_samples)
+                if release_end > release_start:
+                    env[release_start:release_end] = np.linspace(S, 0, release_end - release_start, endpoint=False)
+
+            # Apply envelope to timbre (only for the note duration)
+            actual_note_dur = min(note_dur_samp, len(seg))
+            note_audio = seg[:actual_note_dur] * env[:actual_note_dur]
+
+            # Mix into buffer (additive) - only the note part
+            end_samp = min(start_samp + actual_note_dur, total_samples)
+            if end_samp > start_samp:
+                mix[start_samp:end_samp] += note_audio[:end_samp - start_samp]
+            
+            # Handle release phase separately - it continues after note ends
+            if R_samples > 0 and actual_note_dur < total_env_samples:
+                release_start = actual_note_dur
+                release_end = min(release_start + R_samples, total_env_samples)
+                if release_end > release_start:
+                    # For release, we need to continue the timbre (could be silence or last sample)
+                    release_timbre = np.full(release_end - release_start, seg[-1] if len(seg) > 0 else 0)
+                    release_env = env[release_start:release_end]
+                    release_audio = release_timbre * release_env
+                    
+                    # Add release to the mix buffer
+                    release_start_samp = start_samp + actual_note_dur
+                    release_end_samp = min(release_start_samp + len(release_audio), total_samples)
+                    if release_end_samp > release_start_samp:
+                        mix[release_start_samp:release_end_samp] += release_audio[:release_end_samp - release_start_samp]
+
+        # Simple peak-normalise to -1..1 (prevents clipping)
+        max_amp = np.abs(mix).max() + 1e-9
+        mix /= max_amp
+        
+        results.append(mix)
+    
+    return results
+
+
+# ---------------------------------------------------------------------
+# 3.  Metadata generation functions
+# ---------------------------------------------------------------------
+def get_timbre_info(timbre_path: str) -> Dict:
+    """Extract metadata from timbre file."""
+    try:
+        x, sr = sf.read(timbre_path, always_2d=False)
+        return {
+            "filename": os.path.basename(timbre_path),
+            "sample_rate": int(sr),
+            "duration": float(len(x) / sr),
+            "channels": x.ndim,
+            "samples": len(x),
+            "dtype": str(x.dtype)
+        }
+    except Exception as e:
+        return {
+            "filename": os.path.basename(timbre_path),
+            "error": str(e)
+        }
+    
+    
+def get_midi_info(midi_path: str) -> Dict:
+    """Extract metadata from MIDI file."""
+    try:
+        midi = pretty_midi.PrettyMIDI(midi_path)
+        return {
+            "filename": os.path.basename(midi_path),
+            "duration": float(midi.get_end_time()),
+            "num_notes": len(midi.instruments[0].notes),
+            "onset_seconds": [note.start for note in midi.instruments[0].notes if note.start < TOTAL_DURATION],
+        }
+    except Exception as e:
+        return {
+            "filename": os.path.basename(midi_path),
+            "error": str(e)
+        }
+
+
+# ---------------------------------------------------------------------
+# 5.  Optimized worker function for multiprocessing
+# ---------------------------------------------------------------------
+def render_single_timbre_midi_combination(args: Tuple[int, int, np.ndarray, List[Dict], str, str]) -> List[Dict]:
+    """
+    Optimized worker function for multiprocessing.
+    Renders all ADSR envelopes for a single timbre+MIDI combination.
+    
+    Args:
+        args: Tuple of (t_idx, c_idx, timbre, adsr_bank, midi_path, output_dir)
+    
+    Returns:
+        List of dictionaries with file metadata for all ADSR envelopes
+    """
+    t_idx, c_idx, timbre, adsr_bank, midi_path, output_dir = args
+    
+    try:
+        # Render all ADSR envelopes for this timbre+MIDI combination
+        audio_list = render_midi_optimized(midi_path, timbre, adsr_bank)
+        
+        results = []
+        for a_idx, audio in enumerate(audio_list):
+            # Generate output filename and path
+            out_name = f"T{t_idx:03d}_ADSR{a_idx:03d}_C{c_idx:03d}.wav"
+            out_path = os.path.join(output_dir, out_name)
+            
+            # Save the audio file
+            sf.write(out_path, audio, SAMPLE_RATE)
+            
+            # Return metadata
+            result = {
+                "filename": out_name,
+                "file_path": out_path,
+                "timbre_index": t_idx,
+                "timbre_id": f"T{t_idx:03d}",
+                "adsr_index": a_idx,
+                "adsr_id": f"ADSR{a_idx:03d}",
+                "midi_index": c_idx,
+                "midi_id": f"C{c_idx:03d}",
+                "duration": float(len(audio) / SAMPLE_RATE),
+                "samples": len(audio),
+                "sample_rate": SAMPLE_RATE,
+                "channels": 1,
+                "peak_amplitude": float(np.abs(audio).max()),
+                "rms_amplitude": float(np.sqrt(np.mean(audio**2))),
+                "success": True
+            }
+            results.append(result)
+        
+        return results
+        
+    except Exception as e:
+        # Return error metadata for all ADSR envelopes
+        results = []
+        for a_idx in range(len(adsr_bank)):
+            result = {
+                "filename": f"T{t_idx:03d}_ADSR{a_idx:03d}_C{c_idx:03d}.wav",
+                "timbre_index": t_idx,
+                "adsr_index": a_idx,
+                "midi_index": c_idx,
+                "error": str(e),
+                "success": False
+            }
+            results.append(result)
+        return results
+
+
+# ---------------------------------------------------------------------
+# 6.  Legacy worker function for backward compatibility
+# ---------------------------------------------------------------------
+def render_single_combination_legacy(args: Tuple[int, int, int, np.ndarray, Dict, str, str]) -> Dict:
+    """
+    Legacy worker function for multiprocessing.
+    Renders a single combination of timbre, ADSR envelope, and MIDI file.
+    
+    Args:
+        args: Tuple of (t_idx, a_idx, c_idx, timbre, adsr, midi_path, output_dir)
+    
+    Returns:
+        Dictionary with file metadata
+    """
+    t_idx, a_idx, c_idx, timbre, adsr, midi_path, output_dir = args
+    
+    try:
+        # Render the audio using the original function
+        audio = render_midi_legacy(midi_path, timbre, adsr)
+        
+        # Generate output filename and path
+        out_name = f"T{t_idx:03d}_ADSR{a_idx:03d}_C{c_idx:03d}.wav"
+        out_path = os.path.join(output_dir, out_name)
+        
+        # Save the audio file
+        sf.write(out_path, audio, SAMPLE_RATE)
+        
+        # Return metadata
+        return {
+            "filename": out_name,
+            "file_path": out_path,
+            "timbre_index": t_idx,
+            "timbre_id": f"T{t_idx:03d}",
+            "adsr_index": a_idx,
+            "adsr_id": f"ADSR{a_idx:03d}",
+            "midi_index": c_idx,
+            "midi_id": f"C{c_idx:03d}",
+            "duration": float(len(audio) / SAMPLE_RATE),
+            "samples": len(audio),
+            "sample_rate": SAMPLE_RATE,
+            "channels": 1,
+            "peak_amplitude": float(np.abs(audio).max()),
+            "rms_amplitude": float(np.sqrt(np.mean(audio**2))),
+            "success": True
+        }
+    except Exception as e:
+        # Return error metadata
+        return {
+            "filename": f"T{t_idx:03d}_ADSR{a_idx:03d}_C{c_idx:03d}.wav",
+            "timbre_index": t_idx,
+            "adsr_index": a_idx,
+            "midi_index": c_idx,
+            "error": str(e),
+            "success": False
+        }
+
+
+# ---------------------------------------------------------------------
+# 7.  Legacy rendering function (original implementation)
+# ---------------------------------------------------------------------
+def render_midi_legacy(midi_path: str,
+                      timbre: np.ndarray,
+                      adsr: Dict[str, float]) -> np.ndarray:
+    """
+    Legacy rendering function (original implementation).
     Return a mono audio buffer containing the whole MIDI rendered with
     `timbre` as the sample and `adsr` as the envelope for every note.
     The timbre is assumed to be a C4 (MIDI note 60) one-shot sound.
@@ -190,102 +482,6 @@ def render_midi(midi_path: str,
 
 
 # ---------------------------------------------------------------------
-# 3.  Metadata generation functions
-# ---------------------------------------------------------------------
-def get_timbre_info(timbre_path: str) -> Dict:
-    """Extract metadata from timbre file."""
-    try:
-        x, sr = sf.read(timbre_path, always_2d=False)
-        return {
-            "filename": os.path.basename(timbre_path),
-            "sample_rate": int(sr),
-            "duration": float(len(x) / sr),
-            "channels": x.ndim,
-            "samples": len(x),
-            "dtype": str(x.dtype)
-        }
-    except Exception as e:
-        return {
-            "filename": os.path.basename(timbre_path),
-            "error": str(e)
-        }
-    
-    
-def get_midi_info(midi_path: str) -> Dict:
-    """Extract metadata from MIDI file."""
-    try:
-        midi = pretty_midi.PrettyMIDI(midi_path)
-        return {
-            "filename": os.path.basename(midi_path),
-            "duration": float(midi.get_end_time()),
-            "num_notes": len(midi.instruments[0].notes),
-            "onset_seconds": [note.start for note in midi.instruments[0].notes if note.start < TOTAL_DURATION],
-        }
-    except Exception as e:
-        return {
-            "filename": os.path.basename(midi_path),
-            "error": str(e)
-        }
-
-
-# ---------------------------------------------------------------------
-# 4.  Worker function for multiprocessing
-# ---------------------------------------------------------------------
-def render_single_combination(args: Tuple[int, int, int, np.ndarray, Dict, str, str]) -> Dict:
-    """
-    Worker function for multiprocessing.
-    Renders a single combination of timbre, ADSR envelope, and MIDI file.
-    
-    Args:
-        args: Tuple of (t_idx, a_idx, c_idx, timbre, adsr, midi_path, output_dir)
-    
-    Returns:
-        Dictionary with file metadata
-    """
-    t_idx, a_idx, c_idx, timbre, adsr, midi_path, output_dir = args
-    
-    try:
-        # Render the audio
-        audio = render_midi(midi_path, timbre, adsr)
-        
-        # Generate output filename and path
-        out_name = f"T{t_idx:03d}_ADSR{a_idx:03d}_C{c_idx:03d}.wav"
-        out_path = os.path.join(output_dir, out_name)
-        
-        # Save the audio file
-        sf.write(out_path, audio, SAMPLE_RATE)
-        
-        # Return metadata
-        return {
-            "filename": out_name,
-            "file_path": out_path,
-            "timbre_index": t_idx,
-            "timbre_id": f"T{t_idx:03d}",
-            "adsr_index": a_idx,
-            "adsr_id": f"ADSR{a_idx:03d}",
-            "midi_index": c_idx,
-            "midi_id": f"C{c_idx:03d}",
-            "duration": float(len(audio) / SAMPLE_RATE),
-            "samples": len(audio),
-            "sample_rate": SAMPLE_RATE,
-            "channels": 1,
-            "peak_amplitude": float(np.abs(audio).max()),
-            "rms_amplitude": float(np.sqrt(np.mean(audio**2))),
-            "success": True
-        }
-    except Exception as e:
-        # Return error metadata
-        return {
-            "filename": f"T{t_idx:03d}_ADSR{a_idx:03d}_C{c_idx:03d}.wav",
-            "timbre_index": t_idx,
-            "adsr_index": a_idx,
-            "midi_index": c_idx,
-            "error": str(e),
-            "success": False
-        }
-
-
-# ---------------------------------------------------------------------
 # 5.  Main routine
 # ---------------------------------------------------------------------
 def main():
@@ -323,6 +519,7 @@ def main():
     with open(ADSR_PATH, "r") as f:
         adsr_bank: List[Dict[str, float]] = json.load(f)
     print(f"Render dataset with {len(timbre_paths)} timbres, {len(midi_paths)} MIDIs, {len(adsr_bank)} ADSR envelopes.")
+    print(f"Using {'optimized' if USE_OPTIMIZED_RENDERING else 'legacy'} rendering approach")
     
     # Create metadata structure
     metadata = {
@@ -337,7 +534,8 @@ def main():
             "num_midi_files": len(midi_paths),
             "total_files": len(timbres) * len(adsr_bank) * len(midi_paths),
             "output_directory": OUTPUT_DIR,
-            "split": SPLIT
+            "split": SPLIT,
+            "optimized_rendering": USE_OPTIMIZED_RENDERING
         },
         "adsr_envelopes": {},
         "timbres": {},
@@ -370,10 +568,18 @@ def main():
     # Prepare all combinations for multiprocessing
     print("Preparing combinations for multiprocessing...")
     combinations = []
-    for t_idx, timbre in enumerate(timbres):
-        for a_idx, adsr in enumerate(adsr_bank):
+    
+    if USE_OPTIMIZED_RENDERING:
+        # Optimized approach: process all ADSR envelopes for each timbre+MIDI combination
+        for t_idx, timbre in enumerate(timbres):
             for c_idx, midi_path in enumerate(midi_paths):
-                combinations.append((t_idx, a_idx, c_idx, timbre, adsr, midi_path, OUTPUT_DIR))
+                combinations.append((t_idx, c_idx, timbre, adsr_bank, midi_path, OUTPUT_DIR))
+    else:
+        # Legacy approach: process each timbre+ADSR+MIDI combination separately
+        for t_idx, timbre in enumerate(timbres):
+            for a_idx, adsr in enumerate(adsr_bank):
+                for c_idx, midi_path in enumerate(midi_paths):
+                    combinations.append((t_idx, a_idx, c_idx, timbre, adsr, midi_path, OUTPUT_DIR))
     
     print(f"Total combinations to process: {len(combinations)}")
     
@@ -399,18 +605,28 @@ def main():
                 print(f"Processing chunk {i//chunk_size + 1}/{(len(combinations) + chunk_size - 1)//chunk_size}")
                 
                 # Use tqdm to show progress for this chunk
-                chunk_results = list(tqdm(
-                    pool.imap(render_single_combination, chunk),
-                    total=len(chunk),
-                    desc=f"Chunk {i//chunk_size + 1}"
-                ))
+                if USE_OPTIMIZED_RENDERING:
+                    chunk_results = list(tqdm(
+                        pool.imap(render_single_timbre_midi_combination, chunk),
+                        total=len(chunk),
+                        desc=f"Chunk {i//chunk_size + 1}"
+                    ))
+                else:
+                    chunk_results = list(tqdm(
+                        pool.imap(render_single_combination_legacy, chunk),
+                        total=len(chunk),
+                        desc=f"Chunk {i//chunk_size + 1}"
+                    ))
                 all_results.extend(chunk_results)
     except Exception as e:
         print(f"Multiprocessing failed: {e}")
         print("Falling back to sequential processing...")
         all_results = []
         for combo in tqdm(combinations, desc="Rendering Dataset (Sequential)"):
-            all_results.append(render_single_combination(combo))
+            if USE_OPTIMIZED_RENDERING:
+                all_results.append(render_single_timbre_midi_combination(combo))
+            else:
+                all_results.append(render_single_combination_legacy(combo))
     
     render_end_time = time.time()
     print(f"Rendering completed in {render_end_time - render_start_time:.2f} seconds")
@@ -418,13 +634,26 @@ def main():
     # Collect results
     successful_files = []
     failed_files = []
-    for result in all_results:
-        if result.get("success", False):
-            successful_files.append(result)
-            metadata["generated_files"].append(result)
-        else:
-            failed_files.append(result)
-            print(f"Failed to render {result['filename']}: {result.get('error', 'Unknown error')}")
+    
+    if USE_OPTIMIZED_RENDERING:
+        # Optimized approach: each result is a list of results for all ADSR envelopes
+        for result_list in all_results:
+            for result in result_list:  # Each result_list contains results for all ADSR envelopes
+                if result.get("success", False):
+                    successful_files.append(result)
+                    metadata["generated_files"].append(result)
+                else:
+                    failed_files.append(result)
+                    print(f"Failed to render {result['filename']}: {result.get('error', 'Unknown error')}")
+    else:
+        # Legacy approach: each result is a single result
+        for result in all_results:
+            if result.get("success", False):
+                successful_files.append(result)
+                metadata["generated_files"].append(result)
+            else:
+                failed_files.append(result)
+                print(f"Failed to render {result['filename']}: {result.get('error', 'Unknown error')}")
     
     print(f"Successfully generated {len(successful_files)} files")
     if failed_files:
@@ -455,6 +684,8 @@ if __name__ == "__main__":
     parser.add_argument("--reference_midi_note", type=int, default=60, help="Reference MIDI note for pitch shifting")
     parser.add_argument("--num_processes", type=int, default=None, help="Number of processes for multiprocessing")
     parser.add_argument("--max_processes", type=int, default=16, help="Maximum number of processes to use")
+    parser.add_argument("--use_optimized", action="store_true", default=True, help="Use optimized rendering with preloaded pitch-shifted timbres")
+    parser.add_argument("--use_legacy", action="store_true", help="Use legacy rendering (slower but uses less memory)")
     args = parser.parse_args()
 
     SPLIT        = args.split
@@ -469,5 +700,6 @@ if __name__ == "__main__":
     REFERENCE_MIDI_NOTE = args.reference_midi_note
     NUM_PROCESSES = args.num_processes
     MAX_PROCESSES = args.max_processes
+    USE_OPTIMIZED_RENDERING = args.use_optimized and not args.use_legacy
 
     main()
