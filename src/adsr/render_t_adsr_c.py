@@ -659,14 +659,11 @@ def main():
     if failed_files:
         print(f"Failed to generate {len(failed_files)} files")
 
-    # Save metadata
-    # Save each key to a separate JSON file
+    # Save metadata with each key to a separate JSON file
     for key, value in metadata.items():
         json_path = os.path.join(OUTPUT_DIR, f"{key}.json")
         with open(json_path, 'w') as f:
             json.dump(value, f, indent=2)
-    
-    print(f"Metadata saved to: {metadata_path}")
 
     end_time = time.time()
     print(f"Total time taken: {end_time - start_time:.2f} seconds")
