@@ -26,14 +26,14 @@ from librosa.effects import pitch_shift
 # ---------------------------------------------------------------------
 # Configuration – adjust to your folder layout
 # ---------------------------------------------------------------------
-SPLIT        = "train"
+SPLIT        = "evaluation" #"train"
 ADSR_PATH    = "stats/envelopes_train_new.json"
 TIMBRE_DIR   = "/mnt/gestalt/home/buffett/adsr/rendered_one_shot"   # folder with *.wav one-shots
 MIDI_DIR     = f"../../info/{SPLIT}_midi_file_paths_satisfied.txt"    # folder with *.mid / *.midi files
 OUTPUT_DIR   = "/mnt/gestalt/home/buffett/adsr/rendered_t_adsr_c"   # rendered dataset will be written here
 START_POINT  = 44100 * 1
 END_POINT    = 44100 * 4
-MIDI_AMOUNT  = 200 #500
+MIDI_AMOUNT  = 10 # 200
 
 TOTAL_DURATION = 3 # seconds
 REFERENCE_MIDI_NOTE = 60 # C4
@@ -660,9 +660,11 @@ def main():
         print(f"Failed to generate {len(failed_files)} files")
 
     # Save metadata
-    metadata_path = os.path.join(OUTPUT_DIR, "metadata.json")
-    with open(metadata_path, 'w') as f:
-        json.dump(metadata, f, indent=2)
+    # Save each key to a separate JSON file
+    for key, value in metadata.items():
+        json_path = os.path.join(OUTPUT_DIR, f"{key}.json")
+        with open(json_path, 'w') as f:
+            json.dump(value, f, indent=2)
     
     print(f"Metadata saved to: {metadata_path}")
 
@@ -675,11 +677,11 @@ if __name__ == "__main__":
     parser.add_argument("--split", type=str, default="train", help="Dataset split (default: train)")
     parser.add_argument("--adsr_path", type=str, default="stats/envelopes_train_new.json", help="Path to ADSR envelope JSON file")
     parser.add_argument("--timbre_dir", type=str, default="/mnt/gestalt/home/buffett/adsr/rendered_one_shot", help="Directory containing one-shot timbres")
-    parser.add_argument("--midi_dir", type=str, default="../../info/train_midi_file_paths_satisfied.txt", help="Directory containing MIDI files")
-    parser.add_argument("--output_dir", type=str, default="/mnt/gestalt/home/buffett/adsr/rendered_t_adsr_c", help="Output directory for the rendered dataset")
+    parser.add_argument("--midi_dir", type=str, default=MIDI_DIR, help="Directory containing MIDI files")
+    parser.add_argument("--output_dir", type=str, default="/mnt/gestalt/home/buffett/adsr/rendered_t_adsr_c_eval", help="Output directory for the rendered dataset")
     parser.add_argument("--start_point", type=int, default=44100*1, help="Start point in seconds")
     parser.add_argument("--end_point", type=int, default=44100*4, help="End point in seconds")
-    parser.add_argument("--midi_amount", type=int, default=200, help="Number of MIDI files to process")
+    parser.add_argument("--midi_amount", type=int, default=MIDI_AMOUNT, help="Number of MIDI files to process")
     parser.add_argument("--total_duration", type=float, default=3, help="Total duration of the rendered audio")
     parser.add_argument("--reference_midi_note", type=int, default=60, help="Reference MIDI note for pitch shifting")
     parser.add_argument("--num_processes", type=int, default=None, help="Number of processes for multiprocessing")
