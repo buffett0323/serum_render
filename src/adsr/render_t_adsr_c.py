@@ -376,7 +376,7 @@ def render_single_combination_legacy(args: Tuple[int, int, int, np.ndarray, Dict
 
 
 # ---------------------------------------------------------------------
-# 7.  Legacy rendering function (original implementation)
+# 7.  Legacy rendering function (original implementation) Not used
 # ---------------------------------------------------------------------
 def render_midi_legacy(midi_path: str,
                       timbre: np.ndarray,
