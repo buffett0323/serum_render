@@ -1,3 +1,7 @@
+"""
+This program has to be done in Buffett's macbook with serum plugins.
+"""
+
 import logging
 import os
 import json
@@ -11,13 +15,11 @@ from tqdm import tqdm
 
 
 def calculate_note_duration(bars=1, bpm=120, time_signature=4):
-    total_beats = bars * time_signature
-    beats_per_second = bpm / 60
-    return total_beats / beats_per_second
+    return bars * time_signature * 60 / bpm
 
 
 def main(plugin_path, preset_dir, sample_rate=44100, bpm=120, 
-         bars=4, output_dir='output', logging_level='INFO'):
+         bars=1, padding=2, output_dir='output', logging_level='INFO', remove_pluck=True):
 
     # Create logger
     logging.basicConfig()
@@ -31,17 +33,18 @@ def main(plugin_path, preset_dir, sample_rate=44100, bpm=120,
     
     
     # Remove pluck presets
-    for pp in preset_paths:
-        if 'pluck' in pp.lower() or 'PL' in pp:
-            preset_paths.remove(pp)
-    logger.info(f"After removing, we have {len(preset_paths)} presets")
+    if remove_pluck:
+        for pp in preset_paths:
+            if 'pluck' in pp.lower() or 'PL' in pp:
+                preset_paths.remove(pp)
+        logger.info(f"After removing Pluck presets, we have {len(preset_paths)} presets")
 
     # Create output directory
     os.makedirs(output_dir, exist_ok=True)
 
     # Calculate note duration (1 bars at 120 BPM = 2 seconds)
     note_duration = calculate_note_duration(bars, bpm)
-    render_duration = note_duration + 2.0  # Add 2 seconds for release tail
+    render_duration = note_duration + padding  # Add 2 seconds for release tail
     
     logger.info(f'Note duration: {note_duration} seconds')
     logger.info(f'Output directory: {output_dir}')
@@ -78,43 +81,90 @@ def main(plugin_path, preset_dir, sample_rate=44100, bpm=120,
     with open('../info/id_to_preset.json', 'w') as f:
         json.dump(id_to_preset, f, indent=4, ensure_ascii=False)
 
+    # Initialize metadata collection
+    metadata = {
+        "dataset_info": {
+            "total_files": 0,
+            "sample_rate": sample_rate,
+            "bpm": bpm,
+            "note_duration": note_duration,
+            "render_duration": render_duration,
+            "velocity": 100,
+            "notes_rendered": list(c_notes.keys()),
+            "preset_directory": preset_dir,
+            "output_directory": output_dir
+        },
+        "files": []
+    }
+
     # Params
     velocity = 100
     time_seconds = 0.0
 
-
     # Process each preset
     for preset_path in tqdm(preset_paths, desc="Processing presets"):
         preset_name = Path(preset_path).stem
+        preset_id = preset_to_id[preset_name]
         
-        try:
-            # Load the preset
-            synth.load_preset(preset_path)
+
+        # Load the preset
+        synth.load_preset(preset_path)
+        
+        # Generate audio for each C note
+        for note_name, note_number in c_notes.items():
+            # Clear any previous MIDI
+            synth.clear_midi()
             
-            # Generate audio for each C note
-            for note_name, note_number in c_notes.items():
-                # Clear any previous MIDI
-                synth.clear_midi()
+            # Add single MIDI note
+            synth.add_midi_note(note_number, velocity, time_seconds, note_duration)
+            
+            # Render audio
+            engine.render(render_duration)
+            audio = engine.get_audio()
+            
+            # Save audio file
+            output_filename = f"T{preset_id}_{note_name}.wav"
+            output_path = Path(output_dir) / output_filename
+            wavfile.write(str(output_path), sample_rate, audio.transpose())
+            
+            # Add to metadata
+            file_metadata = {
+                "filename": output_filename,
+                "preset_id": preset_id,
+                "preset_name": preset_name,
+            }
+            
+            metadata["files"].append(file_metadata)
+            metadata["dataset_info"]["total_files"] += 1
                 
-                # Add single MIDI note
-                synth.add_midi_note(note_number, velocity, time_seconds, note_duration)
-                
-                # Render audio
-                engine.render(render_duration)
-                audio = engine.get_audio()
-                
-                # Save audio file
-                output_filename = f"T{preset_to_id[preset_name]}_{note_name}.wav"
-                output_path = Path(output_dir) / output_filename
-                wavfile.write(str(output_path), sample_rate, audio.transpose())
-                
-        
-        except Exception as e:
-            logger.error(f"Error processing preset {preset_name}: {e}")
-            continue
+            
 
+    # Save comprehensive metadata
+    metadata_path = Path(output_dir) / "metadata.json"
+    with open(metadata_path, 'w') as f:
+        json.dump(metadata, f, indent=2, ensure_ascii=False)
+    
+    # Save simplified metadata for quick access
+    simplified_metadata = {
+        "files": [
+            {
+                "filename": file_info["filename"],
+                "preset_stem": file_info["preset_stem"],
+                "note_name": file_info["note_name"],
+                "preset_id": file_info["preset_id"],
+                "rendered_successfully": file_info["rendered_successfully"]
+            }
+            for file_info in metadata["files"]
+        ]
+    }
+    
+    simplified_metadata_path = Path(output_dir) / "metadata_simple.json"
+    with open(simplified_metadata_path, 'w') as f:
+        json.dump(simplified_metadata, f, indent=2, ensure_ascii=False)
 
-    logger.info('All done!')
+    logger.info(f'All done! Metadata saved to {metadata_path} and {simplified_metadata_path}')
+    logger.info(f'Successfully rendered: {sum(1 for f in metadata["files"] if f["rendered_successfully"])} files')
+    logger.info(f'Failed renders: {sum(1 for f in metadata["files"] if not f["rendered_successfully"])} files')
 
 
 if __name__ == "__main__":
@@ -125,8 +175,10 @@ if __name__ == "__main__":
     parser.add_argument('--preset-dir', required=True, help="Directory path of Serum presets")
     parser.add_argument('--sample-rate', default=44100, type=int, help="Sample rate")
     parser.add_argument('--bpm', default=120, type=float, help="Beats per minute")
-    parser.add_argument('--bars', default=1, type=int, help="Number of bars for each note")
+    parser.add_argument('--bars', default=1, type=float, help="Number of bars for each note")
+    parser.add_argument('--padding', default=2, type=float, help="Padding in seconds")
     parser.add_argument('--output-dir', default='output', help="Output directory")
+    parser.add_argument('--remove-pluck', type=bool, default=False, help="Remove Pluck presets")
     parser.add_argument('--log-level', default='INFO', 
                        choices=['DEBUG','INFO','WARNING','ERROR','CRITICAL'], 
                        help="Logger level")
@@ -134,4 +186,4 @@ if __name__ == "__main__":
     args = parser.parse_args()
 
     main(args.plugin, args.preset_dir, args.sample_rate, args.bpm, 
-         args.bars, args.output_dir, args.log_level)
+         args.bars, args.padding, args.output_dir, args.log_level, args.remove_pluck)
