@@ -59,14 +59,9 @@ def main(plugin_path, preset_dir, sample_rate=44100, bpm=120,
     engine.load_graph(graph)
 
     # MIDI note numbers for C1 ~ C7
-    c_notes = {
-        # 'C1': 24,
-        # 'C2': 36, 
-        # 'C3': 48,
-        'C4': 60,
-        # 'C5': 72,
-        # 'C6': 84,
-    }
+    base_notes = {'2': 36, '3': 48, '4': 60}
+    click = {'C': 0, 'D': 2, 'E': 4, 'F': 5, 'G': 7, 'A': 9, 'B': 11}
+    c_notes = {f'{note}{octave}': click[note] + base_notes[octave] for note in click.keys() for octave in base_notes.keys()}
 
     preset_to_id = {}
     id_to_preset = {}
@@ -111,6 +106,7 @@ def main(plugin_path, preset_dir, sample_rate=44100, bpm=120,
         synth.load_preset(preset_path)
         
         # Generate audio for each C note
+        note_id = 0
         for note_name, note_number in c_notes.items():
             # Clear any previous MIDI
             synth.clear_midi()
@@ -120,22 +116,24 @@ def main(plugin_path, preset_dir, sample_rate=44100, bpm=120,
             
             # Render audio
             engine.render(render_duration)
-            audio = engine.get_audio()
+            audio = engine.get_audio().mean(axis=0)
             
             # Save audio file
-            output_filename = f"T{preset_id}_{note_name}.wav"
+            output_filename = f"T{preset_id}_C{note_name}.wav"
             output_path = Path(output_dir) / output_filename
-            wavfile.write(str(output_path), sample_rate, audio.transpose())
+            wavfile.write(str(output_path), sample_rate, audio)
             
             # Add to metadata
             file_metadata = {
                 "filename": output_filename,
-                "preset_id": preset_id,
+                "timbre_id": preset_id,
+                "content_id": note_id,
                 "preset_name": preset_name,
             }
             
             metadata["files"].append(file_metadata)
             metadata["dataset_info"]["total_files"] += 1
+            note_id += 1
                 
             
 
