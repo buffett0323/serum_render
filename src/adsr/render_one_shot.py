@@ -144,27 +144,8 @@ def main(plugin_path, preset_dir, sample_rate=44100, bpm=120,
     with open(metadata_path, 'w') as f:
         json.dump(metadata, f, indent=2, ensure_ascii=False)
     
-    # Save simplified metadata for quick access
-    simplified_metadata = {
-        "files": [
-            {
-                "filename": file_info["filename"],
-                "preset_stem": file_info["preset_stem"],
-                "note_name": file_info["note_name"],
-                "preset_id": file_info["preset_id"],
-                "rendered_successfully": file_info["rendered_successfully"]
-            }
-            for file_info in metadata["files"]
-        ]
-    }
-    
-    simplified_metadata_path = Path(output_dir) / "metadata_simple.json"
-    with open(simplified_metadata_path, 'w') as f:
-        json.dump(simplified_metadata, f, indent=2, ensure_ascii=False)
+    logger.info(f'All done! Metadata saved to {metadata_path}')
 
-    logger.info(f'All done! Metadata saved to {metadata_path} and {simplified_metadata_path}')
-    logger.info(f'Successfully rendered: {sum(1 for f in metadata["files"] if f["rendered_successfully"])} files')
-    logger.info(f'Failed renders: {sum(1 for f in metadata["files"] if not f["rendered_successfully"])} files')
 
 
 if __name__ == "__main__":
