@@ -6,3 +6,4 @@ scipy
 pretty_midi
 soundfile
 pedalboard
+dawdreamer
