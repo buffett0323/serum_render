@@ -1,19 +1,19 @@
- # 
- # This file is part of the DawDreamer distribution (https://github.com/DBraun/DawDreamer).
- # Copyright (c) 2023 David Braun.
- # 
- # This program is free software: you can redistribute it and/or modify  
- # it under the terms of the GNU General Public License as published by  
- # the Free Software Foundation, version 3.
- #
- # This program is distributed in the hope that it will be useful, but 
- # WITHOUT ANY WARRANTY; without even the implied warranty of 
- # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU 
- # General Public License for more details.
- #
- # You should have received a copy of the GNU General Public License 
- # along with this program. If not, see <http://www.gnu.org/licenses/>.
- #
+# 
+# This file is part of the DawDreamer distribution (https://github.com/DBraun/DawDreamer).
+# Copyright (c) 2023 David Braun.
+# 
+# This program is free software: you can redistribute it and/or modify  
+# it under the terms of the GNU General Public License as published by  
+# the Free Software Foundation, version 3.
+#
+# This program is distributed in the hope that it will be useful, but 
+# WITHOUT ANY WARRANTY; without even the implied warranty of 
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU 
+# General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License 
+# along with this program. If not, see <http://www.gnu.org/licenses/>.
+#
 
 import logging
 import multiprocessing
@@ -23,7 +23,7 @@ from collections import namedtuple
 from glob import glob
 import os
 from pathlib import Path
-import random
+import json
 
 # extra libraries to install with pip
 import dawdreamer as daw
@@ -35,7 +35,7 @@ from tqdm import tqdm
 import pretty_midi
 from itertools import product
 
-Item = namedtuple("Item", "preset_path midi_path")
+Item = namedtuple("Item", "preset_path midi_path timbre_id content_id")
 
 
 class Worker:
@@ -56,7 +56,6 @@ class Worker:
         self.plugin_path = plugin_path
         self.render_duration = render_duration
         self.output_dir = Path(output_dir)
-        # self.midi_file_path = "199311.mid" #midi_file_path
 
     def startup(self):
         engine = daw.RenderEngine(self.sample_rate, self.block_size)
@@ -70,9 +69,19 @@ class Worker:
         self.engine = engine
         self.synth = synth
 
+    def peak_normalize(self, audio):
+        """Peak normalize audio to -1..1 range to prevent clipping"""
+        max_val = np.max(np.abs(audio))
+        if max_val > 0:
+            return audio / max_val
+        return audio
+
     def process_item(self, item: Item):
         preset_path = item.preset_path
         midi_path = item.midi_path
+        timbre_id = item.timbre_id
+        content_id = item.content_id
+        
         self.synth.load_preset(preset_path)
 
         midi_data = pretty_midi.PrettyMIDI(midi_path)
@@ -85,9 +94,15 @@ class Worker:
                 self.synth.add_midi_note(pitch, velocity, start_time, duration)
 
         self.engine.render(self.render_duration)
-        audio = self.engine.get_audio()
-        output_path = self.output_dir / f'{Path(preset_path).stem}_{Path(midi_path).stem}.wav'
-        wavfile.write(str(output_path), self.sample_rate, audio.transpose())
+        audio = self.engine.get_audio().mean(axis=0)
+        
+        # Apply peak normalization
+        audio = self.peak_normalize(audio)
+        
+        # Create filename with T000_C000 format
+        output_filename = f'T{timbre_id:03d}_C{content_id:03d}.wav'
+        output_path = self.output_dir / output_filename
+        wavfile.write(str(output_path), self.sample_rate, audio)
 
         self.synth.clear_midi()
 
@@ -115,26 +130,62 @@ def main(plugin_path, preset_dir, sample_rate=44100, bpm=120,
     logger.setLevel(logging_level.upper())
 
     # Get all preset paths
-    preset_paths = list(glob(str(Path(preset_dir) / 'pad' / '*.fxp'), recursive=True))
-    preset_paths += list(glob(str(Path(preset_dir) / 'pad_original' / '*.fxp'), recursive=True))
-
+    preset_paths = list(glob(str(Path(preset_dir)/ '**' / '*.fxp'), recursive=True))
 
     # Load all MIDI file paths
     with open(f"../info/{split}_midi_file_paths_satisfied.txt", "r") as f:
-        midi_file_paths = [line.strip() for line in f.readlines()][:500]
+        midi_file_paths = [line.strip() for line in f.readlines()][:10] #[:100]
+
+    # Create ID mappings
+    # Timbre mapping
+    with open('info/preset_to_id.json', 'r') as f:
+        preset_to_id = json.load(f)
+
+    timbre_id_map = {}
+    for preset_path in preset_paths:
+        preset_name = Path(preset_path).stem
+        timbre_id_map[preset_name] = preset_to_id[preset_name]
+
+    # Content mapping
+    content_id_map = {Path(midi_path).stem: i for i, midi_path in enumerate(midi_file_paths)}
+    
+    # Save metadata
+    metadata = {
+        'timbre_id_map': {str(k): v for k, v in timbre_id_map.items()},
+        'content_id_map': {str(k): v for k, v in content_id_map.items()},
+        'total_timbres': len(timbre_id_map),
+        'total_contents': len(content_id_map),
+        'sample_rate': sample_rate,
+        'bpm': bpm,
+        'render_duration': render_duration,
+        'split': split
+    }
+    
+    metadata_path = Path(output_dir) / 'metadata.json'
+    os.makedirs(output_dir, exist_ok=True)
+    with open(metadata_path, 'w') as f:
+        json.dump(metadata, f, indent=2)
+    
+    logger.info(f"Saved metadata to {metadata_path}")
+    logger.info(f"Total timbres: {len(timbre_id_map)}, Total contents: {len(content_id_map)}")
+
 
     # Create all combinations of presets and MIDI files
     all_combinations = list(product(preset_paths, midi_file_paths))
     num_items = len(all_combinations)
     logger.info(f"Total combinations (preset x midi): {num_items}")
 
-    # Create input queue and fill it
+    # Create input queue and fill it with ID information
     input_queue = multiprocessing.Manager().Queue()
     for preset_path, midi_path in all_combinations:
-        input_queue.put(Item(preset_path=preset_path, midi_path=midi_path))
-
-    # Create output directory
-    os.makedirs(output_dir, exist_ok=True)
+        timbre_id = timbre_id_map[Path(preset_path).stem]
+        content_id = content_id_map[Path(midi_path).stem]
+        input_queue.put(Item(
+            preset_path=preset_path, 
+            midi_path=midi_path,
+            timbre_id=timbre_id,
+            content_id=content_id
+        ))
 
     # Determine number of workers
     num_processes = num_workers or multiprocessing.cpu_count()
@@ -191,6 +242,7 @@ if __name__ == "__main__":
     parser.add_argument('--log-level', default='INFO', choices=['DEBUG','INFO','WARNING','ERROR','CRITICAL', 'NOTSET'], help="Logger level.")
     parser.add_argument('--split', default='train', choices=['train', 'evaluation'], help="Split to render.")
     args = parser.parse_args()
-
+    print(args)
+    
     main(args.plugin, args.preset_dir, args.sample_rate, args.bpm, 
         args.render_duration, args.num_workers, args.output_dir, args.log_level, args.split)
