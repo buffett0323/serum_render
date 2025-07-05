@@ -26,14 +26,15 @@ from librosa.effects import pitch_shift
 # ---------------------------------------------------------------------
 # Configuration – adjust to your folder layout
 # ---------------------------------------------------------------------
-SPLIT        = "evaluation" #"train"
+BASE_DIR     = "/home/buffett/nas_data" #"/mnt/gestalt/home/buffett"
+SPLIT        = "train"
 ADSR_PATH    = "stats/envelopes_train_new.json"
-TIMBRE_DIR   = "/mnt/gestalt/home/buffett/adsr/rendered_one_shot"   # folder with *.wav one-shots
+TIMBRE_DIR   = f"{BASE_DIR}/adsr/rendered_one_shot"   # folder with *.wav one-shots
 MIDI_DIR     = f"../../info/{SPLIT}_midi_file_paths_satisfied.txt"    # folder with *.mid / *.midi files
-OUTPUT_DIR   = "/mnt/gestalt/home/buffett/adsr/rendered_t_adsr_c"   # rendered dataset will be written here
+OUTPUT_DIR   = f"{BASE_DIR}/adsr/rendered_t_adsr_c"   # rendered dataset will be written here
 START_POINT  = 44100 * 1
 END_POINT    = 44100 * 4
-MIDI_AMOUNT  = 10 # 200
+MIDI_AMOUNT  = 200
 
 TOTAL_DURATION = 3 # seconds
 REFERENCE_MIDI_NOTE = 60 # C4
@@ -529,6 +530,7 @@ def main():
             "sample_rate": SAMPLE_RATE,
             "start_point": START_POINT,
             "end_point": END_POINT,
+            "total_seconds": 3,
             "num_timbres": len(timbres),
             "num_adsr_envelopes": len(adsr_bank),
             "num_midi_files": len(midi_paths),
@@ -641,7 +643,7 @@ def main():
             for result in result_list:  # Each result_list contains results for all ADSR envelopes
                 if result.get("success", False):
                     successful_files.append(result)
-                    metadata["generated_files"].append(result)
+                    metadata["metadata"].append(result)
                 else:
                     failed_files.append(result)
                     print(f"Failed to render {result['filename']}: {result.get('error', 'Unknown error')}")
@@ -650,7 +652,7 @@ def main():
         for result in all_results:
             if result.get("success", False):
                 successful_files.append(result)
-                metadata["generated_files"].append(result)
+                metadata["metadata"].append(result)
             else:
                 failed_files.append(result)
                 print(f"Failed to render {result['filename']}: {result.get('error', 'Unknown error')}")
@@ -673,9 +675,9 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Generate ADSR+Hold dataset from one-shot timbres and MIDI files")
     parser.add_argument("--split", type=str, default="train", help="Dataset split (default: train)")
     parser.add_argument("--adsr_path", type=str, default="stats/envelopes_train_new.json", help="Path to ADSR envelope JSON file")
-    parser.add_argument("--timbre_dir", type=str, default="/mnt/gestalt/home/buffett/adsr/rendered_one_shot", help="Directory containing one-shot timbres")
+    parser.add_argument("--timbre_dir", type=str, default=f"{BASE_DIR}/adsr/rendered_one_shot", help="Directory containing one-shot timbres")
     parser.add_argument("--midi_dir", type=str, default=MIDI_DIR, help="Directory containing MIDI files")
-    parser.add_argument("--output_dir", type=str, default="/mnt/gestalt/home/buffett/adsr/rendered_t_adsr_c_eval", help="Output directory for the rendered dataset")
+    parser.add_argument("--output_dir", type=str, default=OUTPUT_DIR, help="Output directory for the rendered dataset")
     parser.add_argument("--start_point", type=int, default=44100*1, help="Start point in seconds")
     parser.add_argument("--end_point", type=int, default=44100*4, help="End point in seconds")
     parser.add_argument("--midi_amount", type=int, default=MIDI_AMOUNT, help="Number of MIDI files to process")
