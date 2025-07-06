@@ -24,7 +24,7 @@ from librosa.effects import pitch_shift
 # ---------------------------------------------------------------------
 # Configuration
 # ---------------------------------------------------------------------
-BASE_DIR = "/home/buffett/nas_data/EDM_FAC_NEW_DATA" # "/Users/buffettliu/Desktop/Music_AI/Codes/serum_render"
+BASE_DIR = "/mnt/gestalt/home/buffett/EDM_FAC_NEW_DATA" # "/Users/buffettliu/Desktop/Music_AI/Codes/serum_render"
 SPLIT = "train"
 ADSR_PATH = "stats/envelopes_train_new.json"
 TIMBRE_DIR = f"{BASE_DIR}/rendered_one_shot_flat"
