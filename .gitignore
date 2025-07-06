@@ -2,6 +2,7 @@ __pycache__
 rendered_audio/
 rendered_one_shot/
 rendered_one_shot_flat/
+rendered_ss_t_adsr_c/
 rendered_t_adsr_c/
 vstpreset/
 sample_audio/
