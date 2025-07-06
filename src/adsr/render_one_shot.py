@@ -59,9 +59,10 @@ def main(plugin_path, preset_dir, sample_rate=44100, bpm=120,
     engine.load_graph(graph)
 
     # MIDI note numbers for C1 ~ C7
-    base_notes = {'2': 36, '3': 48, '4': 60}
-    click = {'C': 0, 'D': 2, 'E': 4, 'F': 5, 'G': 7, 'A': 9, 'B': 11}
-    c_notes = {f'{note}{octave}': click[note] + base_notes[octave] for note in click.keys() for octave in base_notes.keys()}
+    # base_notes = {'2': 36, '3': 48, '4': 60}
+    # click = {'C': 0, 'D': 2, 'E': 4, 'F': 5, 'G': 7, 'A': 9, 'B': 11}
+    # c_notes = {f'{note}{octave}': click[note] + base_notes[octave] for note in click.keys() for octave in base_notes.keys()}
+    c_notes = {'C3': 48}
 
     preset_to_id = {}
     id_to_preset = {}
