@@ -7,7 +7,7 @@ import glob
 
 FILTER_START_TIME = 0.5 #0.5
 FILTER_END_TIME = 2.0
-OVERLAP_RATIO = 100
+OVERLAP_RATIO = 44100
 
 def extract_flat_segments(audio_path, target_duration=0.3, amplitude_threshold=0.2, 
                          flatness_threshold=0.1, sample_rate=44100):
@@ -32,7 +32,7 @@ def extract_flat_segments(audio_path, target_duration=0.3, amplitude_threshold=0
     
     
     # Calculate segment length in samples
-    segment_length = int(target_duration * sample_rate)
+    segment_length = int(target_duration * sample_rate) # 44100 * 1
     
     # Calculate RMS for each potential segment
     segments = []
