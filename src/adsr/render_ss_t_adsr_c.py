@@ -24,7 +24,7 @@ from librosa.effects import pitch_shift
 # ---------------------------------------------------------------------
 # Configuration
 # ---------------------------------------------------------------------
-BASE_DIR = "/Users/buffettliu/Desktop/Music_AI/Codes/serum_render" #"/home/buffett/nas_data"
+BASE_DIR = "/home/buffett/nas_data/EDM_FAC_NEW_DATA" # "/Users/buffettliu/Desktop/Music_AI/Codes/serum_render"
 SPLIT = "train"
 ADSR_PATH = "stats/envelopes_train_new.json"
 TIMBRE_DIR = f"{BASE_DIR}/rendered_one_shot_flat"
@@ -229,7 +229,6 @@ def main():
             for n_idx, note_name in enumerate(note_names):
                 combinations.append((t_idx, a_idx, n_idx, timbre, adsr_params, note_name, OUTPUT_DIR))
     
-    combinations = combinations[:100]
     print(f"Total combinations: {len(combinations)}")
     
     # Setup multiprocessing
