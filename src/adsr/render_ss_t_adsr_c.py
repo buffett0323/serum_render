@@ -25,10 +25,10 @@ from librosa.effects import pitch_shift
 # Configuration
 # ---------------------------------------------------------------------
 BASE_DIR = "/mnt/gestalt/home/buffett/EDM_FAC_NEW_DATA" # "/Users/buffettliu/Desktop/Music_AI/Codes/serum_render"
-SPLIT = "train"
-ADSR_PATH = "stats/envelopes_train_new.json"
+SPLIT = "val" # train, val
+ADSR_PATH = f"stats/envelopes_{SPLIT}_new.json"
 TIMBRE_DIR = f"{BASE_DIR}/rendered_one_shot_flat"
-OUTPUT_DIR = f"{BASE_DIR}/rendered_ss_t_adsr_c"
+OUTPUT_DIR = f"{BASE_DIR}/rendered_ss_t_adsr_c/{SPLIT}"
 START_POINT = 44100 * 0
 END_POINT = 44100 * 1
 
