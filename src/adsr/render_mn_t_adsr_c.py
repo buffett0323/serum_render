@@ -27,7 +27,7 @@ from librosa.effects import pitch_shift
 # Configuration – adjust to your folder layout
 # ---------------------------------------------------------------------
 BASE_DIR     = "/mnt/gestalt/home/buffett/EDM_FAC_NEW_DATA"
-SPLIT        = "train" # train, val
+SPLIT        = "evaluation" # train, evaluation
 ADSR_PATH    = f"stats/envelopes_{SPLIT}_new.json"
 TIMBRE_DIR   = f"{BASE_DIR}/rendered_one_shot_flat"   # folder with *.wav one-shots
 MIDI_DIR     = f"../../info/{SPLIT}_midi_file_paths_satisfied.txt"    # folder with *.mid / *.midi files

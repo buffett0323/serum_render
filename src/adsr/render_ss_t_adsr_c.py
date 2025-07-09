@@ -25,10 +25,10 @@ from librosa.effects import pitch_shift
 # Configuration
 # ---------------------------------------------------------------------
 BASE_DIR = "/mnt/gestalt/home/buffett/EDM_FAC_NEW_DATA" # "/Users/buffettliu/Desktop/Music_AI/Codes/serum_render"
-SPLIT = "val" # train, val
+SPLIT = "train" # train, evaluation
 ADSR_PATH = f"stats/envelopes_{SPLIT}_new.json"
 TIMBRE_DIR = f"{BASE_DIR}/rendered_one_shot_flat"
-OUTPUT_DIR = f"{BASE_DIR}/rendered_ss_t_adsr_c/{SPLIT}"
+OUTPUT_DIR = f"{BASE_DIR}/rendered_ss_t_adsr_c_new/{SPLIT}"
 START_POINT = 44100 * 0
 END_POINT = 44100 * 1
 
@@ -58,6 +58,12 @@ for idx, (note_name, midi_note) in enumerate(sorted_notes):
 def pitch_shift_audio(one_shot: np.ndarray, n_steps: float) -> np.ndarray:
     """Pitch shift audio by n_steps semitones."""
     return pitch_shift(one_shot, sr=SAMPLE_RATE, n_steps=n_steps)
+
+
+def get_timbre_info(timbre_path: str) -> Dict:
+    return {
+        "filename": os.path.basename(timbre_path)
+    }
 
 
 def create_adsr_envelope(total_samples: int, attack_ms: float, decay_ms: float, 
@@ -211,16 +217,16 @@ def main():
     # Create output directory
     os.makedirs(OUTPUT_DIR, exist_ok=True)
     
-    # Load timbres
+    # Pre-load timbres (converted to mono, SR-matched)
     timbres = []
-    for path in tqdm(timbre_paths, desc="Loading timbres"):
-        audio, sr = sf.read(path, always_2d=False)
-        if audio.ndim > 1:
-            audio = audio.mean(axis=0)  # Convert to mono
-        audio = audio[START_POINT:END_POINT]  # Extract segment
+    timbre_info = []
+    for t in tqdm(timbre_paths, desc="Loading timbres"):
+        x, sr = sf.read(t, always_2d=False)
+        x = x.T
         if sr != SAMPLE_RATE:
-            raise ValueError(f"Sample rate mismatch: {sr} != {SAMPLE_RATE}")
-        timbres.append(audio.astype(np.float32))
+            raise ValueError(f"{t} has SR={sr}; please resample to {SAMPLE_RATE} Hz.")
+        timbres.append(x.astype(np.float32))
+        timbre_info.append(get_timbre_info(t))
     
     # Prepare all combinations
     combinations = []
@@ -236,9 +242,6 @@ def main():
     print(f"Using {num_processes} processes")
     
     # Process combinations
-    successful_files = []
-    failed_files = []
-    
     try:
         with mp.Pool(processes=num_processes) as pool:
             results = list(tqdm(
@@ -253,18 +256,6 @@ def main():
         for combo in tqdm(combinations, desc="Rendering (sequential)"):
             results.append(render_single_combination(combo))
     
-    # Collect results
-    for result in results:
-        if result.get("success", False):
-            successful_files.append(result)
-        else:
-            failed_files.append(result)
-            print(f"Failed: {result['filename']} - {result.get('error', 'Unknown error')}")
-    
-    print(f"Successfully generated: {len(successful_files)} files")
-    if failed_files:
-        print(f"Failed: {len(failed_files)} files")
-    
     # Save metadata
     metadata = {
         "dataset_info": {
@@ -272,22 +263,42 @@ def main():
             "num_adsr_envelopes": len(adsr_bank),
             "num_notes": len(note_names),
             "total_files": len(combinations),
-            "successful_files": len(successful_files),
-            "failed_files": len(failed_files),
             "sample_rate": SAMPLE_RATE,
             "reference_midi_note": REFERENCE_MIDI_NOTE,
             "c_notes_mapping": C_NOTES,
             "c_notes_indexed": C_NOTES_INDEXED
         },
-        "files": successful_files
+        "adsr_envelopes": {},
+        "timbres": {},
+        "metadata": []
     }
     
-    metadata_path = os.path.join(OUTPUT_DIR, "metadata.json")
-    with open(metadata_path, 'w') as f:
-        json.dump(metadata, f, indent=2)
+    for result in results:
+        metadata["metadata"].append(result)
     
+    # Add ADSR envelope metadata
+    for a_idx, adsr in enumerate(adsr_bank):
+        metadata["adsr_envelopes"][f"ADSR{a_idx:03d}"] = {
+            "attack": float(adsr["attack"]),
+            "hold": float(adsr["hold"]),
+            "decay": float(adsr["decay"]),
+            "sustain": float(adsr["sustain"]),
+            "release": float(adsr["release"]),
+            "total_time": float(adsr["attack"] + adsr["hold"] + adsr["decay"] + adsr["release"])
+        }
+    
+    # Add timbre metadata
+    for t_idx, info in enumerate(timbre_info):
+        metadata["timbres"][f"T{t_idx:03d}"] = info
+    
+    # Save metadata with each key to a separate JSON file
+    for key, value in metadata.items():
+        json_path = os.path.join(OUTPUT_DIR, f"{key}.json")
+        with open(json_path, 'w') as f:
+            json.dump(value, f, indent=2)
+
     end_time = time.time()
-    print(f"Total time: {end_time - start_time:.2f} seconds")
+    print(f"Total time taken: {end_time - start_time:.2f} seconds")
 
 
 if __name__ == "__main__":
