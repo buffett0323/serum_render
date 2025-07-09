@@ -5,28 +5,27 @@ import pretty_midi
 import soundfile as sf
 import matplotlib.pyplot as plt
 
-one_shot_path = "/mnt/gestalt/home/buffett/adsr/rendered_one_shot/T354_C4.wav"
-midi_path = "/mnt/gestalt/home/buffett/EDM_FAC_DATA/single_note_midi/evaluation/midi/1815011.mid"
-adsr_path = "stats/envelopes_train_new.json"
+midi_path = "../../midi/midi_files/train/midi/100216.mid"
+one_shot_path = "/mnt/gestalt/home/buffett/EDM_FAC_NEW_DATA/rendered_one_shot_flat/T32_CC3_best_flat_t0.50s.wav"
+adsr = {
+    "attack": 21.637,
+    "decay": 192.553,
+    "hold": 15.675,
+    "sustain": 0.021,
+    "release": 74.781,
+    "length": 304.646,
+}
 
 SAMPLE_RATE = 44100
 TOTAL_DURATION = 3
-REFERENCE_MIDI_NOTE = 60  # C4
+REFERENCE_MIDI_NOTE = 48  # C3
 
-# Load the timbre audio
-timbre, sr = sf.read(one_shot_path)
-if timbre.ndim > 1:
-    timbre = timbre[:, 0]  # Convert to mono if stereo
-
-# Resample if necessary
+timbre, sr = sf.read(one_shot_path, always_2d=False)
+timbre = timbre.T
 if sr != SAMPLE_RATE:
-    from librosa.core import resample
-    timbre = resample(timbre, orig_sr=sr, target_sr=SAMPLE_RATE)
+    raise ValueError(f"{one_shot_path} has SR={sr}; please resample to {SAMPLE_RATE} Hz.")
+timbre = timbre.astype(np.float32)
 
-with open(adsr_path, "r") as f:
-    adsr_bank = json.load(f)
-
-print(adsr_bank[0])
 
 def pitch_shift_audio(one_shot: np.ndarray, n_steps: float) -> np.ndarray:
     # C4 = MIDI note 60, so if note.pitch is 62 (D4), pitch_shift = 2 semitones up
@@ -81,7 +80,6 @@ for pitch in unique_pitches:
 
 # Render for each ADSR envelope
 results = []
-adsr = adsr_bank[0]
 mix_with_env = np.zeros(total_samples, dtype=np.float32)
 mix_without_env = np.zeros(total_samples, dtype=np.float32)
 
@@ -332,7 +330,7 @@ plt.xlim(0, TOTAL_DURATION)
 plt.tight_layout()
 
 # Save the plot
-output_filename = 'adsr_plot.png'
+output_filename = 'adsr_exp/adsr_plot.png'
 plt.savefig(output_filename, dpi=300, bbox_inches='tight')
 print(f"Plot saved as: {output_filename}")
 
@@ -340,12 +338,12 @@ print(f"Plot saved as: {output_filename}")
 import soundfile as sf
 
 # Save original audio (without envelope)
-original_audio_filename = 'original_audio_without_env.wav'
+original_audio_filename = 'adsr_exp/audio_wo_adsr_env.wav'
 sf.write(original_audio_filename, mix_without_env, SAMPLE_RATE)
 print(f"Original audio (without envelope) saved as: {original_audio_filename}")
 
 # Save audio with envelope applied
-envelope_audio_filename = 'audio_with_adsr_env.wav'
+envelope_audio_filename = 'adsr_exp/audio_w_adsr_env.wav'
 sf.write(envelope_audio_filename, mix_with_env, SAMPLE_RATE)
 print(f"Audio with ADSR envelope saved as: {envelope_audio_filename}")
 
