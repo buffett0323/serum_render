@@ -169,12 +169,12 @@ def render_single_combination(args: Tuple[int, int, int, np.ndarray, Dict, str, 
             "adsr_index": adsr_idx,
             "note_index": note_idx,
             "note_name": note_name,
-            "duration": float(len(audio) / SAMPLE_RATE),
-            "samples": len(audio),
-            "sample_rate": SAMPLE_RATE,
-            "peak_amplitude": float(np.abs(audio).max()),
-            "rms_amplitude": float(np.sqrt(np.mean(audio**2))),
-            "success": True
+            # "duration": float(len(audio) / SAMPLE_RATE),
+            # "samples": len(audio),
+            # "sample_rate": SAMPLE_RATE,
+            # "peak_amplitude": float(np.abs(audio).max()),
+            # "rms_amplitude": float(np.sqrt(np.mean(audio**2))),
+            # "success": True
         }
         
     except Exception as e:

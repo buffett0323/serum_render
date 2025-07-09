@@ -26,18 +26,17 @@ from librosa.effects import pitch_shift
 # ---------------------------------------------------------------------
 # Configuration – adjust to your folder layout
 # ---------------------------------------------------------------------
-BASE_DIR     = "/home/buffett/nas_data" #"/mnt/gestalt/home/buffett"
-SPLIT        = "train"
-ADSR_PATH    = "stats/envelopes_train_new.json"
-TIMBRE_DIR   = f"{BASE_DIR}/adsr/rendered_one_shot"   # folder with *.wav one-shots
+BASE_DIR     = "/mnt/gestalt/home/buffett/EDM_FAC_NEW_DATA"
+SPLIT        = "train" # train, val
+ADSR_PATH    = f"stats/envelopes_{SPLIT}_new.json"
+TIMBRE_DIR   = f"{BASE_DIR}/rendered_one_shot_flat"   # folder with *.wav one-shots
 MIDI_DIR     = f"../../info/{SPLIT}_midi_file_paths_satisfied.txt"    # folder with *.mid / *.midi files
-OUTPUT_DIR   = f"{BASE_DIR}/adsr/rendered_t_adsr_c"   # rendered dataset will be written here
-START_POINT  = 44100 * 1
-END_POINT    = 44100 * 4
-MIDI_AMOUNT  = 200
+OUTPUT_DIR   = f"{BASE_DIR}/rendered_mn_t_adsr_c/{SPLIT}"   # rendered dataset will be written here
+MIDI_AMOUNT  = 100
 
 TOTAL_DURATION = 3 # seconds
-REFERENCE_MIDI_NOTE = 60 # C4
+TRAINING_DURATION = 1 # seconds
+REFERENCE_MIDI_NOTE = 48 # C3
 
 # Multiprocessing configuration
 NUM_PROCESSES = None  # Set to None for auto-detection, or specify a number (e.g., 4, 8, 16)
@@ -60,19 +59,6 @@ def pitch_shift_audio(one_shot: np.ndarray, n_steps: float) -> np.ndarray:
 # ---------------------------------------------------------------------
 # 2.  ADSR-Envelope
 # ---------------------------------------------------------------------
-def adsr_env(total_len, a, d, s_level, r):
-    def lin(start, end, n):
-        return np.linspace(start, end, n, endpoint=False)
-
-    env = np.concatenate([
-        lin(0, 1, a),
-        lin(1, s_level, d),
-        np.full(total_len - (a + d + r), s_level),
-        lin(s_level, 0, r)
-    ])
-    return env
-
-
 def process_adsr(adsr):
     A = adsr["attack"]
     D = adsr["decay"]
@@ -135,6 +121,9 @@ def render_midi_optimized(midi_path: str,
     for adsr in adsr_bank:
         mix = np.zeros(total_samples, dtype=np.float32)
         
+        # Process ADSR data
+        length, A_samples, D_samples, S, R_samples = process_adsr(adsr)
+        
         # Process each note
         for note in inst.notes:
             if note.start >= TOTAL_DURATION:
@@ -146,9 +135,6 @@ def render_midi_optimized(midi_path: str,
 
             # Get preloaded pitch-shifted timbre
             seg = pitch_shifted_timbres[note.pitch]
-            
-            # Process ADSR data
-            length, A_samples, D_samples, S, R_samples = process_adsr(adsr)
             
             # Create envelope for the full note duration (including release)
             total_env_samples = note_dur_samp + R_samples
@@ -217,39 +203,18 @@ def render_midi_optimized(midi_path: str,
 # 3.  Metadata generation functions
 # ---------------------------------------------------------------------
 def get_timbre_info(timbre_path: str) -> Dict:
-    """Extract metadata from timbre file."""
-    try:
-        x, sr = sf.read(timbre_path, always_2d=False)
-        return {
-            "filename": os.path.basename(timbre_path),
-            "sample_rate": int(sr),
-            "duration": float(len(x) / sr),
-            "channels": x.ndim,
-            "samples": len(x),
-            "dtype": str(x.dtype)
-        }
-    except Exception as e:
-        return {
-            "filename": os.path.basename(timbre_path),
-            "error": str(e)
-        }
-    
+    return {
+        "filename": os.path.basename(timbre_path)
+    }
+
     
 def get_midi_info(midi_path: str) -> Dict:
-    """Extract metadata from MIDI file."""
-    try:
-        midi = pretty_midi.PrettyMIDI(midi_path)
-        return {
-            "filename": os.path.basename(midi_path),
-            "duration": float(midi.get_end_time()),
-            "num_notes": len(midi.instruments[0].notes),
-            "onset_seconds": [note.start for note in midi.instruments[0].notes if note.start < TOTAL_DURATION],
-        }
-    except Exception as e:
-        return {
-            "filename": os.path.basename(midi_path),
-            "error": str(e)
-        }
+    midi = pretty_midi.PrettyMIDI(midi_path)
+    return {
+        "filename": os.path.basename(midi_path),
+        "num_notes": len(midi.instruments[0].notes),
+        "onset_seconds": [note.start for note in midi.instruments[0].notes if note.start <= TOTAL_DURATION - TRAINING_DURATION],
+    }
 
 
 # ---------------------------------------------------------------------
@@ -286,18 +251,18 @@ def render_single_timbre_midi_combination(args: Tuple[int, int, np.ndarray, List
                 "filename": out_name,
                 "file_path": out_path,
                 "timbre_index": t_idx,
-                "timbre_id": f"T{t_idx:03d}",
+                # "timbre_id": f"T{t_idx:03d}",
                 "adsr_index": a_idx,
-                "adsr_id": f"ADSR{a_idx:03d}",
+                # "adsr_id": f"ADSR{a_idx:03d}",
                 "midi_index": c_idx,
-                "midi_id": f"C{c_idx:03d}",
-                "duration": float(len(audio) / SAMPLE_RATE),
-                "samples": len(audio),
-                "sample_rate": SAMPLE_RATE,
-                "channels": 1,
-                "peak_amplitude": float(np.abs(audio).max()),
-                "rms_amplitude": float(np.sqrt(np.mean(audio**2))),
-                "success": True
+                # "midi_id": f"C{c_idx:03d}",
+                # "duration": float(len(audio) / SAMPLE_RATE),
+                # "samples": len(audio),
+                # "sample_rate": SAMPLE_RATE,
+                # "channels": 1,
+                # "peak_amplitude": float(np.abs(audio).max()),
+                # "rms_amplitude": float(np.sqrt(np.mean(audio**2))),
+                # "success": True
             }
             results.append(result)
         
@@ -313,7 +278,7 @@ def render_single_timbre_midi_combination(args: Tuple[int, int, np.ndarray, List
                 "adsr_index": a_idx,
                 "midi_index": c_idx,
                 "error": str(e),
-                "success": False
+                # "success": False
             }
             results.append(result)
         return results
@@ -356,13 +321,13 @@ def render_single_combination_legacy(args: Tuple[int, int, int, np.ndarray, Dict
             "adsr_id": f"ADSR{a_idx:03d}",
             "midi_index": c_idx,
             "midi_id": f"C{c_idx:03d}",
-            "duration": float(len(audio) / SAMPLE_RATE),
-            "samples": len(audio),
-            "sample_rate": SAMPLE_RATE,
-            "channels": 1,
-            "peak_amplitude": float(np.abs(audio).max()),
-            "rms_amplitude": float(np.sqrt(np.mean(audio**2))),
-            "success": True
+            # "duration": float(len(audio) / SAMPLE_RATE),
+            # "samples": len(audio),
+            # "sample_rate": SAMPLE_RATE,
+            # "channels": 1,
+            # "peak_amplitude": float(np.abs(audio).max()),
+            # "rms_amplitude": float(np.sqrt(np.mean(audio**2))),
+            # "success": True
         }
     except Exception as e:
         # Return error metadata
@@ -371,8 +336,7 @@ def render_single_combination_legacy(args: Tuple[int, int, int, np.ndarray, Dict
             "timbre_index": t_idx,
             "adsr_index": a_idx,
             "midi_index": c_idx,
-            "error": str(e),
-            "success": False
+            "error": str(e)
         }
 
 
@@ -506,9 +470,6 @@ def main():
     for t in tqdm(timbre_paths, desc="Loading timbres"):
         x, sr = sf.read(t, always_2d=False)
         x = x.T
-        x = x[:, START_POINT:END_POINT]  # 3 secs
-        if x.ndim > 1:
-            x = x.mean(axis=0)  # stereo → mono
         if sr != SAMPLE_RATE:
             raise ValueError(f"{t} has SR={sr}; please resample to {SAMPLE_RATE} Hz.")
         timbres.append(x.astype(np.float32))
@@ -528,9 +489,8 @@ def main():
             "name": "T_ADSR_C_Dataset",
             "description": "Dataset generated from one-shot timbres with ADSR envelopes applied to MIDI files",
             "sample_rate": SAMPLE_RATE,
-            "start_point": START_POINT,
-            "end_point": END_POINT,
-            "total_seconds": 3,
+            "total_seconds": TOTAL_DURATION,
+            "training_seconds": TRAINING_DURATION,
             "num_timbres": len(timbres),
             "num_adsr_envelopes": len(adsr_bank),
             "num_midi_files": len(midi_paths),
@@ -542,7 +502,7 @@ def main():
         "adsr_envelopes": {},
         "timbres": {},
         "midi_files": {},
-        "generated_files": []
+        "metadata": []
     }
     
     # Add ADSR envelope metadata
@@ -633,34 +593,17 @@ def main():
     render_end_time = time.time()
     print(f"Rendering completed in {render_end_time - render_start_time:.2f} seconds")
     
-    # Collect results
-    successful_files = []
-    failed_files = []
-    
+    # Render all combinations
     if USE_OPTIMIZED_RENDERING:
         # Optimized approach: each result is a list of results for all ADSR envelopes
         for result_list in all_results:
             for result in result_list:  # Each result_list contains results for all ADSR envelopes
-                if result.get("success", False):
-                    successful_files.append(result)
-                    metadata["metadata"].append(result)
-                else:
-                    failed_files.append(result)
-                    print(f"Failed to render {result['filename']}: {result.get('error', 'Unknown error')}")
+                metadata["metadata"].append(result)
     else:
         # Legacy approach: each result is a single result
         for result in all_results:
-            if result.get("success", False):
-                successful_files.append(result)
-                metadata["metadata"].append(result)
-            else:
-                failed_files.append(result)
-                print(f"Failed to render {result['filename']}: {result.get('error', 'Unknown error')}")
+            metadata["metadata"].append(result)
     
-    print(f"Successfully generated {len(successful_files)} files")
-    if failed_files:
-        print(f"Failed to generate {len(failed_files)} files")
-
     # Save metadata with each key to a separate JSON file
     for key, value in metadata.items():
         json_path = os.path.join(OUTPUT_DIR, f"{key}.json")
@@ -673,19 +616,17 @@ def main():
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Generate ADSR+Hold dataset from one-shot timbres and MIDI files")
-    parser.add_argument("--split", type=str, default="train", help="Dataset split (default: train)")
-    parser.add_argument("--adsr_path", type=str, default="stats/envelopes_train_new.json", help="Path to ADSR envelope JSON file")
-    parser.add_argument("--timbre_dir", type=str, default=f"{BASE_DIR}/adsr/rendered_one_shot", help="Directory containing one-shot timbres")
+    parser.add_argument("--split", type=str, default=SPLIT, help="Dataset split (default: train)")
+    parser.add_argument("--adsr_path", type=str, default=ADSR_PATH, help="Path to ADSR envelope JSON file")
+    parser.add_argument("--timbre_dir", type=str, default=TIMBRE_DIR, help="Directory containing one-shot timbres")
     parser.add_argument("--midi_dir", type=str, default=MIDI_DIR, help="Directory containing MIDI files")
     parser.add_argument("--output_dir", type=str, default=OUTPUT_DIR, help="Output directory for the rendered dataset")
-    parser.add_argument("--start_point", type=int, default=44100*1, help="Start point in seconds")
-    parser.add_argument("--end_point", type=int, default=44100*4, help="End point in seconds")
     parser.add_argument("--midi_amount", type=int, default=MIDI_AMOUNT, help="Number of MIDI files to process")
-    parser.add_argument("--total_duration", type=float, default=3, help="Total duration of the rendered audio")
-    parser.add_argument("--reference_midi_note", type=int, default=60, help="Reference MIDI note for pitch shifting")
-    parser.add_argument("--num_processes", type=int, default=None, help="Number of processes for multiprocessing")
-    parser.add_argument("--max_processes", type=int, default=16, help="Maximum number of processes to use")
-    parser.add_argument("--use_optimized", action="store_true", default=True, help="Use optimized rendering with preloaded pitch-shifted timbres")
+    parser.add_argument("--total_duration", type=float, default=TOTAL_DURATION, help="Total duration of the rendered audio")
+    parser.add_argument("--reference_midi_note", type=int, default=REFERENCE_MIDI_NOTE, help="Reference MIDI note for pitch shifting")
+    parser.add_argument("--num_processes", type=int, default=NUM_PROCESSES, help="Number of processes for multiprocessing")
+    parser.add_argument("--max_processes", type=int, default=MAX_PROCESSES, help="Maximum number of processes to use")
+    parser.add_argument("--use_optimized", action="store_true", default=USE_OPTIMIZED_RENDERING, help="Use optimized rendering with preloaded pitch-shifted timbres")
     parser.add_argument("--use_legacy", action="store_true", help="Use legacy rendering (slower but uses less memory)")
     args = parser.parse_args()
 
@@ -694,8 +635,6 @@ if __name__ == "__main__":
     TIMBRE_DIR   = args.timbre_dir
     MIDI_DIR     = args.midi_dir
     OUTPUT_DIR   = args.output_dir
-    START_POINT  = args.start_point
-    END_POINT    = args.end_point
     MIDI_AMOUNT  = args.midi_amount
     TOTAL_DURATION = args.total_duration
     REFERENCE_MIDI_NOTE = args.reference_midi_note
@@ -703,4 +642,5 @@ if __name__ == "__main__":
     MAX_PROCESSES = args.max_processes
     USE_OPTIMIZED_RENDERING = args.use_optimized and not args.use_legacy
 
+    print(args)
     main()
