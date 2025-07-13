@@ -2,10 +2,16 @@ import pretty_midi
 import matplotlib.pyplot as plt
 import numpy as np
 import os
+import warnings
 from tqdm import tqdm
 
-UNIQUE_NOTES_THRESHOLD = 3 # 5
-DURATION_SECOND = 5 # 10
+# Suppress pretty_midi warnings about invalid MIDI file types
+warnings.filterwarnings("ignore", category=RuntimeWarning, module="pretty_midi")
+
+UNIQUE_NOTES_THRESHOLD = 5 # 5
+DURATION_SECOND = 3 # 10
+SPLIT = ["train", "evaluation"]
+AMOUNT = [200, 50]
 
 def plot_midi_piano_roll(midi_path, split, max_duration=DURATION_SECOND):
     satisfied = True
@@ -33,7 +39,7 @@ def plot_midi_piano_roll(midi_path, split, max_duration=DURATION_SECOND):
                 break
     
         
-    # ----- Check 3: >1s gap with no note -----
+    # ----- Check 3: >0.5s gap with no note -----
     active_per_frame = (piano_roll[:, :end_frame] > 0).sum(axis=0)
     silent_frames = (active_per_frame == 0).astype(int)
 
@@ -50,8 +56,8 @@ def plot_midi_piano_roll(midi_path, split, max_duration=DURATION_SECOND):
     if current_streak > 0:
         silent_streaks.append(current_streak)
 
-    if any(streak > fs for streak in silent_streaks):  # > 1 sec gap
-        # print(f"WARNING: {midi_name} has silence longer than 1s")
+    if any(streak > fs * 0.5 for streak in silent_streaks):  # > 0.5 sec gap
+        # print(f"WARNING: {midi_name} has silence longer than 0.5s")
         satisfied = False
         
     if satisfied:
@@ -68,6 +74,31 @@ def plot_midi_piano_roll(midi_path, split, max_duration=DURATION_SECOND):
         x_labels = [f"{t/fs:.1f}" for t in x_ticks]
         plt.xticks(x_ticks, x_labels)
         
+        # Add note annotations and onset markers
+        for instrument in midi_data.instruments:
+            for note in instrument.notes:
+                # Only process notes within the time window
+                if note.start < max_duration:
+                    # Convert time to frame index
+                    start_frame = int(note.start * fs)
+                    end_frame_note = int(note.end * fs)
+                    
+                    # Only annotate if note is within the displayed range
+                    if start_frame < end_frame:
+                        # Get note name
+                        note_name = pretty_midi.note_number_to_name(note.pitch)
+                        
+                        # Mark onset with a vertical line
+                        plt.axvline(x=start_frame, color='red', alpha=0.7, linestyle='--', linewidth=1)
+                        
+                        # Add note annotation at the onset
+                        plt.annotate(f'{note_name}\n{note.start:.2f}s', 
+                                xy=(start_frame, note.pitch), 
+                                xytext=(start_frame + 50, note.pitch + 2),
+                                fontsize=8, color='white', weight='bold',
+                                bbox=dict(boxstyle="round,pad=0.3", facecolor='red', alpha=0.8),
+                                arrowprops=dict(arrowstyle="->", color='red', alpha=0.7))
+        
         plt.savefig(f"../vis_results/{split}/{midi_name}.png")
         plt.close()
     
@@ -76,27 +107,26 @@ def plot_midi_piano_roll(midi_path, split, max_duration=DURATION_SECOND):
         
     
 if __name__ == "__main__":
-    SPLIT = "evaluation"
-    MIDI_DIR = f"../midi/midi_files/{SPLIT}/midi"
-    AMOUNT = 50
-    counter = 0
-    satisfied_midi_file_paths = []
-    midi_file_paths = [os.path.join(MIDI_DIR, f) 
-                       for f in os.listdir(MIDI_DIR) if f.endswith('.mid')]#[:AMOUNT]
+    for split, amount in zip(SPLIT, AMOUNT):
+        counter = 0
+        satisfied_midi_file_paths = []
+        MIDI_DIR = f"../midi/midi_files/{split}/midi"
+        midi_file_paths = [os.path.join(MIDI_DIR, f) 
+                        for f in os.listdir(MIDI_DIR) if f.endswith('.mid')]
 
-    os.makedirs("../vis_results", exist_ok=True)
-    os.makedirs(f"../vis_results/{SPLIT}", exist_ok=True)
-    
-    for mfp in tqdm(midi_file_paths):
-        if plot_midi_piano_roll(mfp, SPLIT):
-            satisfied_midi_file_paths.append(mfp)
+        os.makedirs("../vis_results", exist_ok=True)
+        os.makedirs(f"../vis_results/{split}", exist_ok=True)
+        
+        for mfp in tqdm(midi_file_paths):
+            if plot_midi_piano_roll(mfp, split):
+                satisfied_midi_file_paths.append(mfp)
 
-            counter += 1
-            if counter == AMOUNT:
-                break
-            
-    with open(f"../info/{SPLIT}_midi_file_paths_satisfied.txt", "w") as f:
-        for mfp in satisfied_midi_file_paths:
-            f.write(mfp + "\n")
-            
-    print(f"Saved {len(satisfied_midi_file_paths)} satisfied MIDI files")
+                counter += 1
+                if counter == amount:
+                    break
+                
+        with open(f"../info/{split}_midi_file_paths_satisfied.txt", "w") as f:
+            for mfp in satisfied_midi_file_paths:
+                f.write(mfp + "\n")
+                
+        print(f"Saved {len(satisfied_midi_file_paths)} satisfied MIDI files for {split}")
