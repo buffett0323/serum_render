@@ -27,7 +27,7 @@ from librosa.effects import pitch_shift
 # Configuration – adjust to your folder layout
 # ---------------------------------------------------------------------
 BASE_DIR     = "/mnt/gestalt/home/buffett/EDM_FAC_NEW_DATA"
-SPLIT        = "evaluation" # train, evaluation
+SPLIT        = "train" # train, evaluation
 ADSR_PATH    = f"stats/envelopes_{SPLIT}_new.json"
 TIMBRE_DIR   = f"{BASE_DIR}/rendered_one_shot_flat"   # folder with *.wav one-shots
 MIDI_DIR     = f"../../info/{SPLIT}_midi_file_paths_satisfied.txt"    # folder with *.mid / *.midi files
@@ -214,7 +214,7 @@ def get_midi_info(midi_path: str) -> Dict:
         "filename": os.path.basename(midi_path),
         "num_notes": len(midi.instruments[0].notes),
         "onset_seconds": [note.start for note in midi.instruments[0].notes if note.start <= TOTAL_DURATION - TRAINING_DURATION],
-        "onset_all_seconds": [note.start for note in midi.instruments[0].notes],
+        "onset_all_seconds": [note.start for note in midi.instruments[0].notes if note.start <= TOTAL_DURATION],
     }
 
 
@@ -528,82 +528,79 @@ def main():
         midi_info["full_path"] = midi_path
         metadata["midi_files"][f"C{c_idx:03d}"] = midi_info
 
-    # Prepare all combinations for multiprocessing
-    print("Preparing combinations for multiprocessing...")
-    combinations = []
     
-    if USE_OPTIMIZED_RENDERING:
-        # Optimized approach: process all ADSR envelopes for each timbre+MIDI combination
-        for t_idx, timbre in enumerate(timbres):
-            for c_idx, midi_path in enumerate(midi_paths):
-                combinations.append((t_idx, c_idx, timbre, adsr_bank, midi_path, OUTPUT_DIR))
-    else:
-        # Legacy approach: process each timbre+ADSR+MIDI combination separately
-        for t_idx, timbre in enumerate(timbres):
-            for a_idx, adsr in enumerate(adsr_bank):
-                for c_idx, midi_path in enumerate(midi_paths):
-                    combinations.append((t_idx, a_idx, c_idx, timbre, adsr, midi_path, OUTPUT_DIR))
+    # if USE_OPTIMIZED_RENDERING:
+    #     # Optimized approach: process all ADSR envelopes for each timbre+MIDI combination
+    #     for t_idx, timbre in enumerate(timbres):
+    #         for c_idx, midi_path in enumerate(midi_paths):
+    #             combinations.append((t_idx, c_idx, timbre, adsr_bank, midi_path, OUTPUT_DIR))
+    # else:
+    #     # Legacy approach: process each timbre+ADSR+MIDI combination separately
+    #     for t_idx, timbre in enumerate(timbres):
+    #         for a_idx, adsr in enumerate(adsr_bank):
+    #             for c_idx, midi_path in enumerate(midi_paths):
+    #                 combinations.append((t_idx, a_idx, c_idx, timbre, adsr, midi_path, OUTPUT_DIR))
     
-    print(f"Total combinations to process: {len(combinations)}")
+    # print(f"Total combinations to process: {len(combinations)}")
     
-    # Use multiprocessing to render all combinations
-    if NUM_PROCESSES is None:
-        num_processes = min(mp.cpu_count(), MAX_PROCESSES)
-    else:
-        num_processes = min(NUM_PROCESSES, MAX_PROCESSES)
+    # # Use multiprocessing to render all combinations
+    # if NUM_PROCESSES is None:
+    #     num_processes = min(mp.cpu_count(), MAX_PROCESSES)
+    # else:
+    #     num_processes = min(NUM_PROCESSES, MAX_PROCESSES)
     
-    print(f"Using {num_processes} processes for rendering...")
+    # print(f"Using {num_processes} processes for rendering...")
     
-    # Process in chunks to avoid memory issues with large datasets
-    chunk_size = 1000  # Process 1000 combinations at a time
-    all_results = []
+    # # Process in chunks to avoid memory issues with large datasets
+    # chunk_size = 1000  # Process 1000 combinations at a time
+    # all_results = []
     
-    render_start_time = time.time()
+    # render_start_time = time.time()
     
-    # Add error handling for multiprocessing
-    try:
-        with mp.Pool(processes=num_processes) as pool:
-            for i in range(0, len(combinations), chunk_size):
-                chunk = combinations[i:i + chunk_size]
-                print(f"Processing chunk {i//chunk_size + 1}/{(len(combinations) + chunk_size - 1)//chunk_size}")
+    # # Add error handling for multiprocessing
+    # try:
+    #     with mp.Pool(processes=num_processes) as pool:
+    #         for i in range(0, len(combinations), chunk_size):
+    #             chunk = combinations[i:i + chunk_size]
+    #             print(f"Processing chunk {i//chunk_size + 1}/{(len(combinations) + chunk_size - 1)//chunk_size}")
                 
-                # Use tqdm to show progress for this chunk
-                if USE_OPTIMIZED_RENDERING:
-                    chunk_results = list(tqdm(
-                        pool.imap(render_single_timbre_midi_combination, chunk),
-                        total=len(chunk),
-                        desc=f"Chunk {i//chunk_size + 1}"
-                    ))
-                else:
-                    chunk_results = list(tqdm(
-                        pool.imap(render_single_combination_legacy, chunk),
-                        total=len(chunk),
-                        desc=f"Chunk {i//chunk_size + 1}"
-                    ))
-                all_results.extend(chunk_results)
-    except Exception as e:
-        print(f"Multiprocessing failed: {e}")
-        print("Falling back to sequential processing...")
-        all_results = []
-        for combo in tqdm(combinations, desc="Rendering Dataset (Sequential)"):
-            if USE_OPTIMIZED_RENDERING:
-                all_results.append(render_single_timbre_midi_combination(combo))
-            else:
-                all_results.append(render_single_combination_legacy(combo))
+    #             # Use tqdm to show progress for this chunk
+    #             if USE_OPTIMIZED_RENDERING:
+    #                 chunk_results = list(tqdm(
+    #                     pool.imap(render_single_timbre_midi_combination, chunk),
+    #                     total=len(chunk),
+    #                     desc=f"Chunk {i//chunk_size + 1}"
+    #                 ))
+    #             else:
+    #                 chunk_results = list(tqdm(
+    #                     pool.imap(render_single_combination_legacy, chunk),
+    #                     total=len(chunk),
+    #                     desc=f"Chunk {i//chunk_size + 1}"
+    #                 ))
+    #             all_results.extend(chunk_results)
+    # except Exception as e:
+    #     print(f"Multiprocessing failed: {e}")
+    #     print("Falling back to sequential processing...")
+    #     all_results = []
+    #     for combo in tqdm(combinations, desc="Rendering Dataset (Sequential)"):
+    #         if USE_OPTIMIZED_RENDERING:
+    #             all_results.append(render_single_timbre_midi_combination(combo))
+    #         else:
+    #             all_results.append(render_single_combination_legacy(combo))
     
-    render_end_time = time.time()
-    print(f"Rendering completed in {render_end_time - render_start_time:.2f} seconds")
+    # render_end_time = time.time()
+    # print(f"Rendering completed in {render_end_time - render_start_time:.2f} seconds")
     
-    # Render all combinations
-    if USE_OPTIMIZED_RENDERING:
-        # Optimized approach: each result is a list of results for all ADSR envelopes
-        for result_list in all_results:
-            for result in result_list:  # Each result_list contains results for all ADSR envelopes
-                metadata["metadata"].append(result)
-    else:
-        # Legacy approach: each result is a single result
-        for result in all_results:
-            metadata["metadata"].append(result)
+    # # Render all combinations
+    # if USE_OPTIMIZED_RENDERING:
+    #     # Optimized approach: each result is a list of results for all ADSR envelopes
+    #     for result_list in all_results:
+    #         for result in result_list:  # Each result_list contains results for all ADSR envelopes
+    #             metadata["metadata"].append(result)
+    # else:
+    #     # Legacy approach: each result is a single result
+    #     for result in all_results:
+    #         metadata["metadata"].append(result)
     
     # Save metadata with each key to a separate JSON file
     for key, value in metadata.items():
@@ -613,6 +610,7 @@ def main():
 
     end_time = time.time()
     print(f"Total time taken: {end_time - start_time:.2f} seconds")
+    print(metadata)
 
 
 if __name__ == "__main__":
