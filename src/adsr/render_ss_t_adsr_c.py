@@ -15,7 +15,6 @@ from functools import partial
 
 import numpy as np
 import soundfile as sf
-import pretty_midi
 from tqdm import tqdm
 from util import SAMPLE_RATE, ms_to_samples
 from librosa.effects import pitch_shift
@@ -24,7 +23,7 @@ from librosa.effects import pitch_shift
 # ---------------------------------------------------------------------
 # Configuration
 # ---------------------------------------------------------------------
-BASE_DIR = "/mnt/gestalt/home/buffett/EDM_FAC_NEW_DATA" # "/Users/buffettliu/Desktop/Music_AI/Codes/serum_render"
+BASE_DIR = "/home/buffett/nas_data/EDM_FAC_NEW_DATA" #"/mnt/gestalt/home/buffett/EDM_FAC_NEW_DATA"
 SPLIT = "train" # train, evaluation
 ADSR_PATH = f"stats/envelopes_{SPLIT}_new.json"
 TIMBRE_DIR = f"{BASE_DIR}/rendered_one_shot_flat"
