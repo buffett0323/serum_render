@@ -1,7 +1,7 @@
 __pycache__
 rendered_audio/
 rendered_one_shot/
-rendered_one_shot_flat/
+# rendered_one_shot_flat/
 rendered_one_shot_flat_small/
 rendered_ss_t_adsr_c/
 rendered_t_adsr_c/
