@@ -86,6 +86,7 @@ def analyze_one_shot_directory(directory_path, output_dir=None, target_duration=
     total_segments = 0
     successful_files = 0
     results = []
+    file_counter = 0  # Counter for successful files
     
     for wav_file in wav_files:
         filename = os.path.basename(wav_file)
@@ -116,9 +117,9 @@ def analyze_one_shot_directory(directory_path, output_dir=None, target_duration=
                 if output_dir:
                     base_name = os.path.splitext(filename)[0]
                     if render_duration is not None:
-                        output_filename = f"{base_name}_best_flat_t{start_time+FILTER_START_TIME:.2f}s_{render_duration}s.wav"
+                        output_filename = f"{file_counter:03d}_{base_name}_best_flat_t{start_time+FILTER_START_TIME:.2f}s_{render_duration}s.wav"
                     else:
-                        output_filename = f"{base_name}_best_flat_t{start_time+FILTER_START_TIME:.2f}s.wav"
+                        output_filename = f"{file_counter:03d}_{base_name}_best_flat_t{start_time+FILTER_START_TIME:.2f}s.wav"
                     output_path = os.path.join(output_dir, output_filename)
                     sf.write(output_path, final_audio, 44100)
                 
@@ -133,6 +134,9 @@ def analyze_one_shot_directory(directory_path, output_dir=None, target_duration=
                     'final_duration': len(final_audio) / 44100,  # Duration of final output
                     'total_candidates': len(segments)  # Number of segments that were considered
                 })
+                
+                # Increment counter for next successful file
+                file_counter += 1
                 
                 # Plot the best segment for this file
                 # plot_segment_analysis(wav_file, best_segment, filename)
