@@ -85,7 +85,7 @@ def main(plugin_path, preset_dir, sample_rate=44100, bpm=120,
             "bpm": bpm,
             "note_duration": note_duration,
             "render_duration": render_duration,
-            "velocity": 100,
+            "velocity": 120,
             "notes_rendered": list(c_notes.keys()),
             "preset_directory": preset_dir,
             "output_directory": output_dir

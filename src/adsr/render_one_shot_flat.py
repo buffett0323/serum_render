@@ -6,7 +6,7 @@ from pathlib import Path
 import glob
 
 FILTER_START_TIME = 0.5 #0.5
-FILTER_END_TIME = 2.0
+FILTER_END_TIME = 4.0 #2.0
 OVERLAP_RATIO = 44100
 
 def extract_flat_segments(audio_path, target_duration=0.3, amplitude_threshold=0.2, 
