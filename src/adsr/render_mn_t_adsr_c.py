@@ -29,10 +29,10 @@ from librosa.effects import pitch_shift
 # BASE_DIR     = "/mnt/gestalt/home/buffett/EDM_FAC_NEW_DATA"
 BASE_DIR     = "/home/buffett/nas_data/EDM_FAC_FINAL_DATA" #"/home/buffett/nas_data/EDM_FAC_NEW_DATA"
 SPLIT        = "evaluation" # train, evaluation
-ADSR_PATH    = f"stats/envelopes_train_final.json" #f"stats/envelopes_{SPLIT}_final.json"
+ADSR_PATH    = f"stats/envelopes_{SPLIT}_final.json"
 TIMBRE_DIR   = f"{BASE_DIR}/rendered_one_shot_flat/train" # f"{BASE_DIR}/rendered_one_shot_flat/{SPLIT}""
 MIDI_DIR     = f"../../info/{SPLIT}_midi_file_paths_satisfied.txt"    # folder with *.mid / *.midi files
-OUTPUT_DIR   = f"{BASE_DIR}/rendered_mn_t_adsr_c/eval_seen" # f"{BASE_DIR}/rendered_mn_t_adsr_c/{SPLIT}"
+OUTPUT_DIR   = f"{BASE_DIR}/rendered_mn_t_adsr_c/eval_seen_normal_adsr" # f"{BASE_DIR}/rendered_mn_t_adsr_c/{SPLIT}"
 MIDI_AMOUNT  = 10
 
 TOTAL_DURATION = 3 # seconds
