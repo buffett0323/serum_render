@@ -26,8 +26,8 @@ from librosa.effects import pitch_shift
 # ---------------------------------------------------------------------
 # Configuration – adjust to your folder layout
 # ---------------------------------------------------------------------
-BASE_DIR     = "/mnt/gestalt/home/buffett/EDM_FAC_FINAL_DATA"
-# BASE_DIR     = "/home/buffett/nas_data/EDM_FAC_FINAL_DATA"
+# BASE_DIR     = "/mnt/gestalt/home/buffett/EDM_FAC_FINAL_DATA"
+BASE_DIR     = "/home/buffett/nas_data/EDM_FAC_FINAL_DATA"
 SPLIT        = "evaluation" # train, evaluation
 ADSR_PATH    = f"stats/envelopes_{SPLIT}_final_extreme.json" # f"stats/envelopes_{SPLIT}_final.json"
 TIMBRE_DIR   = f"{BASE_DIR}/rendered_one_shot_flat/train" # f"{BASE_DIR}/rendered_one_shot_flat/{SPLIT}""
