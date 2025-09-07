@@ -83,21 +83,21 @@ def plot_midi_piano_roll(midi_path, split, max_duration=DURATION_SECOND):
                     start_frame = int(note.start * fs)
                     end_frame_note = int(note.end * fs)
                     
-                    # Only annotate if note is within the displayed range
-                    if start_frame < end_frame:
-                        # Get note name
-                        note_name = pretty_midi.note_number_to_name(note.pitch)
+                    # # Only annotate if note is within the displayed range
+                    # if start_frame < end_frame:
+                    #     # Get note name
+                    #     note_name = pretty_midi.note_number_to_name(note.pitch)
                         
-                        # Mark onset with a vertical line
-                        plt.axvline(x=start_frame, color='red', alpha=0.7, linestyle='--', linewidth=1)
+                    #     # Mark onset with a vertical line
+                    #     plt.axvline(x=start_frame, color='red', alpha=0.7, linestyle='--', linewidth=1)
                         
-                        # Add note annotation at the onset
-                        plt.annotate(f'{note_name}\n{note.start:.2f}s', 
-                                xy=(start_frame, note.pitch), 
-                                xytext=(start_frame + 50, note.pitch + 2),
-                                fontsize=8, color='white', weight='bold',
-                                bbox=dict(boxstyle="round,pad=0.3", facecolor='red', alpha=0.8),
-                                arrowprops=dict(arrowstyle="->", color='red', alpha=0.7))
+                    #     # Add note annotation at the onset
+                    #     plt.annotate(f'{note_name}\n{note.start:.2f}s', 
+                    #             xy=(start_frame, note.pitch), 
+                    #             xytext=(start_frame + 50, note.pitch + 2),
+                    #             fontsize=8, color='white', weight='bold',
+                    #             bbox=dict(boxstyle="round,pad=0.3", facecolor='red', alpha=0.8),
+                    #             arrowprops=dict(arrowstyle="->", color='red', alpha=0.7))
         
         plt.savefig(f"../vis_results/{split}/{midi_name}.png")
         plt.close()
